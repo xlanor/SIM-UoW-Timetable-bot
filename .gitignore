@@ -1,0 +1,5 @@
+testing_accounts.json
+ghostdriver.log
+test.png
+**/*.pyc
+**/__pycache__/

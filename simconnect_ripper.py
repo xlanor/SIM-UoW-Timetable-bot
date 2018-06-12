@@ -1,9 +1,24 @@
 #! /usr/bin/env python3
 #-*- coding: utf-8 -*-
 ##
-# Cronus module to rip the timetable from SIM connect
-# Using PhantomJS as a headless browser, and selenium | bs4 to navigate and scrape the results.
-# Written by xlanor
+#   Copyright (C) 2018 JING KAI TAN
+#
+#   This program is free software: you can redistribute it and/or modify it
+#   under the terms of the GNU Affero General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or (at your
+#   option) any later version.
+#
+#   This program is distributed in the hope that it will be useful, but WITHOUT
+#   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+#   FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public
+#   License for more details.
+#
+#   You should have received a copy of the GNU Affero General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
+##
+#   Cronus module to rip the timetable from SIM connect
+#   Using PhantomJS as a headless browser, and selenium | bs4 to navigate and scrape the results.
 ##
 import time as clock
 from selenium import webdriver
@@ -17,6 +32,11 @@ from Models.classes import IndividualClassStructure
     Superclass definition.
 """
 class SIMConnect():
+    """
+        Constructor
+        @params username, the username of the client
+        @params password, the decrypted password of the client
+    """
     def __init__(self,username,password):
         self.__login_url = "https://simconnect.simge.edu.sg/psp/paprd/EMPLOYEE/HRMS/s/WEBLIB_EOPPB.ISCRIPT1.FieldFormula.Iscript_SM_Redirect?cmd=login"
         self.timetable_page = "https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL"
@@ -25,9 +45,8 @@ class SIMConnect():
         self.password = password
     """
         Login method to spoof a login by phantomJS
-        @params username, the username of the client
-        @params password, the decrypted password of the client
         @params driver, an initalized selenium driver.
+        @return string, the whole page source.
     """
     def login(self,driver):
         
@@ -47,10 +66,11 @@ class SIMConnect():
         logbtn.click()
         clock.sleep(6)
         #print (driver.page_source)
-        driver.save_screenshot('test.png')
+        #driver.save_screenshot('test.png')
         return driver.page_source
     """ 
         Default execution method that checks for login 
+        @return boolean variable , True if able to login else false.
     """
     def execute(self):
         #"API" that populates timetable. It was never designed for this purpose, but we're going to use it
@@ -68,12 +88,18 @@ class SIMConnect():
     RipTimeTable inherits SIMConnect.
 """
 class RipTimeTable(SIMConnect):
+    """
+        Constructor, calls superclass
+        @params username, the username of the client
+        @params password, the decrypted password of the client
+    """
     def __init__(self,username,password):
         super(RipTimeTable, self).__init__(username,password)
     """
         Navigates to the latest timetable in the event that there is more than 1 timetable.
         @params driver, an initalized selenium dirver
         @params latest_term, the latest term that you want to pull.
+        @return soup, a formated beautiful soup object.
     """
     def navigate_to_latest_timetable(self,driver,latest_term):
         # constructing the latest term's id
@@ -121,6 +147,7 @@ class RipTimeTable(SIMConnect):
     """
         Gets the row id for further usage
         @params row, a row pulled from the HTML
+        @return rowid, the current row id.
     """
     def __get_row_id(self,row):
         getlocation = row.find("span",{'id':re.compile(r'(MTG_LOC\$)([0-9]{1})')})
