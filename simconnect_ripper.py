@@ -276,14 +276,19 @@ class RipTimeTable(SIMConnect):
             # we default to the latest term's timetable.
             if len(termdiv) != 0:
                 latest_term = len(termdiv)-1
-                soup = self.navigate_to_latest_timetable(driver,latest_term)
-            
+                soup = self.navigate_to_latest_timetable(driver, latest_term)
+
             # list of all the subjects.
-            subjectdiv = soup.findAll('div',{'id':re.compile(r'(win2divDERIVED_REGFRM1_DESCR20\$)([0-9]{1})')})
+            subjectdiv = soup.findAll('div',
+                                      {
+                                          'id': re.compile(r'(win2divDERIVED_REGFRM1_DESCR20\$)([0-9]{1})')  # noqa
+                                      }
+                                      )
             class_type_dict = {}
             list_of_results = []
 
-            self.process_subject_div(subjectdiv,class_type_dict,list_of_results)
+            self.process_subject_div(subjectdiv, class_type_dict,
+                                     list_of_results)
             driver.close()
             return(list_of_results)
         else:
@@ -293,19 +298,23 @@ class RipTimeTable(SIMConnect):
     Not really necessary, but I dont like calling a superclass blindly.
     Inherits from SIMConnect superclass.
 """
+
+
 class LoginTest(SIMConnect):
-    def __init__(self,username,password):
-        super(LoginTest, self).__init__(username,password)
+    def __init__(self, username, password):
+        super(LoginTest, self).__init__(username, password)
 
 
 """
     For testing purposes only.
 """
 if __name__ == "__main__":
-    # Loads an account from testing_accounts.json which is placed in .gitignore to
-    # ensure that we don't accidentally commit our tester accounts to git.
-    # Big thanks to Ray Keeve from UOB and See Yi Ze from UOL for volunteering to be guinea pigs.
-    # If you would like to be a guinea pig for this project, drop me a mail at contact@jingk.ai
+    # Loads an account from testing_accounts.json which is
+    # placed in .gitignore to ensure that we don't accidentally
+    # commit our tester accounts to git.
+    # Big thanks to Ray Keeve from UOB and See Yi Ze from UOL
+    # for volunteering to be guinea pigs. If you would like to
+    # be a guinea pig for this project, drop me a mail at contact@jingk.ai
     """
     JSON Format
             {
@@ -325,7 +334,7 @@ if __name__ == "__main__":
             }
     """
     user_to_load = input("Enter a user to load: (ray|jk|yz) : ")
-    with open ("testing_accounts.json") as json_file:
+    with open("testing_accounts.json") as json_file:
         data = json.load(json_file)
         try:
             data[user_to_load]
@@ -335,12 +344,12 @@ if __name__ == "__main__":
         else:
             username = data[user_to_load]["username"]
             password = data[user_to_load]["password"]
-            method = input("What type of test would you like to perform? (rip | login): ")
+            method = input("What type of test would you like to perform? (rip | login): ")  # noqa
             if method == "rip":
-                list_of_classes = (RipTimeTable(username,password).execute())
+                list_of_classes = (RipTimeTable(username, password).execute())
                 for cl in list_of_classes:
                     print(cl.get_dict())
             elif method == "login":
-                print(LoginTest(username,password).execute())
+                print(LoginTest(username, password).execute())
             else:
                 print("Unknown method")
