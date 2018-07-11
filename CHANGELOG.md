@@ -1,6 +1,11 @@
 # Changelog will begin from version 2.
 
 ## This will currently keep a log of the refactoring as it goes along.
+
+### 2018-07-11
+* Deprecated PhantomJS in favour of headless chrome.
+* Theoretical code for attendance module. Untested.
+
 ### 2018-06-12
 * Began refactoring the most basic portion - the ripper script.
 * Started following OOP Principles more strictly.
