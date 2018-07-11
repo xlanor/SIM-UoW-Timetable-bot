@@ -101,7 +101,7 @@ def test_class_type():
         single_digit_row.determine_class_type(list_of_class_type_keys,class_type_dict,no_of_keys,actual_row_id)
         pytest.fail("Regex not found supposed to be raised")
     except RegexNotFound:
-        pas
+        pass
     
 
 
