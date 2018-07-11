@@ -1,0 +1,11 @@
+language: python
+
+python:
+    - 3.6
+
+script:
+    - python setup.py build
+    - python setup.py install
+
+after_success:
+    - pytest -v
