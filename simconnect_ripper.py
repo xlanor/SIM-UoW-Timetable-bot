@@ -23,13 +23,16 @@
 ##
 import time as clock
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
 from contextlib import closing
 from bs4 import BeautifulSoup
 import re
 import json
 import sys
 from Models.classes import IndividualClassStructure
+from Models.attendance import Attendance
 
 """
     Superclass definition.
@@ -49,21 +52,43 @@ class SIMConnect():
         self.logout_url = "https://simconnect.simge.edu.sg/psp/paprd/EMPLOYEE/EMPL/?cmd=logout"  # noqa
         self.username = username
         self.password = password
+        #self.driver = webdriver.PhantomJS(executable_path='./phantomjs', service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])  # noqa
+        self.__chrome_driver = None
+        self.driver = None
+        self.__loadDriver()
+    
+    def __loadDriver(self):
+        capabilities = webdriver.DesiredCapabilities().CHROME.copy()
+        capabilities['acceptInsecureCerts'] = True
+        self.driver = webdriver.Chrome(chrome_options=self.__chrome_options(),service_args=["--verbose", "--log-path=./chromedriver.log"],desired_capabilities=capabilities, executable_path="./chromedriver")
+
+
+    def __chrome_options(self):
+        # instantiate a chrome options object so you can set the size and headless preference
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--window-size=1124x850")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--test-type")
+        return chrome_options
     """
         Login method to spoof a login by phantomJS
-        @params driver, an initalized selenium driver.
         @return string, the whole page source.
-    """
-    def login(self, driver):
-        driver.get(self.__login_url)
+    """   
+    def login(self):
+        self.driver.get(self.__login_url)
         # we use sleep to let the page happily load throughout the script.
+        clock.sleep(6)
+        self.driver.save_screenshot('login_page.png')
+        selection = self.driver.find_element_by_xpath("//select[@id='User_Type']/option[@value='Student']").click()
+
         clock.sleep(5)
         # finds userinput box
-        usr = driver.find_element_by_name('userid')
+        usr = self.driver.find_element_by_name('userid')
         # finds password box
-        passw = driver.find_element_by_name('pwd')
+        passw = self.driver.find_element_by_name('pwd')
         # finds login button
-        logbtn = driver.find_element_by_name('Submit')
+        logbtn = self.driver.find_element_by_name('Submit')
         # sends the keys to the driver
         usr.send_keys(self.username)
         passw.send_keys(self.password)
@@ -71,8 +96,8 @@ class SIMConnect():
         logbtn.click()
         clock.sleep(6)
         # print (driver.page_source)
-        # driver.save_screenshot('test.png')
-        return driver.page_source
+        self.driver.save_screenshot('test.png')
+        return self.driver.page_source
     """
         Default execution method that checks for login
         @return boolean variable , True if able to login else false.
@@ -81,14 +106,12 @@ class SIMConnect():
         # "API" that populates timetable. It was never designed
         # for this purpose, but we're going to use it
         # initialize PhantomJS, define settings
-        driver = webdriver.PhantomJS(executable_path='./phantomjs', service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])  # noqa
-        driver.set_window_size(1124, 850)
-        page_source = self.login(driver)
+        page_source = self.login()
         if self.logout_url in page_source:
-            driver.close()
+            self.driver.close()
             return True
         else:
-            driver.close()
+            self.driver.close()
             return False
 """
     RipTimeTable inherits SIMConnect.
@@ -259,12 +282,10 @@ class RipTimeTable(SIMConnect):
         # It was never designed for this purpose,
         # but we're going to use it
         # initialize PhantomJS, define settings
-        driver = webdriver.PhantomJS(executable_path='./phantomjs', service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])  # noqa
-        driver.set_window_size(1124, 850)
-        page_source = self.login(driver)
+        page_source = self.login()
         if self.logout_url in page_source:
-            driver.get(self.timetable_page)
-            formatted_result = driver.page_source
+            self.driver.get(self.timetable_page)
+            formatted_result = self.driver.page_source
             soup = BeautifulSoup(formatted_result, "html.parser")
             termdiv = soup.findAll('span',
                                    {
@@ -276,7 +297,7 @@ class RipTimeTable(SIMConnect):
             # we default to the latest term's timetable.
             if len(termdiv) != 0:
                 latest_term = len(termdiv)-1
-                soup = self.navigate_to_latest_timetable(driver, latest_term)
+                soup = self.navigate_to_latest_timetable(self.driver, latest_term)
 
             # list of all the subjects.
             subjectdiv = soup.findAll('div',
@@ -289,10 +310,10 @@ class RipTimeTable(SIMConnect):
 
             self.process_subject_div(subjectdiv, class_type_dict,
                                      list_of_results)
-            driver.close()
+            self.driver.close()
             return(list_of_results)
         else:
-            driver.close()
+            self.driver.close()
             return []
 """
     Not really necessary, but I dont like calling a superclass blindly.
@@ -304,7 +325,121 @@ class LoginTest(SIMConnect):
     def __init__(self, username, password):
         super(LoginTest, self).__init__(username, password)
 
+"""
+    Attendence inherits SIMConnect superclass
+"""
 
+
+class Attendance(SIMConnect):
+    def __init__(self, username, password):
+        super(Attendance, self).__init__(username, password)
+        self.__student_center_url = 'https://simconnect.simge.edu.sg/psp/paprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL'  # noqa
+        self.__attendance_selection_id = '4030'  #4030 is the value of the attendence selection.
+
+    def checkatt(self):
+        page_source = self.login()
+        if self.logout_url in page_source:
+            return self.__navigate_attendance()
+        else:
+            return []
+
+    def __navigate_attendance(self):
+        self.driver.get(self.__student_center_url)
+        clock.sleep(10)
+
+        # find the iframe
+        frame = self.driver.find_element_by_id("ptifrmtgtframe")
+        # switch to iframe.
+        self.driver.switch_to.frame(frame)
+        #at student center page, click drop down
+        select = Select(self.driver.find_element_by_id("DERIVED_SSS_SCL_SSS_MORE_ACADEMICS"))
+        select.select_by_value(self.__attendance_selection_id)
+        clock.sleep(10)
+        gobtn = self.driver.find_element_by_id('DERIVED_SSS_SCL_SSS_GO_1')
+        gobtn.click()
+        clock.sleep(10)
+        # formatted_result = self.driver.page_source
+        # soup = BeautifulSoup(formatted_result,"html.parser")
+        formatted_result = self.driver.page_source
+        att = Attendance(formatted_result)
+
+        if not self.__get_attendance(att):
+            print ("float conversion error")
+        return att
+
+
+    def __get_attendance(self,att_obj):
+        try:
+            att = float(att_obj.getPartner())
+        except ValueError:
+            return False
+        else:  # win2divCLASSES$0
+            if float(att) != 100.00:
+                formatted_result = self.driver.page_source
+                soup = BeautifulSoup(formatted_result,"html.parser")
+                classes = soup.findAll('span',
+                                       {
+                                           'id': re.compile(r'(CLASSES\$span\$)([0-9]{1})')  # noqa
+                                       }
+                                       )
+                lastindex = len(classes)-1
+                while lastindex >= 0:
+                    self.navigate_classes(attobj,lastindex)
+                    lastindex -= 1
+
+            return True
+
+    def navigate_classes(self,returndict,index):
+        classid = "SM_STDNT_CLASS$sels$"+str(index)+"$$0"
+        classbtn =  self.driver.find_element_by_id(classid)
+        classbtn.click()
+        continuebtn = self.driver.find_element_by_id("SM_CUSTOM_WRK_SSR_PB_GO")
+        continuebtn.click()
+        clock.sleep(10)
+        #we are now in the class. lets find the attendance.
+        no_classes = self.getnoclasses()
+        counter = 0
+        while counter < no_classes:
+            attid = "SM_CUSTOM_WRK_SM_ATTEND_PRESENT$"+str(counter)
+            attdateid = "SM_CLS_ATND_VW4_CLASS_ATTEND_DT$"+str(counter)
+            attstarttime = "SM_CLS_ATND_VW4_ATTEND_FROM_TIME$"+str(counter)
+            present = self.driver.find_element_by_id(attid)
+            if present.text == "No":
+                #SM_CLS_ATND_VW4_CLASS_ATTEND_DT$
+                class_name = self.driver.find_element_by_id("DERIVED_SSR_FC_SSR_CLASSNAME_LONG$span").text
+                date_of_absence = self.driver.find_element_by_id(attdateid).text
+                start_time = self.driver.find_element_by_id(attstarttime).text
+                returndict['Absent'].append({"name":class_name,"date":date_of_absence,"time":start_time})
+            counter +=1
+
+        backtbtn = self.driver.find_element_by_id("SM_CUSTOM_WRK_SSS_CHG_CLS_LINK")
+        backtbtn.click()
+        clock.sleep(10)
+
+    def getnoclasses(self):
+        total_class = 0
+        formatted_result = self.driver.page_source
+        soup = BeautifulSoup(formatted_result,"html.parser")
+
+        no_classes = soup.findAll('span',{'id':re.compile(r'(SM_CLS_ATND_VW4_CLASS_ATTEND_DT\$)([0-9]{1})')})
+        if len(no_classes) > 0:
+            no_classes_2 = soup.find("span",{"id":re.compile(r'(SM_CLS_ATND_VW4_CLASS_ATTEND_DT\$)([0-9]{1})([0-9]{1})')})
+
+        try:
+            total_class += len(no_classes)
+        except TypeError:
+            pass
+        except ValueError:
+            pass
+                    
+        try:
+            total_class += len(no_classes_2)
+        except TypeError:
+            pass
+        except ValueError:
+            pass
+
+        return total_class
 """
     For testing purposes only.
 """
