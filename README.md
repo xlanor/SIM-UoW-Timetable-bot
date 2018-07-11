@@ -1,4 +1,5 @@
-## IN PROGRESS
+## IN PROGRESS  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2.svg?branch=master)](https://travis-ci.org/freeCodeCamp/how-to-contribute-to-open-source)
+
 Refactored version of the current SIM Timetable bot.
 
 Development is still in progress. v1 is still up.
