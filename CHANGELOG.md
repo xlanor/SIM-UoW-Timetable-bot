@@ -5,6 +5,8 @@
 ### 2018-07-11
 * Deprecated PhantomJS in favour of headless chrome.
 * Theoretical code for attendance module. Untested.
+* Added unit tests for class structure.
+* Added base travis integration.
 
 ### 2018-06-12
 * Began refactoring the most basic portion - the ripper script.
