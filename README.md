@@ -6,6 +6,11 @@ Development is still in progress. v1 is still up.
 v2.0.0
 Author - xlanor
 
+# Disclaimer
+* This bot is an unofficial bot which is not being developed with any support from the SIMConnect team.
+* I have attempted to go through official channels to get some form of support to no avail.
+* As such, please understand that it may not work smoothly.
+* For current status of the rewrite, please look at the [changelog](https://github.com/xlanor/SIM-UoW-Timetable-bot-v2/blob/master/CHANGELOG.md)
 
 # Special thanks
 Authors of all libraries / modules used in the development of this bot, in no particular order:

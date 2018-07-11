@@ -24,17 +24,17 @@
 import time as clock
 from bs4 import BeautifulSoup
 import re
-
+from .exceptions import *
 
 class IndividualClassStructure():
     def __init__(self, name):
         self.__name = name
         # Initialize a few empty holding vars.
-        self.__date = ""
-        self.__starttime = ""
-        self.__endtime = ""
-        self.__location = ""
-        self.__class_type = ""
+        self.__date = None
+        self.__starttime = None
+        self.__endtime = None
+        self.__location = None
+        self.__class_type = None
     """
         Gets the variables in a dictionary format.
     """
@@ -66,24 +66,26 @@ class IndividualClassStructure():
 
     def get_class_type(self):
         return self.__class_type
-
     """
         Gets the dates of classes, strips it and reformats it.
         @params row, a row pulled from the html
     """
     def set_date_of_class(self, row):
+        getdate = None
         getdate = row.find("span",
                            {
                               'id': re.compile(r'(MTG_DATES\$)([0-9]{1})')
                            }
                            )
+        if not getdate:
+            raise RegexNotFound("Regex not found in row")
         if not getdate.text.strip():
             getdate = row.find("span",
                                {
                                   'id': re.compile(r'(MTG_DATES\$)([0-9]{1})([0-9]{1})')  # noqa
                                }
                                )
-
+        
         # date is returned in the format DD/MM/YYYY - DD/MM/YYYY
         # because the end date is redundant
         # (unless SIM decides to hold 24hr overnight classes)
@@ -137,10 +139,11 @@ class IndividualClassStructure():
 
     def determine_class_type(self, list_of_class_type_keys,
                              class_type_dict, no_of_keys, rowid):
+
         counter = 0
         trigger = True
+        actual_class_type = None
         while trigger:
-            actual_class_type = ""
             if int(rowid) >= int(list_of_class_type_keys[counter]):
                 actual_class_type = class_type_dict[list_of_class_type_keys[counter]]  # noqa
                 counter += 1
@@ -148,6 +151,9 @@ class IndividualClassStructure():
                     trigger = False
             else:
                 trigger = False
+
+        if not actual_class_type:
+            raise RegexNotFound("Unable to detect a class type!")
         # Fixes SIMConnect's spelling error.
         if actual_class_type == "Consultati":
             actual_class_type = "Consultation"
