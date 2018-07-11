@@ -38,7 +38,7 @@ for item in requirements:
 		requires.append(str(item.req))
 
 setup(
-		name='CryptoKitties TG Bot',
+		name='Cronus',
 		version='2.0.0',
 		url='https://github.com/xlanor/SIM-UoW-Timetable-bot-v2',
 		license='AGPL v3',
