@@ -33,6 +33,7 @@ import json
 import sys
 from Models.classes import IndividualClassStructure
 from Models.attendance import Attendance
+from Models.attendance import AbsentClasses
 
 """
     Superclass definition.
@@ -60,8 +61,7 @@ class SIMConnect():
     def __loadDriver(self):
         capabilities = webdriver.DesiredCapabilities().CHROME.copy()
         capabilities['acceptInsecureCerts'] = True
-        self.driver = webdriver.Chrome(chrome_options=self.__chrome_options(),service_args=["--verbose", "--log-path=./chromedriver.log"],desired_capabilities=capabilities, executable_path="./chromedriver")
-
+        self.driver = webdriver.Chrome(chrome_options=self.__chrome_options(),service_args=["--verbose", "--log-path=./chromedriver.log"],desired_capabilities=capabilities, executable_path="./chromedriver")  # noqa
 
     def __chrome_options(self):
         # instantiate a chrome options object so you can set the size and headless preference
@@ -335,6 +335,10 @@ class Attendance(SIMConnect):
         super(Attendance, self).__init__(username, password)
         self.__student_center_url = 'https://simconnect.simge.edu.sg/psp/paprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL'  # noqa
         self.__attendance_selection_id = '4030'  #4030 is the value of the attendence selection.
+        self.__att = None
+
+    def getAttObject(self):
+        return self.__att
 
     def checkatt(self):
         page_source = self.login()
@@ -361,11 +365,10 @@ class Attendance(SIMConnect):
         # formatted_result = self.driver.page_source
         # soup = BeautifulSoup(formatted_result,"html.parser")
         formatted_result = self.driver.page_source
-        att = Attendance(formatted_result)
+        self.__att = Attendance(formatted_result)
 
         if not self.__get_attendance(att):
             print ("float conversion error")
-        return att
 
 
     def __get_attendance(self,att_obj):
@@ -384,12 +387,12 @@ class Attendance(SIMConnect):
                                        )
                 lastindex = len(classes)-1
                 while lastindex >= 0:
-                    self.navigate_classes(attobj,lastindex)
+                    self.navigate_classes(lastindex)
                     lastindex -= 1
 
             return True
 
-    def navigate_classes(self,returndict,index):
+    def navigate_classes(self,index):
         classid = "SM_STDNT_CLASS$sels$"+str(index)+"$$0"
         classbtn =  self.driver.find_element_by_id(classid)
         classbtn.click()
@@ -409,7 +412,7 @@ class Attendance(SIMConnect):
                 class_name = self.driver.find_element_by_id("DERIVED_SSR_FC_SSR_CLASSNAME_LONG$span").text
                 date_of_absence = self.driver.find_element_by_id(attdateid).text
                 start_time = self.driver.find_element_by_id(attstarttime).text
-                returndict['Absent'].append({"name":class_name,"date":date_of_absence,"time":start_time})
+                self.__att.append(AbsentClasses(class_name,date_of_absence,start_time))
             counter +=1
 
         backtbtn = self.driver.find_element_by_id("SM_CUSTOM_WRK_SSS_CHG_CLS_LINK")
