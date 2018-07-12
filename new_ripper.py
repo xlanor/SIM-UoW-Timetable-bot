@@ -1,6 +1,5 @@
 import json
-from Controllers.Ripper.login import SIMConnect
-from Controllers.Ripper.timetable import RipTimeTable
+from Controllers.Ripper.ripper import RipperFactory
 user_to_load = input("Enter a user to load: (ray|jk|yz|fail) : ")
 with open("testing_accounts.json") as json_file:
     data = json.load(json_file)
@@ -12,14 +11,11 @@ with open("testing_accounts.json") as json_file:
     else:
         username = data[user_to_load]["username"]
         password = data[user_to_load]["password"]
-        method = input("What type of test would you like to perform? (rip | login): ")  # noqa
-        if method == "rip":
-            list_of_classes = (RipTimeTable(username, password).execute())
-            for cl in list_of_classes:
-                print(cl.get_dict())
-        elif method == "login":
+        method = input("What type of test would you like to perform? (Rip | Login): ")  # noqa
+        obj = RipperFactory.get_ripper(method,username,password)
+        result = obj.execute()
 
-            SIMConnect(username,password).execute()
-            #print(LoginTest(username, password).execute())
-        else:
-            print("Unknown method")
+        if method == "Rip":
+            for cl in result:
+                print(cl.get_dict())
+       
