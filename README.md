@@ -20,6 +20,5 @@ Authors of all libraries / modules used in the development of this bot, in no pa
 * [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - best HTML parser
 * [Selenium](https://pypi.org/project/selenium/) - making headless navigation easy
 * [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/) - Chromedriver and chromium authors.
-* [SIMConnect](https://simconnect.simge.edu.sg/) - For not providing native API methods and requiring me to write this shitty mess of code to get a painless way of recording and checking my timetable.
-* My users, for never reporting errors and often making things harder to debug than necessary.
+* [SIMConnect](https://simconnect.simge.edu.sg/) - For not providing native API methods 
 * Anybody else I missed
