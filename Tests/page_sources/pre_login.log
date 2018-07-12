@@ -1,0 +1,538 @@
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en"><head>
+		<!--
+		  * ***************************************************************
+		  *  This software and related documentation are provided under a
+		  *  license agreement containing restrictions on use and
+		  *  disclosure and are protected by intellectual property
+		  *  laws. Except as expressly permitted in your license agreement
+		  *  or allowed by law, you may not use, copy, reproduce,
+		  *  translate, broadcast, modify, license, transmit, distribute,
+		  *  exhibit, perform, publish or display any part, in any form or
+		  *  by any means. Reverse engineering, disassembly, or
+		  *  decompilation of this software, unless required by law for
+		  *  interoperability, is prohibited.
+		  *  The information contained herein is subject to change without
+		  *  notice and is not warranted to be error-free. If you find any
+		  *  errors, please report them to us in writing.
+		  *
+		  *  Copyright (C) 1988, 2010, Oracle and/or its affiliates.
+		  *  All Rights Reserved.
+		  * ***************************************************************
+		  -->
+		<!--
+		  -->
+		<!--
+		  *
+		  -->
+		<title>SIMGE | SIMConnect Sign-in</title>
+		
+		
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript">
+if (self === top) {
+    var fb = document.getElementById("ptfb");
+    fb.parentNode.removeChild(fb);
+} else {
+    try { 
+        top.location = self.location;
+    } catch(ex) {}
+}
+</script>
+		<link rel="stylesheet" href="/paprd/styles.css" type="text/css" />
+		<!--link rel="stylesheet" href="styles.css" rel="stylesheet" type="text/css"-->
+		<style type="text/css">
+		  window.history.forward(1);
+		</style>
+
+	<script language="JavaScript">
+		function UserIDUpper() {
+				document.login.userid.value=document.login.userid.value.toUpperCase();
+			 }
+		function signin(form)
+			{
+			var docLoc=new String(document.location);
+			var iLast= docLoc.lastIndexOf("?&amp;");
+			if (docLoc.length == (iLast+2))
+				{
+				docLoc = docLoc.substring(0, iLast);
+				}
+		
+			if (docLoc.indexOf("?cmd=")==-1 &amp;&amp; docLoc.indexOf("?")!=-1)
+				{
+				if (docLoc.indexOf("&amp;cmd=login")==-1)
+					{
+					var i=docLoc.length - 1;
+					var j= docLoc.lastIndexOf("&amp;");
+					if (j!=-1 &amp;&amp; i==j)
+						form.action=docLoc+form.action.substring(form.action.indexOf("?")+1,form.action.length);
+					else
+						form.action=docLoc+"&amp;"+form.action.substring(form.action.indexOf("?")+1,form.action.length);
+					}
+				else
+					form.action=docLoc.substring(0,docLoc.indexOf("&amp;cmd=login"))+"&amp;cmd=login"+docLoc.substring(docLoc.indexOf("&amp;languageCd="),docLoc.length);
+				}
+		
+			var now=new Date();
+			form.timezoneOffset.value=now.getTimezoneOffset();
+			return ;
+			}
+		function setFocus()
+			{
+			try
+				{document.login.userid.focus()}
+			catch (e)
+				{};
+			return;
+			}
+		
+		function setErrorImg()
+			{
+			var login_error = document.getElementById('login_error').innerHTML;
+			var discovery_error = document.getElementById('discovery_error').innerHTML;
+			var browsercheck_error = document.getElementById('browsercheck_error').innerHTML;
+		
+			if (login_error.length != 0 || discovery_error.length != 0 || browsercheck_error.length != 0)
+				{
+				document.getElementById('error_img').style.display = 'block';
+				if (login_error.length != 0)
+					document.getElementById('login_error').style.visibility = 'visible';
+				if (discovery_error.length != 0)
+					document.getElementById('discovery_error').style.visibility = 'visible';
+				document.getElementById('error_link').focus();
+				}
+			else
+				setFocus();
+			}
+		
+		function clearRecentSearch() {
+			if (typeof(window.sessionStorage) !== "undefined") {
+				try {
+					sessionStorage.clear();
+				} catch (e) {}
+			}
+		}
+		
+		function submitAction(form)
+		{
+			UserIDUpper();
+			signin(form);
+			form.Submit.disabled=true;
+			form.submit();
+		}
+		
+		function showfield(name)
+		{
+			//if(name=='VISIBLE')
+			//{
+			//	//If the current not login by default. e.g. via Page link, fix link, etc... User/Password will be visible.
+			//	document.getElementById('User_Type').value = "Student";
+			//	//document.getElementById('div1').innerHTML='&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;';
+			//	document.getElementById('div1').innerHTML='&lt;p style="text-shadow: 2px 2px 4px black; font-family: Arial; font-size: 118.8%; font-weight:bold";&gt;Student/Associate Lecturer/Alumni&lt;/p&gt;&amp;#8226; Your MyMail ID is your login ID (abcd@mymail.sim.edu.sg)&lt;br&gt;&amp;#8226; Your password is the same as your wifi password&lt;br&gt;&amp;#8226; &lt;b&gt;Forgot password?&lt;/b&gt; &lt;input name="StudentSubmit1" type="button" class="psloginflat"  tabindex="6" value="Click here" onclick="javascript:StudentReset0();"&gt;&lt;br&gt;&amp;#8226; &lt;b&gt;Access to MyMail?&lt;/b&gt; &lt;input name="StudentSubmit2" type="button" class="psloginflat"  tabindex="6" value="Click here" onclick="javascript:StudentMyMail0();"&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;';
+			//	document.getElementById('PS_LOGIN_TABLE').style.visibility="visible";
+			//}	
+			//else
+			//{
+			if(name=='Student' || name=='Student?')
+				  {
+				  	  document.getElementById('User_Type').value = name.replace(/[^\w\s]/gi, "");
+					  //document.getElementById('div1').innerHTML='&lt;p style="text-shadow: 2px 2px 4px black; font-family: Arial; font-size: 118.8%; font-weight:bold;";&gt;Student/Associate Lecturer/Alumni&lt;/p&gt;&amp;#8226; Your MyMail ID is your login ID (abcd@mymail.sim.edu.sg)&lt;br&gt;&amp;#8226; Your password is the same as your wifi password&lt;br&gt;&amp;#8226; &lt;b&gt;Forgot password?&lt;/b&gt; &lt;input name="StudentSubmit1" type="button" class="psloginflat"  tabindex="6" value="Click here" onclick="javascript:StudentReset0();"&gt;&lt;br&gt;&amp;#8226; &lt;b&gt;Access to MyMail?&lt;/b&gt; &lt;input name="StudentSubmit2" type="button" class="psloginflat"  tabindex="6" value="Click here" onclick="javascript:StudentMyMail0();"&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;';
+					  document.getElementById('div1').innerHTML='&lt;p style="text-shadow: 2px 2px 4px black; font-family: Arial; font-size: 118.8%; font-weight:bold; margin-top: 0;margin-bottom: 8pt;margin-left: 0;margin-right: 0;";&gt;Student/Associate Lecturer/Alumni&lt;/p&gt;&amp;#8226; Your MyMail ID is your login ID (abcd@mymail.sim.edu.sg)&lt;br&gt;&amp;#8226; Your password is the same as your wifi password&lt;br&gt;&amp;#8226; &lt;b&gt;Forgot password?&lt;/b&gt; &lt;input name="StudentSubmit1" type="button" class="psloginflat"  tabindex="6" value="Click here" onclick="javascript:StudentReset0();"&gt;&lt;br&gt;&amp;#8226; &lt;b&gt;Access to MyMail?&lt;/b&gt; &lt;input name="StudentSubmit2" type="button" class="psloginflat"  tabindex="6" value="Click here" onclick="javascript:StudentMyMail0();"&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;';
+					  //document.getElementById('PS_LOGIN_TABLE').style.visibility="visible";
+					  document.getElementById('userid').disabled= false;
+					  document.getElementById('pwd').disabled= false;
+					  document.getElementById('loginbutton').disabled= false;
+					  document.getElementById('error_img').style.display="none";
+					  document.getElementById('login_error').style.visibility="hidden";
+					  document.getElementById('discovery_error').style.visibility="hidden";
+					  document.getElementById('browsercheck_error').style.visibility="hidden";
+				  }
+				  else if (name=='Staff' || name=='Staff?')
+				  {
+				  	  document.getElementById('User_Type').value = name.replace(/[^\w\s]/gi, "");  
+					  //document.getElementById('div1').innerHTML='&lt;p style="text-shadow: 2px 2px 4px black; font-family: Arial; font-size: 118.8%; font-weight:bold";&gt;Staff&lt;/p&gt;&amp;#8226; Your Windows domain ID is your login ID&lt;br&gt;&amp;#8226; &lt;b&gt;Forgot password?&lt;/b&gt; If you would like to change your SIMConnect password,&lt;br&gt;please perform a password change in your windows machine.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;';
+					  document.getElementById('div1').innerHTML='&lt;p style="text-shadow: 2px 2px 4px black; font-family: Arial; font-size: 118.8%; font-weight:bold; margin-top: 0;margin-bottom: 8pt;margin-left: 0;margin-right: 0;";&gt;Staff&lt;/p&gt;&amp;#8226; Your Windows domain ID is your login ID&lt;br&gt;&amp;#8226; &lt;b&gt;Forgot password?&lt;/b&gt; If you would like to change your SIMConnect password,&lt;br&gt;&amp;nbsp;&amp;nbsp;please perform a password change in your windows machine.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;';
+					  //document.getElementById('PS_LOGIN_TABLE').style.visibility="visible";
+					  document.getElementById('userid').disabled= false;
+					  document.getElementById('pwd').disabled= false;
+					  document.getElementById('loginbutton').disabled= false;
+					  document.getElementById('error_img').style.display="none";
+					  document.getElementById('login_error').style.visibility="hidden";
+					  document.getElementById('discovery_error').style.visibility="hidden";
+					  document.getElementById('browsercheck_error').style.visibility="hidden";
+				  }
+				  else if (name=='Applicant' || name=='Applicant?')
+				  {
+					  //This option redirects to another site automatically.
+					  var repnewurl = replaceURL('ParameterName','Applicant','paadm');
+					  //window.document.location.href='https://simconnect.simge.edu.sg:488/psp/paadm/?cmd=login&amp;languageCd=ENG&amp;ParameterName=Applicant';
+					  window.document.location.href = repnewurl;
+					  //document.getElementById('div1').innerHTML='&lt;p style="text-shadow: 2px 2px 4px black; font-family: Arial; font-size: 118.8%; font-weight:bold";&gt;Apply to Study&lt;/p&gt;&amp;#8226; Your personal email is your login ID&lt;br&gt;&amp;#8226; &lt;b&gt;Forgot password?&lt;/b&gt; &lt;input name="ApplyToStudySubmit1" type="button" class="psloginflat"  tabindex="6" value="Click Here" onclick="javascript:NewApplicantReset0();"&gt;&lt;br&gt;&amp;#8226; &lt;b&gt;No Account?&lt;/b&gt; &lt;input name="ApplyToStudySubmit2" type="button" class="psloginflat"  tabindex="6" value="Click Here" onclick="javascript:ApplyToStudyCreate();"&gt;&lt;br&gt;';
+					  //document.getElementById('PS_LOGIN_TABLE').style.visibility="visible";
+				  }
+				  else if (name=='RecruitmentAgent' || name=='RecruitmentAgent?')
+				  {
+					  //This option redirects to another site automatically.
+					  var repnewurl = replaceURL('ParameterName','RecruitmentAgent','paadm');
+					  //window.document.location.href='https://simconnect.simge.edu.sg:488/psp/paadm/?cmd=login&amp;languageCd=ENG&amp;ParameterName=RecruitmentAgent';
+					  window.document.location.href = repnewurl;
+					  //document.getElementById('div1').innerHTML='&lt;p style="text-shadow: 2px 2px 4px black; font-family: Arial; font-size: 118.8%; font-weight:bold";&gt;Recruitment Agent (RA)&lt;/p&gt;&amp;#8226; Please user your personalized RA login ID and Password.&lt;br&gt;&amp;#8226; &lt;b&gt;Forgot password?&lt;/b&gt; Please contact RMR for password reset.&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;';
+					  //document.getElementById('PS_LOGIN_TABLE').style.visibility="visible";
+				  }
+				  else if (name=='ApplyToTeach' || name=='ApplyToTeach?')
+				  {
+					  //This option redirects to another site automatically.
+					  var repnewurl = replaceURL('ParameterName','ApplyToTeach','paadm');
+					  //window.document.location.href='https://simconnect.simge.edu.sg:488/psp/paadm/?cmd=login&amp;languageCd=ENG&amp;ParameterName=ApplyToTeach';
+					  window.document.location.href = repnewurl;
+					  //document.getElementById('div1').innerHTML='&lt;p style="text-shadow: 2px 2px 4px black; font-family: Arial; font-size: 118.8%; font-weight:bold";&gt;Apply to Teach&lt;/p&gt;&amp;#8226; Your personal email is your login ID&lt;br&gt;&amp;#8226; &lt;b&gt;Forgot password?&lt;/b&gt; &lt;input name="ApplyToTeachSubmit1" type="button" class="psloginflat"  tabindex="6" value="Click Here" onclick="javascript:NewApplicantReset0();"&gt;&lt;br&gt;&amp;#8226; &lt;b&gt;No Account?&lt;/b&gt; &lt;input name="ApplyToTeachSubmit2" type="button" class="psloginflat"  tabindex="6" value="Click Here" onclick="javascript:ApplyToTeachCreate();"&gt;&lt;br&gt;&amp;#8226; &lt;b&gt;Job Postings:&lt;/b&gt; &lt;input name="ApplyToTeachSubmit3" type="button" class="psloginflat"  tabindex="6" value="Click Here" onclick="javascript:ApplyToTeachPostings();"&gt;&lt;br&gt;';
+					  //document.getElementById('PS_LOGIN_TABLE').style.visibility="visible";
+				  }
+				  else 
+				  {
+					  document.getElementById('div1').innerHTML='&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;';
+					  //document.getElementById('PS_LOGIN_TABLE').style.visibility="hidden";
+					  document.getElementById('userid').disabled= true;
+					  document.getElementById('pwd').disabled= true;
+					  document.getElementById('loginbutton').disabled= true;
+				  }
+			//}		
+		}
+			
+		function StudentReset0(){
+			
+			window.open('http://access.simge.edu.sg/resetpassword.aspx','','width=800,height=600');
+		
+		}
+		
+		function StudentMyMail0(){
+			
+			window.open('https://outlook.com/mymail.sim.edu.sg','LiveEduWin','width=800,height=600');
+		
+		}
+		
+		function NewApplicantReset0(){
+			
+			window.open('https://simconnect1.simge.edu.sg:444/psc/csprd/EMPLOYEE/HRMS/c/MAINTAIN_SECURITY.EMAIL_PSWD.GBL','','width=800,height=600,resizable=1');
+		
+		}
+
+		function ApplyToTeachPostings() {
+
+			window.open('', '_self', '');
+			window.close();
+			window.open('https://simconnect1.simge.edu.sg:444/psc/csprd/EMPLOYEE/HRMS/c/SM_CUSTOM_MENU.SM_SS_JOBPOST_A_CM.GBL','','scrollbars=yes,resizable=yes,width=800,height=1200');
+			return false;
+
+		}
+
+		function ApplyToStudyCreate(){
+
+			window.open('', '_self', '');
+			window.close();
+			window.open('https://simconnect1.simge.edu.sg:444/psc/csprd/EMPLOYEE/HRMS/c/SM_PROCESS_ONLINE_APPLICATIONS.SM_CREATE_APP_ACCT.GBL','','width=800,height=600');
+
+		}
+		
+		function ApplyToTeachCreate() {
+
+			window.open('', '_self', '');
+			window.close();
+			window.open('https://simconnect1.simge.edu.sg:444/psc/csprd/EMPLOYEE/HRMS/c/SM_CUSTOM_MENU.SM_SS_CREATE_ACCNT.GBL?','','scrollbars=yes,width=800,height=1200');
+		}
+
+		function getParameterByName(name, url) {
+			//Get the ParameterName
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, "\\$&amp;");
+			var regex = new RegExp("[?&amp;]" + name + "(=([^&amp;#]*)|&amp;|#|$)"),
+			results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			
+			return decodeURIComponent(results[2].replace(/\+/g, " "));				
+		}
+
+		function replaceURL(repname,repnewvalue,repnewportal,repurl) {
+			//Get the Parameters
+			if (!repurl) repurl = window.location.href;
+			
+			//Remove set Parameter from URL
+			//repname=ParameterName
+			repname = repname.replace(/[\[\]]/g, "\\$&amp;");
+			var repregex = new RegExp("[?&amp;]" + repname + "(=([^&amp;#]*)|&amp;|#|$)"),
+			represults = repregex.exec(repurl);
+
+			//Get the login text if user and password box hidden or visible.
+			var repurl1 = repurl.search("Iscript_SM_Redirect[?]cmd=login");
+			var repurl2 = repurl.search("Iscript_SM_Redirect[?]&amp;cmd=login&amp;errorCode");
+    		var repurl3 = repurl.search("paadm[_[0-9]*/[?]cmd=login&amp;languageCd=ENG");
+    		var repurl4 = repurl.search("paadm[_[0-9]*/[?]&amp;cmd=login&amp;errorCode");
+			var repurl5 = repurl.search("paadm[_[0-9]*/EMPLOYEE/EMPL/[?]cmd=logout");
+			var repurl6 = repurl.search("paadm[_[0-9]*/EMPLOYEE/EMPL/[?]cmd=expire");
+			
+			if( repurl1==-1 &amp;&amp; repurl2==-1 &amp;&amp; repurl3==-1 &amp;&amp; repurl4==-1 &amp;&amp; repurl5==-1 &amp;&amp; repurl6==-1)
+      		{	
+				//Switch URLs between Portals and retain the content, if not login page.
+				if (repnewportal == "paprd" )
+				{
+					var repnewurl = repurl.replace("paadm","paprd");
+					var repnewurl1 = repnewurl.replace("simconnect.simge.edu.sg:488","simconnect.simge.edu.sg");
+				}
+				else if (repnewportal == "paadm" )
+				{
+					var repnewurl = repurl.replace("paprd","paadm");
+					var repnewurl1 = repnewurl.replace("simconnect.simge.edu.sg","simconnect.simge.edu.sg:488");
+				}
+
+				//If Parameter is initially set, remove
+				if ( represults != null ) 
+			    {
+			       	var repvalue = represults[2].replace(/[^\w\s]/gi, ""); 
+			        var repnewurlmain = repnewurl1.replace(repname + '=' + repvalue,repname + '=' + repnewvalue);
+			        return repnewurlmain;
+				}
+			    else 
+			    {
+			       	var repnewurlmain = repnewurl1 + '?&amp;cmd=login&amp;' + repname + '=' + repnewvalue;
+			        return repnewurlmain;
+			    }		
+    		}
+			else
+			{
+				//Switch to normal Login Page.
+				var redirectURL  = "https://simconnect.simge.edu.sg:488/psp/paadm/?cmd=login&amp;languageCd=ENG&amp;ParameterName=" + repnewvalue;
+				return redirectURL;
+			}
+		}		
+		
+	</script></head>
+
+	
+
+	<!--BODY onLoad="setErrorImg(); clearRecentSearch(); showfield(getParameterByName('ParameterName'));"-->
+	<body onload="setErrorImg(); clearRecentSearch(); showfield(getParameterByName('ParameterName'));" style="font-size: 100%">
+		<!-- Container TABLE -->
+		<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#FFFFFF">
+			<!-- LOGO ROW -->
+			<tbody><tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#FFFFFF">
+				<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto;">
+					<!-- LOGO TABLE -->
+					<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#FFFFFF">
+						<tbody><tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:left; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#FFFFFF">
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:35%; align:left; vertical-align: top;table-layout:auto;"> </td>
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:30%; align:left; text-align:left; vertical-align: top;table-layout:auto;">
+								<!--img src="/paprd/images/OPSE_logo.jpg" alt="SIMConnect logo" width="376" height="97"-->
+								<!--img src="OPSE_logo.jpg" alt="SIMConnect logo" width="520" height="134"-->
+								<img class="pslogo" src="/paprd/images/OPSE_logo.jpg" alt="SIMConnect logo" width="100%" height="100%" />
+							</td>
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:35%; align:right; vertical-align: top;table-layout:auto;"> </td>
+						</tr>
+					<!-- LOGO END TABLE -->
+					</tbody></table>
+				</td>
+			</tr>
+			<!-- Maintenance ROW -->
+			<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#FFFFFF">
+				<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto;">
+					<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#ff0000">
+						<!--tr width="100%" height="5%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial; background-color:#FFFFFF; text-align:center;align:center;"-->
+						<tbody><tr class="psloginerror" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; font-family: Arial; background-color:#FFFFFF; color:#ff0000; text-align:center; align:center;">
+							<!--td width="50%" class="psloginerror"-->
+							<td class="psloginerror" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; font-family: Arial; background-color:#FFFFFF; color:#ff0000; text-align:center; align:center;">
+								<!--p id="Maintenancepage" MAINTENACE NOTIFICATION HERE--> <!-- MAINTENACE NOTIFICATION HERE /p-->
+							</td>
+						</tr>	
+					</tbody></table>
+				</td>
+			</tr>
+			<!-- Error Message ROW -->
+			<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#FFFFFF">
+				<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto;">
+					<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#FFFFFF">
+						<tbody><tr width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial; background-color:#FFFFFF;text-align:center;align:center;">
+							<td width="50%">
+								<h1 class="psloginerror" id="error_img" style="display:none"><a id="error_link" href="javascript:setFocus();" tabindex="1"><img src="/paprd/images/PT_LOGIN_ERROR.gif" alt="Error" border="0" /></a></h1>
+								<h2 class="psloginerror" id="login_error" style="visibility:hidden"></h2>
+								<h2 class="psloginerror" id="discovery_error" style="visibility:hidden"></h2>
+								<h2 class="psloginerror" id="browsercheck_error"></h2>
+							</td>
+						</tr>	
+					</tbody></table>
+				</td>
+			</tr>
+			<!-- MAIN ROW -->
+			<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#FFFFFF">
+				<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto;">
+					<!-- 1st MAIN TABLE -->
+					<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto; align:center; text-align:center; background-color:#009460; font-family: Arial; color:#FFFFFF">
+						<!-- Spacer -->
+						<!-- 1st MAIN TABLE 1st ROW Start -->
+						<tbody><tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#009460; font-family: Arial; color:#FFFFFF">
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:20%; align:center; vertical-align: top"> </td>
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:60%; align:center; vertical-align: top"> </td>
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:20%; align:center; vertical-align: top"> </td>
+						<!-- 1st MAIN TABLE 1st ROW End -->
+						</tr>
+						
+						<!-- 1st MAIN TABLE 2nd ROW Start -->
+						<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#009460; font-family: Arial; color:#FFFFFF">
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:20%; align:center; vertical-align: top"> </td>
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:60%; align:center; vertical-align: top">
+								<!--Below tag affects the color table-->
+								<!-- 2nd TABLE USER TYPE AND FORM TABLES -->
+								<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto; align:center; text-align:center; background-color:#009460; font-family: Arial; color:#FFFFFF">
+									<!-- 2nd TABLE USER TYPE AND FORM TABLES 1st ROW Start -->
+									<tbody><tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;width:100%;table-layout:auto;">
+										<td valign="top" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto; width:57%;">
+											<!-- Start Select For User Type -->
+											<!-- 3rd USER TYPE TABLE -->
+											<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto; background-color:#009460; font-family: Arial; color:#FFFFFF; width:57%;">
+												<tbody><tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"><td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"> </td></tr>
+												<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"><td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"> </td></tr>
+												<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto; width:100%;">
+													<!--td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:fixed; white-space:nowrap; width:170; align:right; text-align:right;">Login As &nbsp;&nbsp;</td-->
+													<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto; white-space:nowrap; width:100%; align:center; text-align:center; font-size:100%">Login As 
+														<select name="User_Type" id="User_Type" onchange="showfield(this.options[this.selectedIndex].value)">
+															<option selected="selected"> </option>
+															<option value="Applicant">Apply to Study</option>
+															<option value="Student">Student/Associate Lecturer/Alumni</option>
+															<option value="Staff">Staff</option>
+															<option value="RecruitmentAgent">Recruitment Agent (RA)</option>
+															<option value="ApplyToTeach">Apply to Teach</option>
+														</select>
+													</td>
+												</tr>
+											<!-- 3rd END TABLE -->
+											</tbody></table>
+											<!-- End Select For User Type -->
+										</td>
+										
+										<td valign="top" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto; width:43%;">
+										<!-- 4th FORM TABLE -->
+										<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto; width:43%;">
+											<tbody><tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto; width:100%;">
+												<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto; width:100%;">
+													<form action="?cmd=login&amp;languageCd=ENG" method="post" id="login" name="login" autocomplete="off" onsubmit="signin(document.login)">
+														<input type="hidden" name="timezoneOffset" value="0" />
+														<!--Below tag affects the color table-->
+														<!-- 5th LOGIN TABLE -->
+														<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto; width:100%;">
+														<tbody><tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;">
+															<td width="100%" valign="top" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;">
+															<!-- Start Login Table -->
+																<div id="PS_LOGIN_TABLE" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; visibility: visible;">
+																	<!-- 8th LOGIN TABLE -->
+																	<table width="100%" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; table-layout:auto; font-family: Arial; color:#FFFFFF">
+																		<tbody><tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"><td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"> </td></tr>
+																		<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"><td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"> </td></tr>
+																		<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;">
+																			<!--td width="100%" style="text-align:left;align:left"><label for='userid' class='psloginlabel'>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</label><input id="userid" name="userid" type="text" disabled="true" class="pslogineditbox" value="" size="35" tabindex="2"></a><label for='userideg' class='pslogintextsmall'> <!--br>Your UserID is your MyMail Account e.g XXX@mymail.sim.edu.sg></label> </td-->
+																			<td width="100%" style="text-align:left;align:left;white-space:nowrap;"><label for="userid" class="psloginlabel">ID             : </label><input id="userid" name="userid" type="text" disabled="" class="pslogineditbox" value="" size="35" tabindex="2" /></td>
+																		</tr>
+																		<!-- Start Spacer tr -->
+																		<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"><td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"> </td></tr>
+																		<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;">
+																			<!--td width="100%" style="text-align:left;align:left"><label for='userid' class='psloginlabel'>Password&nbsp;:&nbsp;<input TYPE="password" id="pwd" name="pwd" disabled="true" class="pslogineditbox" size="15" tabindex="3"> <label for='userideg' class='pslogintextsmall'><!--br> Your Password is the same as your WiFi password.></label></td-->
+																			<td width="100%" style="text-align:left;align:left"><label for="userid" class="psloginlabel">Password : </label><input type="password" id="pwd" name="pwd" disabled="" class="pslogineditbox" size="15" tabindex="3" /></td>
+																		</tr>
+																		<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"><td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;"> </td></tr>
+																		<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px;table-layout:auto;">
+																			<td width="100%" style="text-align:left;align:center"><label for="userid" class="psloginlabel">                   </label><input name="Submit" type="submit" id="loginbutton" disabled="" class="psloginbutton" tabindex="4" value="Log in" onclick="submitAction(document.login)" /></td>
+																		</tr>
+																	<!-- 8th END TABLE -->
+																	</tbody></table>
+																</div>
+															<!-- End Login Table -->
+															</td>
+														</tr>
+														<!-- 5th END TABLE -->
+														</tbody></table>
+													</form>
+												</td>
+											</tr>
+										<!-- 4th END TABLE -->
+										</tbody></table>
+										</td>
+									<!-- 2nd TABLE USER TYPE AND FORM TABLES 1st ROW End -->	
+									</tr>
+								<!-- 2nd END TABLE USER TYPE AND FORM TABLES -->
+								</tbody></table>
+							</td>
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:20%; align:left; vertical-align: top"> </td>
+						<!-- 1st MAIN TABLE 2nd ROW End -->
+						</tr>
+					<!-- 1st MAIN END TABLE -->
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<!-- User Display ROW -->
+			<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:#FFFFFF">
+				<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto;">
+					<!-- 6th User Display TABLE -->
+					<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; height:250; table-layout:auto; align:center; text-align:center; background-color:#009460; font-family: Arial; color:#FFFFFF">
+						<!-- Start Display the Details of each User Type -->
+						<tbody><tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; height:250; table-layout:auto; align:center; text-align:center; background-color:#009460; font-family: Arial; color:#FFFFFF">
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:35%; align:center; vertical-align: top;table-layout:auto;"> </td>
+							<td class="psdisplay" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:30%; align:left; text-align:left; vertical-align: top;table-layout:auto;">
+								<br />
+								<div id="div1" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:left; text-align:left; font-family: Arial; background-color:#009460; color:#FFFFFF; FONT-SIZE: 93.8%;"> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /></div>
+							</td>
+							<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:35%; align:center; vertical-align: top;table-layout:auto;"> </td>
+						</tr>
+					<!-- End Display the Details of each User Type -->
+					<!-- 6th END TABLE -->
+					</tbody></table>
+				</td>
+			</tr>
+			
+			<!-- Display Best Viewed Text ROW -->
+			<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:black">
+				<td style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto;">
+				<!-- Display Best Viewed Text Start Here -->
+					<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto; align:center; text-align:center; background-color:#009460; font-family: Arial; color:#FFFFFF">
+						<tbody><tr width="100%" height="5%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial; background-color:#009460;text-align:center;align:center;">
+							<!--td width="50%" class="psloginbestview"-->
+							<td class="psloginbestview" style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; font-family: Arial; text-align:center; align:center;">
+								<!--p id="BestViewed"-->Please note that this application is best viewed using Internet Explorer 11 or Mozilla Firefox 45 or Chrome 48.<!--/p-->
+							</td>
+						</tr>	
+					<!-- Display Best Viewed Text End Here -->
+					</tbody></table>
+				</td>
+			</tr>
+			<!-- COPYRIGHT ROW -->
+			<tr style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:black">
+				<td width="100%">
+					<!--Below tag affects the color table-->
+					<!-- COPYRIGHT TABLE -->
+					<table style="border:0px; border-style:0; border-spacing: 0px; padding: 0px; width:100%; table-layout:auto; align:center; text-align:center; background-color:#FFFFFF; font-family: Arial; color:black">
+						<!-- Display Copyright Text Start Here -->
+						<tbody><tr width="100%" height="5%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial; background-color:White; color:black;text-align:center;align:center;">
+							<td width="50%" class="pslogincopyright">
+								<script language="javascript" type="text/javascript">var today=new Date();var y0=today.getFullYear();</script>
+								<p id="finePrint">©Copyright <script type="text/javascript" language="javascript">document.write(y0);</script>2018 SIM Global Education.
+									<a href="http://www.simge.edu.sg/gePortalWeb/appmanager/web/default?_nfpb=true&amp;_st=&amp;_pageLabel=pgDetailedPage&amp;fid=TERMS_OF_USE">Terms of Use.</a>
+								</p>
+								<!-- Global site tag (gtag.js) - Google Analytics -->
+								<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-117524650-1"></script>
+								<script>
+									window.dataLayer = window.dataLayer || [];
+									function gtag(){dataLayer.push(arguments);}
+									gtag('js', new Date());
+									gtag('config', 'UA-117524650-1');
+								</script>
+								<!-- Global site tag (gtag.js) - Google Analytics -->
+							</td>
+						</tr>
+						<!-- Display Copyright Text End Here -->
+					<!-- COPYRIGHT END TABLE -->
+					</tbody></table>
+
+				</td>
+			</tr>
+			<!-- Container END TABLE -->
+		</tbody></table>
+	
+
+
+</body></html>
