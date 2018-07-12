@@ -26,3 +26,7 @@ class RegexNotFound(Exception):
 class UnableToLogin(Exception):
     def __init__(self,msg):
         super(UnableToLogin,self).__init__(msg)
+
+class InvalidRipException(Exception):
+    def __init__(self,msg):
+        super(InvalidRipException,self).__init__(msg)

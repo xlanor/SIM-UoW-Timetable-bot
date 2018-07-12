@@ -24,6 +24,7 @@ import pytest
 from bs4 import BeautifulSoup
 from Controllers.Ripper.login import SIMConnect
 from Controllers.Ripper.timetable import RipTimeTable
+from Controllers.Ripper.ripper import RipperFactory
 from Models.exceptions import *
 
 
@@ -59,8 +60,26 @@ def test_logged_in():
 
 rt = None
 # Testing of timetable parser.
+# TODO: Write more test code for missing elements
 def test_timetable_parser():
     # test login has already been done in the super class.
     rt = RipTimeTable("testing","testing")
     records = len(rt.parse_timetable_source(timetable_template))
     assert records == 30, '30 records expected, {} records retrieved'.format(records)
+
+def test_fail_factory_method():
+    try:
+        # We DONT want to check subclass here, so we 
+        # opt for == over isinstance.
+        rf = RipperFactory.get_ripper("garbage","test","test")
+        pytest.fail("Garbage did not raise a InvalidRipException as expected")
+    except InvalidRipException:
+        assert True
+
+def test_rip_factory_method():
+    rf = RipperFactory.get_ripper("Rip","test","test")
+    assert type(rf) == RipTimeTable,"Rip did not return an instance of RipTimeTable"
+
+def test_login_factory_method():
+    rf = RipperFactory.get_ripper("Login","test","test")
+    assert type(rf) == SIMConnect, "Login did not return an instance of SIMConnect"
