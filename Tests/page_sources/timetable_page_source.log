@@ -1,0 +1,1792 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class=" chrome  psc_dir-ltr psc_form-xlarge" dir="ltr" lang="en"><!-- Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved. --><head>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script language="JavaScript">
+var  totalTimeoutMilliseconds = 1200000; 
+var  warningTimeoutMilliseconds = 1080000; 
+var timeOutURL = 'https://simconnect1.simge.edu.sg:444/psp/csprd_2/EMPLOYEE/HRMS/?cmd=expire';
+var timeoutWarningPageURL = 'https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/s/WEBLIB_TIMEOUT.PT_TIMEOUTWARNING.FieldFormula.IScript_TIMEOUTWARNING';
+var sRCRequestURL = 'https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/s/WEBLIB_PTRC.ISCRIPT1.FieldFormula.IScript_RC_REQUEST';
+</script> 
+
+<link id="PSSTYLEREQ_1_css" rel="stylesheet" type="text/css" href="/cs/csprd/cache/PSSTYLEREQ_1.css" />
+<link id="SSS_STYLESHEET_2_css" rel="stylesheet" type="text/css" href="/cs/csprd/cache/SSS_STYLESHEET_2.css" />
+<title>My Timetable (List View:Class)</title>
+<script language="JavaScript">
+try {
+document.domain = "simge.edu.sg";
+}
+catch(err) {;}
+</script>
+<script language="JavaScript">
+var winName='win2';
+var winParent = null;
+var modalID = null;
+var modalZoomName = null;
+var baseKey_win2 = "\x1b";
+var altKey_win2 = "05678\xbc\xbe\xbf\xde";
+var ctrlKey_win2 = "JKM";
+var saveWarningKeys_win2 = "";
+var firstFocusID = null;
+var isNewSaveWarn = true;
+var bAccessibility_win2 =false;
+var bFMode =false;
+var bDoModal_win2 = false;
+var bJSModal_win2 = false;
+var bPromptPage_win2 = false;
+var bTabOverTB_win2 = false;
+var bTabOverPg_win2 = false;
+var bTabOverNonPS_win2 = false;
+var strCurrUrl='https://simconnect1.simge.edu.sg:444/psp/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL?ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;INSTITUTION=AU003&amp;STRM=1832&amp;PAGE=SSR_SSENRL_LIST';
+var bIncInNavigation='T';
+var szCrefID='HC_SSR_SSENRL_LIST';
+var szCrefReged='T';
+var szCrefVisible='T';
+var szCrefLabel='My Timetable (List View:Class)';
+var localNodes = ['HRMS', 'PSFT_HR'];
+bGenDomInfo = false;
+var szCalendarType = 'G';
+var bMenuSrchPage = false;
+var bWSRP=0;var szMenuSrchText = "-999999-";
+var disablePNSubscriptions=1;var modalCloseUrl = '/cs/csprd/cache/PT_TRANS_16PIX_1.png';
+var modalCloseAlt = 'Close';
+var modalResizeUrl= '/cs/csprd/cache/PT_RESIZE_IMG_1.gif';
+var modalResizeAlt = 'Drag to resize';
+var modalMoveAlt = 'Drag to move';
+</script>
+<script language="JavaScript">
+var gridRowSelRgbColor_win2 ='rgb(212,219,217)';
+</script>
+<script language="JavaScript">
+try {
+document.domain = "simge.edu.sg";
+}
+catch(err) {;}
+</script>
+<script language="JavaScript" type="text/javascript" src="/cs/csprd/cache/PT_COMMON_MIN_1.js">
+</script>
+<script language="JavaScript" type="text/javascript" src="/cs/csprd/cache/PT_AJAX_NET_MIN_882.js">
+</script>
+<script language="JavaScript" type="text/javascript" src="/cs/csprd/cache/PT_SAVEWARNINGSCRIPT_MIN_1.js">
+</script>
+<script language="JavaScript" type="text/javascript" src="/cs/csprd/cache/PT_PAGESCRIPT_win2_MIN_1.js">
+</script>
+<script language="JavaScript" type="text/javascript" src="/cs/csprd/cache/PT_EDITSCRIPT_win2_MIN_1.js">
+</script>
+<script language="JavaScript" type="text/javascript" src="/cs/csprd/cache/PT_RC_JS_MIN_1.js">
+</script>
+<script language="JavaScript" type="text/javascript" src="/cs/csprd/cache/PT_POPUPSCRIPT_win2_MIN_1.js">
+</script>
+<script language="JavaScript" type="text/javascript" src="/cs/csprd/cache/PT_GRIDSCRIPT_win2_MIN_1.js">
+</script>
+<script language="JavaScript">
+var nResubmit=0;
+var nLastAction=0;
+var loader=null;
+if (typeof(bCleanHtml) == 'undefined')
+	var bCleanHtml = false;
+setupTimeout2();
+var postUrl_win2='https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL';
+function aAction_win2(form, id, params, bAjax, bPrompt)
+{
+setupTimeout2();
+if ((id != '#ICSave'))
+processing_win2(1,3000);
+aAction0_win2(form, id, params, bAjax, bPrompt);
+}
+function submitAction_win2(form, id, event)
+{
+setupTimeout2();
+if (!ptCommonObj2.isICQryDownload(form, id))
+ { processing_win2(1,3000); }
+preSubmitProcess_win2(form, id);
+var spellcheckpos = id.indexOf('$spellcheck');
+if ((spellcheckpos != -1) &amp;&amp; (id.indexOf('#KEYA5') != -1))
+	form.ICAction.value = id.substring(0,spellcheckpos);
+else 
+	form.ICAction.value=id;
+var actionName = form.ICAction.value;
+form.ICXPos.value=ptCommonObj2.getScrollX();
+form.ICYPos.value=ptCommonObj2.getScrollY();
+bcUpdater.storeBcDomData();
+if ((typeof(bAutoSave) != 'undefined') &amp;&amp; bAutoSave)
+	form.ICAutoSave.value = '1';
+if (!ptCommonObj2.isAJAXReq(form, id) &amp;&amp; !ptCommonObj2.isPromptReq(id)){
+if (nLastAction == 1 &amp;&amp; nResubmit &gt; 0) return;
+form.ICResubmit.value=nResubmit;
+form.submit();
+if (!ptCommonObj2.isICQryDownload(form, id))
+	nResubmit++;
+}
+else if (ptCommonObj2.isPromptReq(id))
+	pAction_win2(form, id, arguments[2]);
+else
+	aAction_win2(form, actionName);
+cancelBubble(event);
+}
+</script>
+<script language="javascript">
+var pt_calHeadstyle=" class='PTCALHEAD' "
+var pt_calWeekHeadstyle=" class='PTCALWEEKHEAD' "
+function dateitemrefs()
+{
+this.pt_dateheader = "/cs/csprd/cache/PT_PORTAL_IC_CLOSE_SD_1.gif";
+this.pt_datering = "/cs/csprd/cache/PT_CURRENT_DATE_SD_1.gif";
+this.pt_datesel = "/cs/csprd/cache/PT_SELECTED_DATE_SD_1.gif";
+this.pt_nextmonth = "/cs/csprd/cache/PT_RIGHT_SCROLL_SD_1.gif";
+this.pt_prevmonth= "/cs/csprd/cache/PT_LEFT_SCROLL_SD_1.gif";
+this.pt_daystitle_hijri = "/cs/csprd/cache/PT_DATE_TITLE_S6_1.GIF";
+this.pt_daystitle_thai = "/cs/csprd/cache/PT_DATE_TITLE_S0_1.GIF";
+this.pt_daystitle_s0 = "/cs/csprd/cache/PT_DATE_TITLE_S0_1.GIF";
+this.pt_daystitle_m1 = "/cs/csprd/cache/PT_DATE_TITLE_M1_1.GIF";
+this.pt_daystitle_t2 = "/cs/csprd/cache/PT_DATE_TITLE_T2_1.GIF";
+this.pt_daystitle_w3 = "/cs/csprd/cache/PT_DATE_TITLE_W3_1.GIF";
+this.pt_daystitle_t4 = "/cs/csprd/cache/PT_DATE_TITLE_T4_1.GIF";
+this.pt_daystitle_f5 = "/cs/csprd/cache/PT_DATE_TITLE_F5_1.gif";
+this.pt_daystitle_s6 = "/cs/csprd/cache/PT_DATE_TITLE_S6_1.GIF";
+}
+ 
+function LoadCalendar()
+{
+var dateitems = new dateitemrefs();
+loadImages(dateitems);
+}
+function DatePrompt_win2(dtfield,promptfield,yrfmt,bsubmit)
+{
+setupTimeout2();
+openDate_win2(dtfield, promptfield, "DMY/"+yrfmt,bsubmit,"G",0);
+}
+</script>
+<script language="JavaScript" ptdefer="defer">
+if (typeof ptStyleSheet == "undefined") {
+ptStyleSheet = 'SSS_STYLESHEET';
+}
+function onLoadExt_win2() {
+modalZoomName = null;
+var oWin=window;
+var oDoc=document;
+ptTAObj_win2.init(oWin,oDoc,oDoc.win2,'/cs/csprd/cache/PT_SRT2UP_SEL_1.gif','/cs/csprd/cache/PT_SRT2DN_SEL_1.gif','/cs/csprd/cache/PT_PORTAL_IC_CLOSE_1.gif',500);
+var pt_pageinfo = document.getElementById('pt_pageinfo_win2');
+if (pt_pageinfo) {
+pt_pageinfo.setAttribute('Page', 'SSR_SSENRL_LIST');
+pt_pageinfo.setAttribute('Component', 'SSR_SSENRL_LIST');
+pt_pageinfo.setAttribute('Menu', 'SA_LEARNER_SERVICES');
+pt_pageinfo.setAttribute('Mode', 'CLASSIC');
+}
+g_bAccessibilityMode=false;
+var actn='';
+setKeyEventHandler_win2();ptEvent.add(window,'scroll',positionWAIT_win2);
+ptCommonObj2.generateABNSearchResults(document.win2);
+getGblSrchPageNum(actn);
+if (gSrchRsltPageNum &lt;= 5) getAllRelatedActions();
+
+ptCommonObj2.moveUnivSrchDiv();
+if (typeof(ptLongEditCounter) != 'undefined' &amp;&amp; ptLongEditCounter != null)
+   ptLongEditCounter.onLoadLongEditCounter();
+if (typeof(HelppopupObj_win2) != 'undefined' &amp;&amp; HelppopupObj_win2 != null)
+ HelppopupObj_win2.StopPopup('win2');
+doModalOnLoad_win2(false, false);
+ResetGlyph_win2();
+self.scroll(0,0);
+objToBeFocus = null;
+if (typeof oWin == 'undefined') setEventHandlers_win2('ICFirstAnchor_win2', 'ICLastAnchor_win2', false);
+ else
+ oWin.setEventHandlers_win2('ICFirstAnchor_win2', 'ICLastAnchor_win2', false);
+setFocus_win2('DERIVED_SSTSNAV_SSTS_MAIN_GOTO$7$',-1);
+ptLoadingStatus_empty(0);
+setupTimeout2();
+processing_win2(0,3000);
+ptConsole2.enable();
+
+UpdateBreadCrumbs();
+GenerateABN();
+GenerateFakeBC();
+bcUpdateForPTF();if (typeof(myAppsWindowOpenJS) != 'undefined' &amp;&amp; myAppsWindowOpenJS != null &amp;&amp; myAppsWindowOpenJS != '')
+ {
+try {eval(myAppsWindowOpenJS);} catch(e) {}
+  myAppsWindowOpenJS=null;
+}
+ResetGlyph_win2();setPageletInfoInCtxmenu_win2("false");
+GetDomData(win2, "TargetContent", "#GetDomInfo");
+}
+try{ptEvent.load(onLoadExt_win2);}catch(e){}
+</script></head>
+<body tabindex="-1" class="PSPAGE">
+<div id="pt_pageinfo_win2" page="SSR_SSENRL_LIST" component="SSR_SSENRL_LIST" menu="SA_LEARNER_SERVICES" mode="CLASSIC"></div>
+<form id="SSR_SSENRL_LIST" name="win2" method="post" action="https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL" autocomplete="off" class="PSForm">
+<div class="ps_box-toolshiddens" id="win2divPSTOOLSHIDDENS"><div class="ps_modalmask_cover psc_hidden" id="pt_modalMaskCover"> </div><div class="ps_modalmask psc_hidden" id="pt_modalMask"> </div><div id="pt_modals" class="PSMODAL"><div id="ptModalShadow" class="popupDragFrame" style="cursor:nw-resize"> </div></div>
+<div class="ps_ajax_console psc_hidden" id="pt_console"><input type="button" id="COPYCONSOLE" value="Copy" onclick="ptConsole2.copy();" alt="copy to clipboard" title="copy to clipboard" /><input type="button" id="CLEARCONSOLE" onclick="ptConsole2.clear();" value="Clear" alt="clear console" title="clear console" /><input type="button" id="HIDECONSOLE" onclick="ptConsole2.hide();" value="Hide" alt="hide console" title="hide console" /><input type="button" id="CLOSECONSOLE" onclick="ptConsole2.deactive();" value="Close" alt="close console" title="close console" /></div><div class="ps_typeahead psc_hidden" id="pt_typeahead0" style="display: none;"><span id="pt_typeahead" class="spanTextDropdown"> </span></div><div id="WAIT_win2" style="display: none; position: absolute; right: 0px; z-index: 99991; visibility: hidden;"><img id="processing" align="left" src="/cs/csprd/cache/PT_PROCESSING_1.gif" alt="Processing... please wait" title="Processing... please wait" /></div>
+ <div id="SAVED_win2" style="display: none; position: absolute; right: 0px; z-index: 99991; visibility: hidden;"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><img src="/cs/csprd/cache/PTPORTAL_POPBOX_LEFT_1.gif" width="7" height="39" border="0" alt="" /></td><td id="saveWait_win2" width="35" align="center" valign="middle" background="/cs/csprd/cache/PTPORTAL_POPBOX_CENTER_1.gif"><img src="/cs/csprd/cache/PT_LOADER_1.gif" width="24" height="24" alt="" /></td><td nowrap="nowrap" background="/cs/csprd/cache/PTPORTAL_POPBOX_CENTER_1.gif"><span id="ptStatusText_win2" dir="ltr" class="PSPROCESSING"> </span></td><td><img src="/cs/csprd/cache/PTPORTAL_POPBOX_RIGHT_1.gif" width="6" height="39" alt="" /></td><td> </td></tr></tbody></table></div><div class="x" id="win2divPSHIDDENFIELDS" style="display:none"><input type="hidden" name="ICType" id="ICType" value="Panel" />
+<input type="hidden" name="ICElementNum" id="ICElementNum" value="2" />
+<input type="hidden" name="ICStateNum" id="ICStateNum" value="1" />
+<input type="hidden" name="ICAction" id="ICAction" value="None" />
+<input type="hidden" name="ICXPos" id="ICXPos" value="0" />
+<input type="hidden" name="ICYPos" id="ICYPos" value="0" />
+<input type="hidden" name="ResponsetoDiffFrame" id="ResponsetoDiffFrame" value="-1" />
+<input type="hidden" name="TargetFrameName" id="TargetFrameName" value="None" />
+<input type="hidden" name="FacetPath" id="FacetPath" value="None" />
+<input type="hidden" name="ICFocus" id="ICFocus" value="" />
+<input type="hidden" name="ICSaveWarningFilter" id="ICSaveWarningFilter" value="0" />
+<input type="hidden" name="ICChanged" id="ICChanged" value="-1" />
+<input type="hidden" name="ICAutoSave" id="ICAutoSave" value="0" />
+<input type="hidden" name="ICResubmit" id="ICResubmit" value="0" />
+<input type="hidden" name="ICSID" id="ICSID" value="7jwJnkmbPffOiPvVggPvMQ9vhY81HY2s2WCykcuAYlo=" />
+<input type="hidden" name="ICActionPrompt" id="ICActionPrompt" value="false" />
+<input type="hidden" name="ICTypeAheadID" id="ICTypeAheadID" value="" />
+<input type="hidden" name="ICBcDomData" id="ICBcDomData" value="" />
+<input type="hidden" name="ICFind" id="ICFind" value="" />
+<input type="hidden" name="ICAddCount" id="ICAddCount" value="" />
+<input type="hidden" name="ICAPPCLSDATA" id="ICAPPCLSDATA" value="" />
+</div>
+</div>
+<a name="ICFirstAnchor_win2" id="ICFirstAnchor_win2"></a>
+<div class="ps_header_panel" id="PT_HEADER_PANEL"></div>
+<div class="" id="win2divPAGEBAR"></div>
+<div class="ps_box-pagetabs" id="win2divPSPANELTABS"></div>
+<div class="ps_pagecontainer" id="win2divPAGECONTAINER"><table class="PSPAGECONTAINER" role="main" aria-labelledby="app_label"><tbody><tr><td>
+<div class="ps_pspagecontainer" id="win2divPSPAGECONTAINER"><table role="presentation" border="0" id="ACE_width" cellpadding="0" cellspacing="0" class="PSPAGECONTAINER" cols="10" width="939">
+<tbody><tr>
+<td width="0" height="3"></td>
+<td width="4"></td>
+<td width="4"></td>
+<td width="4"></td>
+<td width="428"></td>
+<td width="120"></td>
+<td width="76"></td>
+<td width="16"></td>
+<td width="64"></td>
+<td width="223"></td>
+</tr>
+<tr>
+<td height="108"></td>
+<td colspan="6" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_GROUP_BOX"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="635">
+<tbody><tr><td width="633">
+<table role="presentation" border="0" id="ACE_DERIVED_REGFRM1_GROUP_BOX" cellpadding="0" cellspacing="0" cols="4" width="633" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="3" height="0"></td>
+<td width="10"></td>
+<td width="610"></td>
+<td width="10"></td>
+</tr>
+<tr>
+<td height="93"></td>
+<td colspan="2" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_GROUP_BOX"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="619">
+<tbody><tr><td width="617">
+<table role="presentation" border="0" id="ACE_DERIVED_SSTSNAV_GROUP_BOX" cellpadding="0" cellspacing="0" cols="7" width="617" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="7" height="0"></td>
+<td width="1"></td>
+<td width="1"></td>
+<td width="422"></td>
+<td width="180"></td>
+<td width="1"></td>
+<td width="5"></td>
+</tr>
+<tr>
+<td height="3" colspan="4"></td>
+<td rowspan="2" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSTS_MAIN_GOTO"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="179">
+<tbody><tr><td width="177">
+<table role="presentation" border="0" id="ACE_DERIVED_SSTSNAV_SSTS_MAIN_GOTO" cellpadding="0" cellspacing="0" cols="3" width="177" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="7" height="0"></td>
+<td width="148"></td>
+<td width="22"></td>
+</tr>
+<tr>
+<td height="1" colspan="2"></td>
+<td rowspan="2" nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_GO"><a name="DERIVED_SSTSNAV_GO" id="DERIVED_SSTSNAV_GO" role="button" tabindex="28" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'DERIVED_SSTSNAV_GO');"><img src="/cs/csprd/cache/PT_NAV_GO_1.gif" name="DERIVED_SSTSNAV_GO$IMG" alt="GO!" title="GO!" border="0" /></a>
+</div></td>
+</tr>
+<tr>
+<td height="22"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSTS_MAIN_GOTO$7$"><select name="DERIVED_SSTSNAV_SSTS_MAIN_GOTO$7$" id="DERIVED_SSTSNAV_SSTS_MAIN_GOTO$7$" tabindex="27" size="1" class="PSDROPDOWNLIST" style="width:148px; " psnchg="0">
+<option value="0300">Account Inquiry</option>
+<option value="0200">My Academics</option>
+<option value="0100">Student Center</option>
+<option value="9999" selected="selected">go to ...</option>
+</select>
+</div></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="25" colspan="3"></td>
+<td rowspan="2" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_PERSON_NAME"><span class="PALEVEL0PRIMARY" id="DERIVED_SSTSNAV_PERSON_NAME">TAN JING KAI</span>
+</div></td>
+</tr>
+<tr>
+<td height="5" colspan="3"></td>
+</tr>
+<tr>
+<td height="28"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSTS_NAV_TABS_DIS"><div style="width:1px; ">
+<!-- Begin HTML Area Name Undisclosed -->
+
+<!-- End HTML Area -->
+</div>
+</div></td>
+<td colspan="4" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSTS_NAV_TABS"><div style="width:604px; ">
+<!-- Begin HTML Area Name Undisclosed -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_TOP_IMG_1.gif" style="display:block;" width="8" height="6" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_CENTERTOP_IMG_1.gif" style="display:block;" height="6" class="SSSTABWIDTH" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_TOP_IMG_1.gif" style="display:block;" width="8" height="6" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_TOP_IMG_1.gif" style="display:block;" width="8" height="6" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_CENTERTOP_IMG_1.gif" style="display:block;" height="6" class="SSSTABWIDTH" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_TOP_IMG_1.gif" style="display:block;" width="8" height="6" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_A_LEFT_TOP_IMG_1.gif" style="display:block;" width="8" height="6" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_A_CENTERTOP_IMG_1.gif" style="display:block;" height="6" class="SSSTABWIDTH" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_A_RIGHT_TOP_IMG_1.gif" style="display:block;" width="8" height="6" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_TOP_IMG_1.gif" style="display:block;" width="8" height="6" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_CENTERTOP_IMG_1.gif" style="display:block;" height="6" class="SSSTABWIDTH" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_TOP_IMG_1.gif" style="display:block;" width="8" height="6" /></td></tr><tr><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td>
+<td class="SSSTABINACTIVE" width="25%"><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.CLASS_SEARCH.GBL?Page=SSR_CLSRCH_ENTRY&amp;Action=U&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSTABMAINTEXT">Search</a></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td>
+<td class="SSSTABINACTIVE" width="25%"><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SM_CUSTOM_MENU.SM_SSS_CNFRM_PLAN.GBL?Page=SM_SSS_PLAN_TERM&amp;Action=U&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSTABMAINTEXT">Plan</a></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_A_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td>
+<td class="SSSTABACTIVE" width="25%"><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_CART.GBL?Page=SSR_SSENRL_CART&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSTABMAINTEXT">Enroll</a></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_A_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td>
+<td class="SSSTABINACTIVE" width="25%"><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_MY_ACAD.GBL?Page=SSS_MY_ACAD&amp;Action=U&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSTABMAINTEXT">My Academics</a></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td></tr><tr><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_BOTTOM_IMG_1.gif" style="display:block;" width="8" height="2" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_CENTERBOTTOM_IMG_1.gif" style="display:block;" height="2" class="SSSTABWIDTH" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_BOTTOM_IMG_1.gif" style="display:block;" width="8" height="2" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_BOTTOM_IMG_1.gif" style="display:block;" width="8" height="2" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_CENTERBOTTOM_IMG_1.gif" style="display:block;" height="2" class="SSSTABWIDTH" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_BOTTOM_IMG_1.gif" style="display:block;" width="8" height="2" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_A_LEFT_BOTTOM_IMG_1.gif" style="display:block;" width="8" height="2" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_A_CENTERBOTTOM_IMG_1.gif" style="display:block;" height="2" class="SSSTABWIDTH" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_A_RIGHT_BOTTOM_IMG_1.gif" style="display:block;" width="8" height="2" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_BOTTOM_IMG_1.gif" style="display:block;" width="8" height="2" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_CENTERBOTTOM_IMG_1.gif" style="display:block;" height="2" class="SSSTABWIDTH" /></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_BOTTOM_IMG_1.gif" style="display:block;" width="8" height="2" /></td></tr></tbody></table>
+<!-- End HTML Area -->
+</div>
+</div></td>
+</tr>
+<tr>
+<td height="23"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSTS_NAV_STABS_DIS"><div style="width:1px; ">
+<!-- Begin HTML Area Name Undisclosed -->
+
+<!-- End HTML Area -->
+</div>
+</div></td>
+<td colspan="4" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSTS_NAV_SUBTABS"><div style="width:604px; ">
+<!-- Begin HTML Area Name Undisclosed -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td><img src="/cs/csprd/cache/PS_CS_TAB_A_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td>
+<td class="SSSTABACTIVE" height="2"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_A_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td>
+<td class="SSSTABINACTIVE" height="2"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td>
+<td class="SSSTABINACTIVE" height="2"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td>
+<td class="SSSTABINACTIVE" height="2"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td>
+<td class="SSSTABINACTIVE" height="2"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="2" /></td></tr><tr><td><img src="/cs/csprd/cache/PS_CS_TAB_A_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td>
+<td class="SSSTABACTIVE" width="20%"><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL?Page=SSR_SSENRL_LIST&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSTABMAINTEXT">personalised timetable</a></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_A_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td>
+<td class="SSSTABINACTIVE" width="20%"><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_CART.GBL?Page=SSR_SSENRL_CART&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSTABMAINTEXT">add</a></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td>
+<td class="SSSTABINACTIVE" width="20%"><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_DROP.GBL?Page=SSR_SSENRL_DROP&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSTABMAINTEXT">drop</a></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td>
+<td class="SSSTABINACTIVE" width="20%"><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_SWAP.GBL?Page=SSR_SSENRL_SWAP&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSTABMAINTEXT">swap</a></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td>
+<td class="SSSTABINACTIVE" width="20%"><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SS_TERM_LINKS.GBL?Page=SSR_SS_TERM_LINKS&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSTABMAINTEXT">term information</a></td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="15" /></td></tr><tr><td><img src="/cs/csprd/cache/PS_CS_TAB_A_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td>
+<td class="SSSTABACTIVE" height="1"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_A_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td>
+<td class="SSSTABINACTIVE" height="1"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td>
+<td class="SSSTABINACTIVE" height="1"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td>
+<td class="SSSTABINACTIVE" height="1"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td><td><img src="/cs/csprd/cache/PS_CS_TAB_IA_LEFT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td>
+<td class="SSSTABINACTIVE" height="1"> </td>
+<td><img src="/cs/csprd/cache/PS_CS_TAB_IA_RIGHT_CENTER_IMG_1.gif" style="display:block;" width="8" height="1" /></td></tr></tbody></table>
+<!-- End HTML Area -->
+</div>
+</div></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="1" colspan="4"></td>
+</tr>
+<tr>
+<td height="13" colspan="2"></td>
+<td colspan="2" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SS_TRANSACT_TITLE"><span role="heading" aria-level="1" class="PATRANSACTIONTITLE" id="DERIVED_REGFRM1_SS_TRANSACT_TITLE">Personalised Timetable</span>
+</div></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="10" colspan="10"></td>
+</tr>
+<tr>
+<td height="36" colspan="3"></td>
+<td colspan="6" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SSR_SCHED_FORMAT"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="707">
+<tbody><tr><td width="705">
+<table role="presentation" border="0" id="ACE_DERIVED_REGFRM1_SSR_SCHED_FORMAT" cellpadding="0" cellspacing="0" cols="6" width="705" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="7" height="6"></td>
+<td width="132"></td>
+<td width="136"></td>
+<td width="132"></td>
+<td width="132"></td>
+<td width="166"></td>
+</tr>
+<tr>
+<td height="14"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SSR_SCHED_FORMAT$257$lbl"><span class="SSSTEXTTURQBOLD">Select Display Option</span> </div></td>
+<td nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SSR_SCHED_FORMAT$258$"><input type="radio" name="DERIVED_REGFRM1_SSR_SCHED_FORMAT$258$" id="DERIVED_REGFRM1_SSR_SCHED_FORMAT$258$" class="PSRADIOBUTTON" tabindex="39" value="L" checked="checked" onclick="setupTimeout2();addchg_win2(this);submitAction_win2(this.form,this.id);" /><label for="DERIVED_REGFRM1_SSR_SCHED_FORMAT$258$" id="DERIVED_REGFRM1_SSR_SCHED_FORMAT$258$_LBL" class="PSRADIOBUTTON">List View (Classes)</label>
+
+</div></td>
+<td nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SSR_SCHED_FORMAT$281$"><input type="radio" name="DERIVED_REGFRM1_SSR_SCHED_FORMAT$258$" id="DERIVED_REGFRM1_SSR_SCHED_FORMAT$281$" class="PSRADIOBUTTON" tabindex="40" value="E" onclick="setupTimeout2();addchg_win2(this);submitAction_win2(this.form,this.id);" /><label for="DERIVED_REGFRM1_SSR_SCHED_FORMAT$281$" id="DERIVED_REGFRM1_SSR_SCHED_FORMAT$281$_LBL" class="PSRADIOBUTTON">List View (Exams)</label>
+
+</div></td>
+<td nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SSR_SCHED_FORMAT$280$"><input type="radio" name="DERIVED_REGFRM1_SSR_SCHED_FORMAT$258$" id="DERIVED_REGFRM1_SSR_SCHED_FORMAT$280$" class="PSRADIOBUTTON" tabindex="41" value="O" onclick="setupTimeout2();addchg_win2(this);submitAction_win2(this.form,this.id);" /><label for="DERIVED_REGFRM1_SSR_SCHED_FORMAT$280$" id="DERIVED_REGFRM1_SSR_SCHED_FORMAT$280$_LBL" class="PSRADIOBUTTON">List View (Others)</label>
+
+</div></td>
+<td nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SSR_SCHED_FORMAT$259$"><input type="radio" name="DERIVED_REGFRM1_SSR_SCHED_FORMAT$258$" id="DERIVED_REGFRM1_SSR_SCHED_FORMAT$259$" class="PSRADIOBUTTON" tabindex="42" value="W" onclick="setupTimeout2();addchg_win2(this);submitAction_win2(this.form,this.id);" /><label for="DERIVED_REGFRM1_SSR_SCHED_FORMAT$259$" id="DERIVED_REGFRM1_SSR_SCHED_FORMAT$259$_LBL" class="PSRADIOBUTTON">Weekly Calendar View</label>
+
+</div></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="8" colspan="10"></td>
+</tr>
+<tr>
+<td height="30" colspan="2"></td>
+<td colspan="4" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SSR_STDNTKEY_DESCR"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="555">
+<tbody><tr><td width="553">
+<table role="presentation" border="0" id="ACE_DERIVED_REGFRM1_SSR_STDNTKEY_DESCR" cellpadding="0" cellspacing="0" cols="2" width="553" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="8" height="0"></td>
+<td width="545"></td>
+</tr>
+<tr>
+<td height="21"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SSR_STDNTKEY_DESCR$5$"><span class="SSSPAGEKEYTEXT" id="DERIVED_REGFRM1_SSR_STDNTKEY_DESCR$5$">2018 Quarter 3 (Jul-Sep) | Undergraduate | University of Wollongong</span>
+</div></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="10" colspan="10"></td>
+</tr>
+<tr>
+<td height="45" colspan="3"></td>
+<td colspan="3" valign="top" align="left">
+<div id="win2div$ICField282"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="551">
+<tbody><tr><td width="549">
+<table role="presentation" border="0" id="ACE_$ICField282" cellpadding="0" cellspacing="0" cols="3" width="549" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="3" height="5"></td>
+<td width="544"></td>
+<td width="2"></td>
+</tr>
+<tr>
+<td height="37"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SA_STUDYLIST_SHOW"><table cellpadding="2" cellspacing="0" cols="1" class="PSGROUPBOXWBO" width="543">
+<tbody><tr><td class="PSGROUPBOXLABEL" align="left"><div id="win2divDERIVED_REGFRM1_SA_STUDYLIST_SHOWGP"><a class="PSHYPERLINK PTCOLLAPSE_ARROW" title="Collapse section Class Schedule Filter Options" name="DERIVED_REGFRM1_SA_STUDYLIST_SHOW" id="DERIVED_REGFRM1_SA_STUDYLIST_SHOW" tabindex="45" href="javascript:submitAction_win2(document.win2,'DERIVED_REGFRM1_SA_STUDYLIST_SHOW');" aria-expanded="true"><img src="/cs/csprd/cache/PS_COLLAPSE_ICN_1.gif" alt="Collapse section Class Schedule Filter Options" title="Collapse section" border="0" /></a> Class Schedule Filter Options </div></td></tr>
+<tr><td width="541">
+<table role="presentation" border="0" id="ACE_DERIVED_REGFRM1_SA_STUDYLIST_SHOW" cellpadding="0" cellspacing="0" cols="6" width="541" class="PSGROUPBOX" style="border-style:none">
+<tbody><tr>
+<td width="7" height="0"></td>
+<td width="156"></td>
+<td width="160"></td>
+<td width="168"></td>
+<td width="48"></td>
+<td width="2"></td>
+</tr>
+<tr>
+<td height="5" colspan="4"></td>
+<td rowspan="2" valign="top" align="left">
+<div id="win2div$ICField236"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="47">
+<tbody><tr><td width="45">
+<table role="presentation" border="0" id="ACE_$ICField236" cellpadding="0" cellspacing="0" cols="2" width="45" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="3" height="7"></td>
+<td width="42"></td>
+</tr>
+<tr>
+<td height="11"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SA_STUDYLIST_SHOW$14$"><span id="DERIVED_REGFRM1_SA_STUDYLIST_SHOW$14$$span" class="SSSBUTTON_ACTIONLINK" title="Refresh Class Schedule"><a name="DERIVED_REGFRM1_SA_STUDYLIST_SHOW$14$" id="DERIVED_REGFRM1_SA_STUDYLIST_SHOW$14$" ptlinktgt="pt_peoplecode" tabindex="49" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'DERIVED_REGFRM1_SA_STUDYLIST_SHOW$14$');" class="SSSBUTTON_ACTIONLINK">Filter</a></span>
+</div></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="15"></td>
+<td rowspan="2" nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SA_STUDYLIST_E"><input type="hidden" name="DERIVED_REGFRM1_SA_STUDYLIST_E$chk" id="DERIVED_REGFRM1_SA_STUDYLIST_E$chk" value="Y" />
+<input type="checkbox" name="DERIVED_REGFRM1_SA_STUDYLIST_E" id="DERIVED_REGFRM1_SA_STUDYLIST_E" class="PSCHECKBOX" tabindex="46" value="Y" checked="checked" onclick="setupTimeout2();    this.form.DERIVED_REGFRM1_SA_STUDYLIST_E$chk.value=(this.checked?'Y':'N');doFocus_win2(this,false,true);" /><label for="DERIVED_REGFRM1_SA_STUDYLIST_E" id="DERIVED_REGFRM1_SA_STUDYLIST_E_LBL" class="PSCHECKBOX">Show Enrolled Classes</label>
+
+</div></td>
+<td rowspan="2" nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SA_STUDYLIST_D"><input type="hidden" name="DERIVED_REGFRM1_SA_STUDYLIST_D$chk" id="DERIVED_REGFRM1_SA_STUDYLIST_D$chk" value="N" />
+<input type="checkbox" name="DERIVED_REGFRM1_SA_STUDYLIST_D" id="DERIVED_REGFRM1_SA_STUDYLIST_D" class="PSCHECKBOX" tabindex="47" value="Y" onclick="setupTimeout2();    this.form.DERIVED_REGFRM1_SA_STUDYLIST_D$chk.value=(this.checked?'Y':'N');doFocus_win2(this,false,true);" /><label for="DERIVED_REGFRM1_SA_STUDYLIST_D" id="DERIVED_REGFRM1_SA_STUDYLIST_D_LBL" class="PSCHECKBOX">Show Dropped Classes</label>
+
+</div></td>
+<td rowspan="2" nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SA_STUDYLIST_W"><input type="hidden" name="DERIVED_REGFRM1_SA_STUDYLIST_W$chk" id="DERIVED_REGFRM1_SA_STUDYLIST_W$chk" value="N" />
+<input type="checkbox" name="DERIVED_REGFRM1_SA_STUDYLIST_W" id="DERIVED_REGFRM1_SA_STUDYLIST_W" class="PSCHECKBOX" tabindex="48" value="Y" onclick="setupTimeout2();    this.form.DERIVED_REGFRM1_SA_STUDYLIST_W$chk.value=(this.checked?'Y':'N');doFocus_win2(this,false,true);" /><label for="DERIVED_REGFRM1_SA_STUDYLIST_W" id="DERIVED_REGFRM1_SA_STUDYLIST_W_LBL" class="PSCHECKBOX">Show Waitlisted Classes</label>
+
+</div></td>
+</tr>
+<tr>
+<td height="3"></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="1" colspan="3"></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="4" colspan="10"></td>
+</tr>
+<tr>
+<td height="789" colspan="3"></td>
+<td colspan="3" valign="top" align="left">
+<div id="win2divSTDNT_ENRL_SSV2$0"><table role="presentation" border="0" id="ACE_STDNT_ENRL_SSV2$0" cellpadding="0" cellspacing="0" cols="3" width="551" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="4" height="0"></td>
+<td width="540"></td>
+<td width="7"></td>
+</tr>
+<tr>
+<td height="391"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_DESCR20$0"><table cellpadding="2" cellspacing="0" cols="1" class="PSGROUPBOXWBO" width="539">
+<tbody><tr><td class="PAGROUPDIVIDER" align="left">CSCI 203 - Algorithms &amp; Data Structures</td></tr>
+<tr><td width="537">
+<table role="presentation" border="0" id="ACE_DERIVED_REGFRM1_DESCR20$0" cellpadding="0" cellspacing="0" cols="2" width="537" class="PSGROUPBOX" style="border-style:none">
+<tbody><tr>
+<td width="0" height="2"></td>
+<td width="538"></td>
+</tr>
+<tr>
+<td height="32"></td>
+<td valign="top" align="left">
+<div id="win2divSSR_DUMMY_RECVW$0">
+<table cellspacing="0" class="PSLEVEL3GRIDNBO" id="SSR_DUMMY_RECVW$scroll$0" dir="ltr" cols="3" width="540" cellpadding="2">
+<tbody><tr>
+<th scope="col" abbr="Status" width="59" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Status</th>
+<th scope="col" abbr="Units" width="30" align="right" class="PSLEVEL3GRIDCOLUMNHDR">Units</th>
+<th scope="col" abbr="Grading" width="64" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Grading</th>
+</tr>
+<tr id="trSSR_DUMMY_RECVW$0_row1" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trSSR_DUMMY_RECVW$0_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trSSR_DUMMY_RECVW$0_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trSSR_DUMMY_RECVW$0_row1');">
+<td align="left" height="13" class="PSLEVEL3GRIDROW">
+<div id="win2divSTATUS$0"><span class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:59px; " id="STATUS$0">Enrolled</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_REGFRM1_UNT_TAKEN$0"><span class="PSEDITBOX_DISPONLY" id="DERIVED_REGFRM1_UNT_TAKEN$0">6.00</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divGB_DESCR$0"><span class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:64px; " id="GB_DESCR$0">Not Include in GPA</span>
+</div></td>
+</tr>
+</tbody></table>
+</div>
+</td>
+</tr>
+<tr>
+<td height="342"></td>
+<td valign="top" align="left">
+<div id="win2divCLASS_MTG_VW$0">
+<table cellspacing="0" class="PSLEVEL3GRIDNBO" id="CLASS_MTG_VW$scroll$0" dir="ltr" cols="8" width="540" cellpadding="2">
+<tbody><tr>
+<th scope="col" abbr="Class Nbr" width="29" align="CENTER" class="PSLEVEL3GRIDCOLUMNHDR">Class Nbr</th>
+<th scope="col" abbr="Section" width="26" align="CENTER" class="PSLEVEL3GRIDCOLUMNHDR">Section</th>
+<th scope="col" abbr="Component" width="51" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Component</th>
+<th scope="col" abbr="Days &amp; Times" width="90" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Days &amp; Times</th>
+<th scope="col" abbr="Room" width="75" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Room</th>
+<th scope="col" abbr="Instructor" width="87" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Instructor</th>
+<th scope="col" abbr="Start/End Date" width="80" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Start/End Date</th>
+<th scope="col" abbr="Gradebook" width="31" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Gradebook</th>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row1" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row1');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$0"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$0">1032</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+<div id="win2divMTG_SECTION$0"><span id="MTG_SECTION$span$0" class="PSHYPERLINK" title="Class Section"><a name="MTG_SECTION$0" id="MTG_SECTION$0" ptlinktgt="pt_peoplecode" tabindex="495" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'MTG_SECTION$0');" class="PSHYPERLINK">T02</a></span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$0"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$0">Tutorial</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$0"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$0">Tu 3:30PM - 6:30PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$0"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$0">HQ BLK A LAB A.5.14/A.5.15</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$0"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$0">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$0"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$0">10/07/2018 - 10/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row2" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row2');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row2');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row2');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$1"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$1"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$1"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$1"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$1"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$1">Tu 3:30PM - 6:30PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$1"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$1">HQ BLK A LAB A.5.17C/A.5.17D</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$1"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$1">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$1"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$1">24/07/2018 - 24/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row3" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row3');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row3');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row3');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$2"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$2"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$2"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$2"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$2"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$2">Th 3:30PM - 6:30PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$2"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$2">HQ BLK A LAB A.5.17A/A.5.17B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$2"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$2">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$2"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$2">02/08/2018 - 02/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row4" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row4');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row4');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row4');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$3"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$3"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$3"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$3"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$3"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$3">Fr 3:30PM - 6:30PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$3"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$3">HQ BLK A LAB A.5.17A/A.5.17B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$3"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$3">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$3"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$3">17/08/2018 - 17/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row5" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row5');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row5');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row5');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$4"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$4"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$4"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$4"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$4"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$4">Tu 3:30PM - 6:30PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$4"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$4">HQ BLK A LAB A.5.17A/A.5.17B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$4"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$4">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$4"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$4">21/08/2018 - 21/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row6" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row6');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row6');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row6');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$5"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$5">1030</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+<div id="win2divMTG_SECTION$5"><span id="MTG_SECTION$span$5" class="PSHYPERLINK" title="Class Section"><a name="MTG_SECTION$5" id="MTG_SECTION$5" ptlinktgt="pt_peoplecode" tabindex="520" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'MTG_SECTION$5');" class="PSHYPERLINK">L01</a></span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$5"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$5">Lecture</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$5"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$5">Tu 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$5"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$5">HQ BLK A LT A.1.09B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$5"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$5">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$5"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$5">03/07/2018 - 03/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+<div id="win2divDERIVED_SSE_LNK_LINK_GRADEBOOK$5"><a name="DERIVED_SSE_LNK_LINK_GRADEBOOK$5" id="DERIVED_SSE_LNK_LINK_GRADEBOOK$5" role="button" tabindex="521" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'DERIVED_SSE_LNK_LINK_GRADEBOOK$5');"><img src="/cs/csprd/cache/PS_VALIDATE_ICN_1.gif" name="DERIVED_SSE_LNK_LINK_GRADEBOOK$IMG$5" alt="Gradebook" title="Gradebook" border="0" /></a>
+</div></td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row7" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row7');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row7');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row7');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$6"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$6"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$6"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$6"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$6"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$6">Th 8:30AM - 11:30AM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$6"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$6">HQ BLK B LT B.4.17</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$6"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$6">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$6"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$6">05/07/2018 - 05/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row8" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row8');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row8');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row8');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$7"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$7"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$7"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$7"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$7"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$7">Fr 8:30AM - 11:30AM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$7"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$7">HQ BLK A LT A.1.09B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$7"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$7">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$7"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$7">06/07/2018 - 06/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row9" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row9');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row9');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row9');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$8"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$8"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$8"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$8"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$8"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$8">Tu 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$8"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$8">HQ BLK A LT A.1.09B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$8"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$8">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$8"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$8">17/07/2018 - 17/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row10" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row10');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row10');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row10');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$9"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$9"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$9"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$9"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$9"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$9">We 3:30PM - 6:30PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$9"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$9">HQ BLK B LT B.2.17</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$9"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$9">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$9"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$9">18/07/2018 - 18/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row11" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row11');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row11');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row11');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$10"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$10"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$10"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$10"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$10"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$10">Fr 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$10"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$10">HQ BLK B LT B.2.17</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$10"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$10">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$10"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$10">20/07/2018 - 20/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row12" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row12');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row12');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row12');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$11"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$11"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$11"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$11"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$11"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$11">Tu 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$11"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$11">HQ BLK A LT A.1.09B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$11"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$11">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$11"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$11">31/07/2018 - 31/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row13" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row13');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row13');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row13');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$12"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$12"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$12"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$12"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$12"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$12">Fr 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$12"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$12">HQ BLK A LT A.1.09B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$12"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$12">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$12"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$12">10/08/2018 - 10/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row14" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row14');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row14');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row14');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$13"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$13"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$13"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$13"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$13"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$13">Tu 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$13"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$13">HQ BLK A LT A.1.09B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$13"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$13">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$13"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$13">14/08/2018 - 14/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$0_row15" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$0_row15');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$0_row15');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$0_row15');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$14"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$14"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$14"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$14"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$14"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$14">We 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$14"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$14">HQ BLK A LT A.1.09B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$14"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$14">SIONGGO JAPIT</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$14"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$14">15/08/2018 - 15/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+</tbody></table>
+</div>
+</td>
+</tr>
+<tr>
+<td height="0" colspan="2"></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="7" colspan="3"></td>
+</tr>
+<tr>
+<td height="391"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_DESCR20$1"><table cellpadding="2" cellspacing="0" cols="1" class="PSGROUPBOXWBO" width="539">
+<tbody><tr><td class="PAGROUPDIVIDER" align="left">CSCI 205 - Software Devt Methods &amp; Tools</td></tr>
+<tr><td width="537">
+<table role="presentation" border="0" id="ACE_DERIVED_REGFRM1_DESCR20$1" cellpadding="0" cellspacing="0" cols="2" width="537" class="PSGROUPBOX" style="border-style:none">
+<tbody><tr>
+<td width="0" height="2"></td>
+<td width="538"></td>
+</tr>
+<tr>
+<td height="32"></td>
+<td valign="top" align="left">
+<div id="win2divSSR_DUMMY_RECVW$1">
+<table cellspacing="0" class="PSLEVEL3GRIDNBO" id="SSR_DUMMY_RECVW$scroll$1" dir="ltr" cols="3" width="540" cellpadding="2">
+<tbody><tr>
+<th scope="col" abbr="Status" width="59" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Status</th>
+<th scope="col" abbr="Units" width="30" align="right" class="PSLEVEL3GRIDCOLUMNHDR">Units</th>
+<th scope="col" abbr="Grading" width="64" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Grading</th>
+</tr>
+<tr id="trSSR_DUMMY_RECVW$1_row1" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trSSR_DUMMY_RECVW$1_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trSSR_DUMMY_RECVW$1_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trSSR_DUMMY_RECVW$1_row1');">
+<td align="left" height="13" class="PSLEVEL3GRIDROW">
+<div id="win2divSTATUS$1"><span class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:59px; " id="STATUS$1">Enrolled</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_REGFRM1_UNT_TAKEN$1"><span class="PSEDITBOX_DISPONLY" id="DERIVED_REGFRM1_UNT_TAKEN$1">6.00</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divGB_DESCR$1"><span class="PSEDITBOX_DISPONLY" style="word-wrap:break-word;overflow:hidden;display:block; width:64px; " id="GB_DESCR$1">Not Include in GPA</span>
+</div></td>
+</tr>
+</tbody></table>
+</div>
+</td>
+</tr>
+<tr>
+<td height="342"></td>
+<td valign="top" align="left">
+<div id="win2divCLASS_MTG_VW$1">
+<table cellspacing="0" class="PSLEVEL3GRIDNBO" id="CLASS_MTG_VW$scroll$1" dir="ltr" cols="8" width="540" cellpadding="2">
+<tbody><tr>
+<th scope="col" abbr="Class Nbr" width="29" align="CENTER" class="PSLEVEL3GRIDCOLUMNHDR">Class Nbr</th>
+<th scope="col" abbr="Section" width="26" align="CENTER" class="PSLEVEL3GRIDCOLUMNHDR">Section</th>
+<th scope="col" abbr="Component" width="51" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Component</th>
+<th scope="col" abbr="Days &amp; Times" width="90" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Days &amp; Times</th>
+<th scope="col" abbr="Room" width="75" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Room</th>
+<th scope="col" abbr="Instructor" width="87" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Instructor</th>
+<th scope="col" abbr="Start/End Date" width="80" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Start/End Date</th>
+<th scope="col" abbr="Gradebook" width="31" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Gradebook</th>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row1" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row1');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$15"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$15">1025</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+<div id="win2divMTG_SECTION$15"><span id="MTG_SECTION$span$15" class="PSHYPERLINK" title="Class Section"><a name="MTG_SECTION$15" id="MTG_SECTION$15" ptlinktgt="pt_peoplecode" tabindex="1439" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'MTG_SECTION$15');" class="PSHYPERLINK">L01</a></span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$15"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$15">Lecture</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$15"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$15">Tu 3:30PM - 6:30PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$15"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$15">HQ BLK B LT B.3.04</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$15"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$15">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$15"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$15">03/07/2018 - 03/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+<div id="win2divDERIVED_SSE_LNK_LINK_GRADEBOOK$15"><a name="DERIVED_SSE_LNK_LINK_GRADEBOOK$15" id="DERIVED_SSE_LNK_LINK_GRADEBOOK$15" role="button" tabindex="1440" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'DERIVED_SSE_LNK_LINK_GRADEBOOK$15');"><img src="/cs/csprd/cache/PS_VALIDATE_ICN_1.gif" name="DERIVED_SSE_LNK_LINK_GRADEBOOK$IMG$15" alt="Gradebook" title="Gradebook" border="0" /></a>
+</div></td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row2" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row2');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row2');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row2');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$16"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$16"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$16"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$16"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$16"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$16">We 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$16"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$16">HQ BLK B LT B.3.01</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$16"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$16">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$16"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$16">04/07/2018 - 04/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row3" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row3');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row3');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row3');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$17"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$17"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$17"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$17"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$17"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$17">Th 8:30AM - 11:30AM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$17"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$17">HQ BLK B LT B.3.04</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$17"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$17">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$17"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$17">12/07/2018 - 12/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row4" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row4');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row4');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row4');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$18"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$18"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$18"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$18"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$18"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$18">Mo 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$18"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$18">HQ BLK B LT B.3.01</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$18"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$18">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$18"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$18">16/07/2018 - 16/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row5" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row5');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row5');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row5');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$19"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$19"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$19"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$19"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$19"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$19">Th 8:30AM - 11:30AM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$19"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$19">HQ BLK B LT B.3.01</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$19"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$19">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$19"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$19">19/07/2018 - 19/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row6" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row6');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row6');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row6');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$20"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$20"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$20"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$20"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$20"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$20">We 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$20"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$20">HQ BLK B LT B.3.01</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$20"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$20">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$20"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$20">25/07/2018 - 25/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row7" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row7');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row7');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row7');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$21"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$21"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$21"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$21"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$21"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$21">We 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$21"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$21">HQ BLK B LT B.3.01</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$21"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$21">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$21"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$21">01/08/2018 - 01/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row8" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row8');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row8');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row8');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$22"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$22"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$22"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$22"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$22"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$22">Sa 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$22"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$22">HQ BLK B LT B.3.04</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$22"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$22">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$22"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$22">04/08/2018 - 04/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row9" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row9');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row9');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row9');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$23"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$23"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$23"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$23"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$23"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$23">Mo 8:30AM - 11:30AM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$23"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$23">HQ BLK B LT B.3.16</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$23"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$23">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$23"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$23">13/08/2018 - 13/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row10" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row10');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row10');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row10');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$24"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$24"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$24"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$24"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$24"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$24">Th 8:30AM - 11:30AM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$24"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$24">HQ BLK B LT B.3.16</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$24"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$24">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$24"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$24">16/08/2018 - 16/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row11" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row11');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row11');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row11');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$25"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$25">1027</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+<div id="win2divMTG_SECTION$25"><span id="MTG_SECTION$span$25" class="PSHYPERLINK" title="Class Section"><a name="MTG_SECTION$25" id="MTG_SECTION$25" ptlinktgt="pt_peoplecode" tabindex="1489" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'MTG_SECTION$25');" class="PSHYPERLINK">T02</a></span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$25"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$25">Tutorial</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$25"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$25">Mo 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$25"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$25">HQ BLK A LAB A.5.14/A.5.15</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$25"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$25">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$25"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$25">09/07/2018 - 09/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row12" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row12');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row12');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row12');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$26"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$26"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$26"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$26"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$26"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$26">Sa 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$26"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$26">HQ BLK A LAB A.5.17C/A.5.17D</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$26"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$26">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$26"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$26">21/07/2018 - 21/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row13" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row13');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row13');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row13');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$27"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$27"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$27"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$27"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$27"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$27">Mo 3:30PM - 6:30PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$27"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$27">HQ BLK A LAB A.5.17C/A.5.17D</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$27"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$27">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$27"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$27">30/07/2018 - 30/07/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row14" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row14');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row14');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row14');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$28"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$28"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$28"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$28"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$28"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$28">Sa 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$28"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$28">HQ BLK A LAB A.5.17A/A.5.17B</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$28"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$28">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$28"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$28">11/08/2018 - 11/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+<tr id="trCLASS_MTG_VW$1_row15" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trCLASS_MTG_VW$1_row15');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trCLASS_MTG_VW$1_row15');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trCLASS_MTG_VW$1_row15');">
+<td align="right" height="15" class="PSLEVEL3GRIDROW">
+<div id="win2divDERIVED_CLS_DTL_CLASS_NBR$29"><span class="PSEDITBOX_DISPONLY" id="DERIVED_CLS_DTL_CLASS_NBR$29"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="CENTER">
+ 
+</td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_COMP$29"><span class="PSEDITBOX_DISPONLY" id="MTG_COMP$29"> </span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_SCHED$29"><span class="PSEDITBOX_DISPONLY" id="MTG_SCHED$29">Mo 12:00PM - 3:00PM</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_LOC$29"><span class="PSEDITBOX_DISPONLY" id="MTG_LOC$29">HQ BLK A LAB A.5.17C/A.5.17D</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divDERIVED_CLS_DTL_SSR_INSTR_LONG$29"><span class="PSLONGEDITBOX" style="word-wrap:break-word;overflow:hidden;display:block; width:87px;  overflow-x:hidden;overflow-y:auto;" id="DERIVED_CLS_DTL_SSR_INSTR_LONG$29">TIAN SION HUI</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left">
+<div id="win2divMTG_DATES$29"><span class="PSEDITBOX_DISPONLY" id="MTG_DATES$29">20/08/2018 - 20/08/2018</span>
+</div></td>
+<td class="PSLEVEL3GRIDROW" align="left" style="white-space:nowrap;">
+ 
+</td>
+</tr>
+</tbody></table>
+</div>
+</td>
+</tr>
+<tr>
+<td height="0" colspan="2"></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="4" colspan="10"></td>
+</tr>
+<tr>
+<td height="56" colspan="4"></td>
+<td colspan="2" valign="top" align="left">
+<div id="win2divTERM_BREAK_GROUP"><table cellpadding="0" cellspacing="0" cols="1" class="PSGROUPBOXNBO" width="547">
+<tbody><tr><td class="PSGROUPBOXLABEL" align="left"><div id="win2divTERM_BREAK_GROUPGP"><a class="PSHYPERLINK PTCOLLAPSE_ARROW" title="Collapse section Important Time Periods" name="TERM_BREAK_GROUP" id="TERM_BREAK_GROUP" tabindex="50" href="javascript:submitAction_win2(document.win2,'TERM_BREAK_GROUP');" aria-expanded="true"><img src="/cs/csprd/cache/PS_COLLAPSE_ICN_1.gif" alt="Collapse section Important Time Periods" title="Collapse section" border="0" /></a> Important Time Periods </div></td></tr>
+<tr><td width="547">
+<table role="presentation" border="0" id="ACE_TERM_BREAK_GROUP" cellpadding="0" cellspacing="0" cols="2" width="547" class="PSGROUPBOX" style="border-style:none">
+<tbody><tr>
+<td width="0" height="1"></td>
+<td width="547"></td>
+</tr>
+<tr>
+<td height="40"></td>
+<td valign="top" align="left">
+<div id="win2divSM_TRM_BRK_WRK$0">
+<table border="1" cellspacing="0" class="PSLEVEL3GRIDWBO" id="SM_TRM_BRK_WRK$scroll$0" dir="ltr" cols="2" width="548" cellpadding="2">
+<tbody><tr>
+<th scope="col" abbr="Description" width="156" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Description</th>
+<th scope="col" abbr="Start/End Date" width="147" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Start/End Date</th>
+</tr>
+<tr id="trSM_TRM_BRK_WRK$0_row1" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trSM_TRM_BRK_WRK$0_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trSM_TRM_BRK_WRK$0_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trSM_TRM_BRK_WRK$0_row1');">
+<td align="left" height="13" class="PSLEVEL3GRID">
+<div id="win2divSM_TRM_BRK_WRK_DESCR50$0"><span class="PSEDITBOX_DISPONLY" id="SM_TRM_BRK_WRK_DESCR50$0">Revision Break</span>
+</div></td>
+<td class="PSLEVEL3GRID" align="left">
+<div id="win2divTERM_DATES$0"><span class="PSEDITBOX_DISPONLY" id="TERM_DATES$0">06/08/2018 - 10/08/2018</span>
+</div></td>
+</tr>
+</tbody></table>
+</div>
+</td>
+</tr>
+<tr>
+<td height="1" colspan="2"></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="4" colspan="10"></td>
+</tr>
+<tr>
+<td height="72" colspan="4"></td>
+<td colspan="2" valign="top" align="left">
+<div id="win2divSM_CUSTOM_WRK_GROUPBOX"><table cellpadding="0" cellspacing="0" cols="1" class="PSGROUPBOXNBO" width="547">
+<tbody><tr><td class="PSGROUPBOXLABEL" align="left"><div id="win2divSM_CUSTOM_WRK_GROUPBOXGP"><a class="PSHYPERLINK PTCOLLAPSE_ARROW" title="Collapse section Public Holidays" name="SM_CUSTOM_WRK_GROUPBOX" id="SM_CUSTOM_WRK_GROUPBOX" tabindex="51" href="javascript:submitAction_win2(document.win2,'SM_CUSTOM_WRK_GROUPBOX');" aria-expanded="true"><img src="/cs/csprd/cache/PS_COLLAPSE_ICN_1.gif" alt="Collapse section Public Holidays" title="Collapse section" border="0" /></a> Public Holidays </div></td></tr>
+<tr><td width="547">
+<table role="presentation" border="0" id="ACE_SM_CUSTOM_WRK_GROUPBOX" cellpadding="0" cellspacing="0" cols="2" width="547" class="PSGROUPBOX" style="border-style:none">
+<tbody><tr>
+<td width="0" height="0"></td>
+<td width="547"></td>
+</tr>
+<tr>
+<td height="60"></td>
+<td valign="top" align="left">
+<div id="win2divSM_HOLIDAY_WRK$0">
+<table border="1" cellspacing="0" class="PSLEVEL3GRIDWBO" id="SM_HOLIDAY_WRK$scroll$0" dir="ltr" cols="2" width="548" cellpadding="2">
+<tbody><tr>
+<th scope="col" abbr="Description" width="150" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Description</th>
+<th scope="col" abbr="Date" width="150" align="left" class="PSLEVEL3GRIDCOLUMNHDR">Date</th>
+</tr>
+<tr id="trSM_HOLIDAY_WRK$0_row1" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trSM_HOLIDAY_WRK$0_row1');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trSM_HOLIDAY_WRK$0_row1');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trSM_HOLIDAY_WRK$0_row1');">
+<td align="left" height="13" class="PSLEVEL3GRID">
+<div id="win2divSM_HOLIDAY_WRK_DESCR50$0"><span class="PSEDITBOX_DISPONLY" id="SM_HOLIDAY_WRK_DESCR50$0">National Day</span>
+</div></td>
+<td class="PSLEVEL3GRID" align="left">
+<div id="win2divPUB_HOLIDAY_DATE$0"><span class="PSEDITBOX_DISPONLY" id="PUB_HOLIDAY_DATE$0">09/08/2018</span>
+</div></td>
+</tr>
+<tr id="trSM_HOLIDAY_WRK$0_row2" valign="center" onclick="HighLightTR('rgb(212,219,217)','','trSM_HOLIDAY_WRK$0_row2');" onmouseover="hoverLightTR('rgb(249,254,203)','',0,'trSM_HOLIDAY_WRK$0_row2');" onmouseout="hoverLightTR('rgb(249,254,203)','',1,'trSM_HOLIDAY_WRK$0_row2');">
+<td align="left" height="13" class="PSLEVEL3GRID">
+<div id="win2divSM_HOLIDAY_WRK_DESCR50$1"><span class="PSEDITBOX_DISPONLY" id="SM_HOLIDAY_WRK_DESCR50$1">Hari Raya Haji</span>
+</div></td>
+<td class="PSLEVEL3GRID" align="left">
+<div id="win2divPUB_HOLIDAY_DATE$1"><span class="PSEDITBOX_DISPONLY" id="PUB_HOLIDAY_DATE$1">22/08/2018</span>
+</div></td>
+</tr>
+</tbody></table>
+</div>
+</td>
+</tr>
+<tr>
+<td height="5" colspan="2"></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="10" colspan="10"></td>
+</tr>
+<tr>
+<td height="18" colspan="5"></td>
+<td colspan="5" nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_REGFRM1_SA_LINK_PRINTER"><span id="DERIVED_REGFRM1_SA_LINK_PRINTER$span" class="PSHYPERLINK"><a name="DERIVED_REGFRM1_SA_LINK_PRINTER" id="DERIVED_REGFRM1_SA_LINK_PRINTER" ptlinktgt="pt_peoplecode" tabindex="2174" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'DERIVED_REGFRM1_SA_LINK_PRINTER');" class="PSHYPERLINK">Printer Friendly Page</a></span>
+</div></td>
+</tr>
+<tr>
+<td height="100"></td>
+<td colspan="7" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_GROUP_BOX$19$"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="651">
+<tbody><tr><td width="649">
+<table role="presentation" border="0" id="ACE_DERIVED_SSTSNAV_GROUP_BOX$19$" cellpadding="0" cellspacing="0" cols="8" width="649" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="5" height="0"></td>
+<td width="2"></td>
+<td width="2"></td>
+<td width="36"></td>
+<td width="136"></td>
+<td width="444"></td>
+<td width="2"></td>
+<td width="22"></td>
+</tr>
+<tr>
+<td height="13"></td>
+<td colspan="5" valign="top" align="left">
+<hr width="100%" align="left" class="PSHORIZONTALRULE" />
+</td>
+</tr>
+<tr>
+<td height="20" colspan="2"></td>
+<td colspan="5" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSS_FOOTER_LINKS"><div style="width:620px; ">
+<!-- Begin HTML Area Name Undisclosed -->
+<table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td> </td>
+<td><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.CLASS_SEARCH.GBL?Page=SSR_CLSRCH_ENTRY&amp;Action=U&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSFOOTERLINKBOLD">Search</a></td>
+<td> </td>
+<td> </td><td> </td>
+<td><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SM_CUSTOM_MENU.SM_SSS_CNFRM_PLAN.GBL?Page=SM_SSS_PLAN_TERM&amp;Action=U&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSFOOTERLINKBOLD">Plan</a></td>
+<td> </td>
+<td> </td><td> </td>
+<td><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_CART.GBL?Page=SSR_SSENRL_CART&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSFOOTERLINKBOLD">Enroll</a></td>
+<td> </td>
+<td> </td><td> </td>
+<td><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_MY_ACAD.GBL?Page=SSS_MY_ACAD&amp;Action=U&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSFOOTERLINKBOLD">My Academics</a></td>
+<td> </td>
+<td> </td></tr></tbody></table>
+<!-- End HTML Area -->
+</div>
+</div></td>
+</tr>
+<tr>
+<td height="19" colspan="2"></td>
+<td colspan="5" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSS_SUBFOOT_LINKS"><div style="width:620px; ">
+<!-- Begin HTML Area Name Undisclosed -->
+<table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td> </td>
+<td><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL?Page=SSR_SSENRL_LIST&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSFOOTERLINK">Personalised Timetable</a></td>
+<td> </td>
+<td> </td><td> </td>
+<td><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_CART.GBL?Page=SSR_SSENRL_CART&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSFOOTERLINK">Add</a></td>
+<td> </td>
+<td> </td><td> </td>
+<td><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_DROP.GBL?Page=SSR_SSENRL_DROP&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSFOOTERLINK">Drop</a></td>
+<td> </td>
+<td> </td><td> </td>
+<td><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_SWAP.GBL?Page=SSR_SSENRL_SWAP&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSFOOTERLINK">Swap</a></td>
+<td> </td>
+<td> </td><td> </td>
+<td><a href="/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SS_TERM_LINKS.GBL?Page=SSR_SS_TERM_LINKS&amp;Action=A&amp;ACAD_CAREER=UGRD&amp;EMPLID=10184651&amp;ENRL_REQUEST_ID=&amp;INSTITUTION=AU003&amp;STRM=1832" class="SSSFOOTERLINK">Term Information</a></td>
+<td> </td>
+<td> </td></tr></tbody></table>
+<!-- End HTML Area -->
+</div>
+</div></td>
+</tr>
+<tr>
+<td height="8" colspan="3"></td>
+<td valign="top" align="left">
+<div id="win2div$ICField13"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="36">
+<tbody><tr><td width="34" height="6">
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="28"></td>
+<td colspan="4" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSTS_MAIN_GOTO$16$"><table cellpadding="2" cellspacing="0" cols="1" class="PABACKGROUNDINVISIBLEWBO" width="175">
+<tbody><tr><td width="173">
+<table role="presentation" border="0" id="ACE_DERIVED_SSTSNAV_SSTS_MAIN_GOTO$16$" cellpadding="0" cellspacing="0" cols="3" width="173" class="PABACKGROUNDINVISIBLE" style="border-style:none">
+<tbody><tr>
+<td width="3" height="0"></td>
+<td width="148"></td>
+<td width="22"></td>
+</tr>
+<tr>
+<td height="1" colspan="2"></td>
+<td rowspan="2" nowrap="nowrap" valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_GO$8$"><a name="DERIVED_SSTSNAV_GO$8$" id="DERIVED_SSTSNAV_GO$8$" role="button" tabindex="2180" onclick="javascript:cancelBubble(event);" href="javascript:submitAction_win2(document.win2,'DERIVED_SSTSNAV_GO$8$');"><img src="/cs/csprd/cache/PT_NAV_GO_1.gif" name="DERIVED_SSTSNAV_GO$8$$IMG" alt="GO!" title="GO!" border="0" /></a>
+</div></td>
+</tr>
+<tr>
+<td height="22"></td>
+<td valign="top" align="left">
+<div id="win2divDERIVED_SSTSNAV_SSTS_MAIN_GOTO$8$"><select name="DERIVED_SSTSNAV_SSTS_MAIN_GOTO$8$" id="DERIVED_SSTSNAV_SSTS_MAIN_GOTO$8$" tabindex="2179" size="1" class="PSDROPDOWNLIST" style="width:148px; " psnchg="0">
+<option value="0300">Account Inquiry</option>
+<option value="0200">My Academics</option>
+<option value="0100">Student Center</option>
+<option value="9999" selected="selected">go to ...</option>
+</select>
+</div></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="7" colspan="8"></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div></td>
+</tr>
+<tr>
+<td height="10" colspan="10"></td>
+</tr>
+</tbody></table>
+</div>
+</td></tr>
+</tbody></table>
+<div class="x" id="pt_dragtxt"></div><div onmouseup="ptGridResizeObj_win2.TDselUp();" onmousemove="ptGridResizeObj_win2.TDselMove();" id="pt_dragResize" onmouseout="ptGridResizeObj_win2.dragTD=false;" onmbouseover="ptGridResizeObj_win2.dragTD=true;"></div></div>
+<div class="ps_box-pagetabs" id="win2divPSPANELTABLINKS"></div>
+<div id="DetachDiv" height="0" width="0" frameborder="0"></div>
+<a name="ICLastAnchor_win2" id="ICLastAnchor_win2"></a>
+
+<!-- Embedded Help popup Begin -->
+<div id="HelppopupDiv_win2" style="display:none; position:absolute; top:0; left:0">t</div>
+<div id="HelpDragFrame_win2" class="popupDragFrame"> </div><table id="HelppopupContainer_win2" width="20" border="0" cellpadding="0" cellspacing="0" style="opacity: 1; display: none; position: absolute; top: 0px; left: 0px; visibility: hidden;">
+<tbody><tr>
+<td id="HelppopupInner_win2" class="HelppopupInner" align="left" valign="top" style="position:absolute;z-Index:302;">
+<div id="HelppopupTitleBar_win2" class="PTPOPUP_HEADER HelppopupTitleBar" style="width:341px"><div id="HelppopupTitleBarLeftImage"></div><div id="HelppopupTitleBarMiddle_win2" style="width:333px" class="HelppopupTitleBarMiddle" dir="ltr">
+<table>
+<tbody><tr><td id="HelppopupTitle_win2" style="width:290px; cursor: move;"><span class="PTPOPUP_TITLE">Help</span></td>
+<td style="width:45px"><img id="#HELPPOPUPCLOSE" style="cursor:pointer" title="Close" alt="Close" align="right" onclick="HelppopupObj_win2.StopPopup(&quot;win2&quot;);" src="/cs/csprd/cache/PT_PORTAL_IC_CLOSE_1.gif" /></td>
+</tr></tbody></table>
+</div><div id="HelppopupTitleBarRightImage"></div></div><div id="HelpdivpopupFrame_win2" class="MOBGImage HelpdivpopupFrame" tabindex="-1" onclick="HelppopupObj_win2.SetFocusFlag(false);" style="border: 1px #bcbaba solid; padding:12px; overflow:auto;">test</div><div id="HelppopupShadow" class="popupShadow" style="position:absolute;z-index:-1;"><div id="HelppopupShadowTopRightCorner" class="popupShadowTopRightCorner" style="height:10px;"> </div><div id="HelppopupShadowTop" class="popupShadowTop"> </div><div id="HelppopupShadowBottom" class="popupShadowBottom" style="height:10px"><div id="HelppopupShadowBottomLeftCorner" class="popupShadowBottomLeftCorner" style="height:10px;width:10px"> </div><div id="HelppopupShadowBottomMiddle" class="popupShadowBottomMiddle" style="height:10px;"> </div><div id="HelppopupShadowBottomRightCorner" class="popupShadowBottomRightCorner" style="height:10px;width:10px"> </div></div></div></td>
+</tr>
+</tbody></table>
+<!-- Embedded Help popup End  -->
+<div id="pt_fakeBC" style="display:none"><ul><li class="pthnavhiearchysep pthbcdispiblock"> </li>
+<li class="pthnavbarcref ptabncrefbc ptfakercfbc pthbcdispiblock" id="pthnavbccref_PT_FAKE_SSR_SSENRL_LIST_GBL"><a class="abnanchor" href="https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL?" role="menuitem" target="TargetContent">My Timetable (List View:Class)</a><div class="pthnavcrefimg"> </div></li>
+</ul></div><div id="ptus_universalSrch" style="display:none;"><span>Default Local Node:</span><input type="text" readonly="readonly" name="ptus_defaultlocalnode" id="ptus_defaultlocalnode" value="PSFT_HR" /><br /><span>DbName:</span><input type="text" readonly="readonly" name="ptus_dbname" id="ptus_dbname" value="CSPRD" /><br /><span>Portal:</span><input type="text" readonly="readonly" name="ptus_portal" id="ptus_portal" value="EMPLOYEE" /><br /><span>Node:</span><input type="text" readonly="readonly" name="ptus_node" id="ptus_node" value="HRMS" /><br /><span>WorkCenter Id:</span><input type="text" readonly="readonly" name="ptus_workcenterid" id="ptus_workcenterid" value="" /><br /><span>Url:</span><input type="text" readonly="readonly" name="ptus_componenturl" id="ptus_componenturl" value="https://simconnect1.simge.edu.sg:444/psp/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL" /><br /></div></form>
+<div id="popupDragFrame" class="popupDragFrame"> </div>
+<!-- Mouse-over popup Begin -->
+<table id="win2MOpopupContainer" width="20" border="0" cellpadding="0" cellspacing="0" style="display:none; position:absolute; top:0; left:0;" onmouseover="MOpopupObj_win2.StartPopup('win2MOpopupContainer', '');" onmouseout="MOpopupObj_win2.StopPopup();"><tbody><tr>
+<td id="win2MOpopupInner" height="25" width="20" align="left" valign="top" class="MOBGImage">
+<div id="win2MOdivpopupFrame" tabindex="-1" onclick="MOpopupObj_win2.SetFocusFlag(false);" style="overflow:auto; width:20px; height: 60px; padding:8px; box-shadow:0 0 5px #000000; background-color:white; border: 1px solid #666666;">test</div></td>
+</tr>
+</tbody></table>
+<!-- Mouse-over popup End  -->
+
+<script language="JavaScript">
+var nMaxSavedStates=5;
+var sHistURL="https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL?page=SSR_SSENRL_LIST&amp;";
+var bHtml5Doc = true;
+var bClearBackState=false;
+var bPageTransfered=true;
+var bTransferAnimate=false;
+var bCleanHtml = false;
+var bDefer = true;
+document.deferFldArr_win2 = new Array();
+document.hiddenFldArr_win2 =new Array('ICType','ICElementNum','ICStateNum','ICAction','ICXPos','ICYPos','ResponsetoDiffFrame','TargetFrameName','FacetPath','ICFocus','ICSaveWarningFilter','ICChanged','ICAutoSave','ICResubmit','ICSID','ICActionPrompt','ICTypeAheadID','ICBcDomData','ICFind','ICAddCount','ICAPPCLSDATA');
+document.chgFldArr_win2 = new Array();
+AddToHistory('My Class Schedule', '', '', 'SSR_SSENRL_LIST', 1, 2, 1);
+var bCleanHtml = false;
+var bDefer = true;
+document.hiddenFldArr_win2 =new Array('ICType','ICElementNum','ICStateNum','ICAction','ICXPos','ICYPos','ResponsetoDiffFrame','TargetFrameName','FacetPath','ICFocus','ICSaveWarningFilter','ICChanged','ICAutoSave','ICResubmit','ICSID','ICActionPrompt','ICTypeAheadID','ICBcDomData','ICFind','ICAddCount','ICAPPCLSDATA');
+document.chgFldArr_win2 = new Array();
+var bCDATA = false;
+var bAccessibleLayout = false;
+var bLoadCompleted = true;
+</script>
+</body></html>

@@ -1,8 +1,14 @@
+dist: trusty
+addons:
+    chrome: stable
+
 language: python
 
 python:
     - 3.6
-
+before_install:
+    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+    ⋮
 script:
     - python setup.py build
     - python setup.py install
