@@ -11,6 +11,6 @@ before_install:
 script:
     - python setup.py build
     - python setup.py install
-    - pytest -v
+    - pytest -v --cov=. Tests/ --junitxml=coverage.xml
 after_success:
     codecov
