@@ -22,6 +22,7 @@
 from Models.exceptions import *
 from Controllers.Ripper.login import SIMConnect
 from Controllers.Ripper.timetable import RipTimeTable
+from Controllers.Ripper.other import OtherClass
 class RipperFactory():
     @staticmethod
     def get_ripper(method,username,password):
@@ -29,5 +30,7 @@ class RipperFactory():
             return SIMConnect(username,password)
         elif method == "Rip":
             return RipTimeTable(username,password)
+        elif method == "Other":
+            return OtherClass(username,password)
         else:
             raise InvalidRipException("Invalid rip method was selcted")
