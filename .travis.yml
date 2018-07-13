@@ -12,3 +12,5 @@ script:
     - python setup.py build
     - python setup.py install
     - pytest -v
+after_success:
+    codecov
