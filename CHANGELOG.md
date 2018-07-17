@@ -2,6 +2,20 @@
 
 ## This will currently keep a log of the refactoring as it goes along.
 
+### 2018-07-17
+* Began refactoring TimeTable ripper code to enable class compatibility with Other Timetable
+* Removed many redundant methods and signifcantly neatened the parsing code
+* Added a formatting decorator for time.
+* Fixed an error whereby original re-written regex query would not retrive classes if the users had more than 100 classes
+* \d{1,2}$ to 1,3 . Pretty simple.
+
+### 2018-07-13
+* Wrote some code for Other Timetable (ie: IS)
+
+### 2018-07-12
+* Started refactoring ripper
+* Added some unit tests for ripper.
+
 ### 2018-07-11
 * Deprecated PhantomJS in favour of headless chrome.
 * Theoretical code for attendance module. Untested.
