@@ -1,3 +1,4 @@
+
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 ##
@@ -32,6 +33,7 @@ import re
 class RipTimeTable(SIMConnect):
 
     static_timetable_page = "https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL"  # noqa
+
     
     def __init__(self, username: str, password: str):
         """
@@ -51,6 +53,7 @@ class RipTimeTable(SIMConnect):
         """
         # constructing the latest term's id
         newid = f'SSR_DUMMY_RECV1$sels${latest_term}$$0'
+
 
         # using selenium to hunt for the element and click
         term_button = driver.find_element_by_id(newid)
@@ -78,6 +81,7 @@ class RipTimeTable(SIMConnect):
 
         @ResultSet subjectdiv, a BeautifulSoup result set of divs with subjects
         """
+
         class_name = None
         for div in subjectdiv:
             subject_title_soup = div.find("td",
@@ -98,6 +102,7 @@ class RipTimeTable(SIMConnect):
                 class_start_time = self.__get_time(class_time_soup.text,True)
                 class_end_time = self.__get_time(class_time_soup.text,False)
                 class_loc = class_loc_soup.text
+
                 print(f"Name: {class_name} Type:{class_type} Date:{class_date} Start:{class_start_time} End:{class_end_time} Location:{class_loc}")
 
 
@@ -127,6 +132,7 @@ class RipTimeTable(SIMConnect):
         if class_name_soup_text.strip():
             return class_name_soup_text
         else: return None
+
 
     def __get_class_date(self,class_date_soup_text: str) -> str:
         """
@@ -163,6 +169,7 @@ class RipTimeTable(SIMConnect):
 
         @return str, the page source of the timetable page.
         """
+
         login_ps = self.attempt_login()
         if self.is_logged_in(login_ps):
             self.driver.get(RipTimeTable.static_timetable_page)
@@ -181,7 +188,7 @@ class RipTimeTable(SIMConnect):
 
         @str formatted_result, page source in string form
         @return list_of_results, returns a list of class objects.
-        """
+
         soup = BeautifulSoup(formatted_result, "html.parser")
         termdiv = soup.findAll('span',
                                 {
@@ -208,7 +215,6 @@ class RipTimeTable(SIMConnect):
         
         self.driver.close()
         return list_of_results
-
 
     def execute(self) -> List:
         """
