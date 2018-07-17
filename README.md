@@ -14,6 +14,31 @@ Author - xlanor
 * As such, please understand that it may not work smoothly.
 * For current status of the rewrite, please look at the [changelog](https://github.com/xlanor/SIM-UoW-Timetable-bot-v2/blob/master/CHANGELOG.md)
 
+# Current Rewrite Progress
+
+| SIMConnect Ripper Module       | status             |
+| ------------------------------ | ------------------ |
+| Login                          | :heavy_check_mark: |
+| Attendance                     | :no_entry_sign:    |
+| Timetable                      | :heavy_check_mark: |
+| Other Classes (ie: IS)         | :heavy_check_mark: |
+
+
+| Telegram Component             | status             |
+| ------------------------------ | ------------------ |
+| Chatbot component (Sign up)    | :no_entry_sign:    |
+| Timetable navigation           | :no_entry_sign:    |
+| Alert system                   | :no_entry_sign:    |
+
+
+| Dev Component                  | status             |
+| ------------------------------ | ------------------ |
+| Definition of Holding Models   | :no_entry_sign:    |
+| Database redesign              | :no_entry_sign:    |
+| Proper partitioning            | :no_entry_sign:    |
+| Open Github issue on exception | :no_entry_sign:    |
+| Task management with Celery    | :no_entry_sign:    |
+
 # Special thanks
 Authors of all libraries / modules used in the development of this bot, in no particular order:
 * [Python Telegram Bot](https://github.com/python-telegram-bot/python-telegram-bot) - the most readable framework for the telegram bot API .
