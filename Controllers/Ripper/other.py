@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from .login import SIMConnect
 from Models.exceptions import *
+from .RipperDecorators import RipperDecorators
 import re
 class OtherClass(SIMConnect):
     static_other_class_page = "https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SM_LIST_OTHER_CLAS.GBL"
@@ -25,12 +26,26 @@ class OtherClass(SIMConnect):
         soup = BeautifulSoup(formatted_result,'html.parser')
         rows = soup.findAll('tr',{'id' :re.compile(r'(trSM_EVT_PRS_VW\$0_row)(\d{1,2}$)')})
         for row in rows:
-            name = row.find('span',{'id':re.compile(r'(^SM_EVT_PRS_VW_DESCR60\$)(\d{1,2}$)')})
-            type = row.find('span',{'id':re.compile(r'(^TYPE\$)(\d{1,2}$)')})
-            start_time = row.find('span',{'id':re.compile(r'(^START_TIME\$)(\d{1,2}$)')})
-            end_time = row.find('span',{'id':re.compile(r'(^END_TIME\$)(\d{1,2}$)')})
-            loc = row.find('span',{'id':re.compile(r'(^LOCATION\$)(\d{1,2}$)')})
-            print("Name:{} Type:{} Start:{} End:{} Location:{}".format(name.text,type.text,start_time.text,end_time.text,loc.text))
+            class_name_soup = row.find('span',{'id':re.compile(r'(^SM_EVT_PRS_VW_DESCR60\$)(\d{1,2}$)')})
+            class_type_soup = row.find('span',{'id':re.compile(r'(^TYPE\$)(\d{1,2}$)')})
+            class_start_time_soup = row.find('span',{'id':re.compile(r'(^START_TIME\$)(\d{1,2}$)')})
+            class_end_time_soup = row.find('span',{'id':re.compile(r'(^END_TIME\$)(\d{1,2}$)')})
+            class_loc_soup = row.find('span',{'id':re.compile(r'(^LOCATION\$)(\d{1,2}$)')})
+            class_name = class_name_soup.text
+            class_type = class_type_soup.text
+            class_date = self.__get_date(class_start_time_soup.text)
+            start_time = self.__get_time(class_start_time_soup.text)
+            end_time = self.__get_time(class_end_time_soup.text)
+            class_loc = class_loc_soup.text
+
+            print("Name:{} Type:{} Date:{} Start:{} End:{} Location:{}".format(class_name,class_type,class_date,start_time,end_time,class_loc))
+
+    def __get_date(self,class_time_soup_text):
+        return class_time_soup_text.split(" ")[0]
+    
+    @RipperDecorators.format_time
+    def __get_time(self,class_time_soup_text):
+        return class_time_soup_text.split(" ")[1]
 
     def __dump_page_source(self,name):
         n = "{}.txt".format(name)
