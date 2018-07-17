@@ -26,7 +26,15 @@ from Controllers.Ripper.new_timetable import RipTimeTable as NewRip
 from Controllers.Ripper.other import OtherClass
 class RipperFactory():
     @staticmethod
-    def get_ripper(method,username,password):
+    def get_ripper(method: str,username: str,password: str) -> SIMConnect :
+        """
+        Gets and initalizes an object for further operation
+        @str method, type of method to use
+        @str username, username to pass into the object
+        @str password, decrypted password to pass into the object
+
+        @return SIMConnect, inherited classes of SIMConnect to utilize polymorphism
+        """
         if method == "Login":
             return SIMConnect(username,password)
         elif method == "Rip":
