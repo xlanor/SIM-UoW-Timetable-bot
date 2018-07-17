@@ -188,7 +188,7 @@ class RipTimeTable(SIMConnect):
 
         @str formatted_result, page source in string form
         @return list_of_results, returns a list of class objects.
-
+        """
         soup = BeautifulSoup(formatted_result, "html.parser")
         termdiv = soup.findAll('span',
                                 {
