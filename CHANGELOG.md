@@ -8,6 +8,10 @@
 * Added a formatting decorator for time.
 * Fixed an error whereby original re-written regex query would not retrive classes if the users had more than 100 classes
 * \d{1,2}$ to 1,3 . Pretty simple.
+* Begin upgrading ripper code to modern python
+* Removing all "{}".format(text) instances and replacing with f-strings
+* Adding type-hinting for funcs.
+* Adding docstrings
 
 ### 2018-07-13
 * Wrote some code for Other Timetable (ie: IS)
