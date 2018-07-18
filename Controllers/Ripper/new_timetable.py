@@ -75,7 +75,6 @@ class RipTimeTable(SIMConnect):
         return soup
 
     def process_subject_divs(self,subjectdiv: ResultSet, holding_list: List):
-
         """
         Processes subject div, performs regex queries to extract data, initalize a class structure, and 
         place the values into the structure
@@ -106,7 +105,6 @@ class RipTimeTable(SIMConnect):
 
                 cn = self.__get_class_name(class_type_soup.text)
                 class_type = cn if cn else class_type
-
                 ic.class_type = class_type
                 ic.date = self.__get_class_date(class_date_soup.text)
                 ic.start_time = self.__get_time(class_time_soup.text,True)
@@ -115,7 +113,6 @@ class RipTimeTable(SIMConnect):
 
                 # adds the class to the list.
                 holding_list.append(ic)
-
 
 
 

@@ -2,6 +2,11 @@
 
 ## This will currently keep a log of the refactoring as it goes along.
 
+### 2018-07-18
+* Rewrote entire class model to allow it to be reusable from other class and individual class.
+* Rewrote unit tests to handle for the new ripper
+* Deleted old and redundant classes.
+
 ### 2018-07-17
 * Began refactoring TimeTable ripper code to enable class compatibility with Other Timetable
 * Removed many redundant methods and signifcantly neatened the parsing code
