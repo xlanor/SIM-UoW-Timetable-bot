@@ -11,11 +11,11 @@ with open("testing_accounts.json") as json_file:
     else:
         username = data[user_to_load]["username"]
         password = data[user_to_load]["password"]
-        method = input("What type of test would you like to perform? (Rip | Login | Other | NewRip: ")  # noqa
+        method = input("What type of test would you like to perform? (Login | Other | NewRip) :")  # noqa
         obj = RipperFactory.get_ripper(method,username,password)
         result = obj.execute()
 
-        if method == "Rip":
-            for cl in result:
-                print(cl.get_dict())
+        if method == "NewRip" or method == "Other":
+            for ind_class in result:
+                print(ind_class.get_dict())
        
