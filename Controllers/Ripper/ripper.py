@@ -21,7 +21,6 @@
 ##
 from Models.exceptions import *
 from Controllers.Ripper.login import SIMConnect
-from Controllers.Ripper.timetable import RipTimeTable
 from Controllers.Ripper.new_timetable import RipTimeTable as NewRip
 from Controllers.Ripper.other import OtherClass
 class RipperFactory():
@@ -37,8 +36,6 @@ class RipperFactory():
         """
         if method == "Login":
             return SIMConnect(username,password)
-        elif method == "Rip":
-            return RipTimeTable(username,password)
         elif method == "Other":
             return OtherClass(username,password)
         elif method == "NewRip":

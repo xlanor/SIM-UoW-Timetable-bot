@@ -74,14 +74,14 @@ class RipTimeTable(SIMConnect):
 
         return soup
 
-    def process_subject_divs(self,subjectdiv:ResultSet):
+    def process_subject_divs(self,subjectdiv: ResultSet, holding_list: List):
         """
         Processes subject div, performs regex queries to extract data, initalize a class structure, and 
         place the values into the structure
 
         @ResultSet subjectdiv, a BeautifulSoup result set of divs with subjects
+        @List holding_list, a list to hold the objects
         """
-
         class_name = None
         for div in subjectdiv:
             subject_title_soup = div.find("td",
@@ -91,19 +91,28 @@ class RipTimeTable(SIMConnect):
                                    )
             class_name = subject_title_soup.text
             subject_rows = div.findAll('tr',{'id':re.compile(r'(^trCLASS_MTG_VW\$)(\d{1,3})(_row)(\d{1,3}$)')})
+            class_type = None
             for row in subject_rows:
+                
+                ic = IndividualClassStructure(class_name)
                 class_type_soup = row.find('span',{'id':re.compile(r'(^MTG_COMP\$)(\d{1,3}$)')})
+
                 class_date_soup = row.find('span',{'id':re.compile(r'(^MTG_DATES\$)(\d{1,3}$)')})
                 class_time_soup = row.find('span',{'id':re.compile(r'(^MTG_SCHED\$)(\d{1,3}$)')})
                 class_loc_soup = row.find('span',{'id':re.compile(r'(^MTG_LOC\$)(\d{1,3}$)')})
+
                 cn = self.__get_class_name(class_type_soup.text)
                 class_type = cn if cn else class_type
-                class_date = self.__get_class_date(class_date_soup.text)
-                class_start_time = self.__get_time(class_time_soup.text,True)
-                class_end_time = self.__get_time(class_time_soup.text,False)
-                class_loc = class_loc_soup.text
+                ic.class_type = class_type
+                ic.date = self.__get_class_date(class_date_soup.text)
+                ic.start_time = self.__get_time(class_time_soup.text,True)
+                ic.end_time = self.__get_time(class_time_soup.text,False)
+                ic.location = class_loc_soup.text
 
-                print(f"Name: {class_name} Type:{class_type} Date:{class_date} Start:{class_start_time} End:{class_end_time} Location:{class_loc}")
+                # adds the class to the list.
+                holding_list.append(ic)
+
+                #print(f"Name: {class_name} Type:{class_type} Date:{class_date} Start:{class_start_time} End:{class_end_time} Location:{class_loc}")
 
 
     def helper_methods(self,*args):
@@ -208,9 +217,9 @@ class RipTimeTable(SIMConnect):
                                         'id': re.compile(r'(win2divDERIVED_REGFRM1_DESCR20\$)([0-9]{1})')  # noqa
                                     }
                                     )
-        self.process_subject_divs(subjectdiv)
-        class_type_dict = {}
+
         list_of_results = []
+        self.process_subject_divs(subjectdiv,list_of_results)
 
         
         self.driver.close()

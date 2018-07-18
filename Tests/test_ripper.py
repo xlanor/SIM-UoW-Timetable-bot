@@ -23,7 +23,8 @@ import pytest
 
 from bs4 import BeautifulSoup
 from Controllers.Ripper.login import SIMConnect
-from Controllers.Ripper.timetable import RipTimeTable
+from Controllers.Ripper.new_timetable import RipTimeTable
+from Controllers.Ripper.other import OtherClass
 from Controllers.Ripper.ripper import RipperFactory
 from Models.exceptions import *
 
@@ -58,14 +59,6 @@ def test_logged_in():
 
     assert SIMConnect("testing","testing").is_logged_in(post_login_template) is True, 'Login Template test at SIMConnect Object failed!'
 
-rt = None
-# Testing of timetable parser.
-# TODO: Write more test code for missing elements
-def test_timetable_parser():
-    # test login has already been done in the super class.
-    rt = RipTimeTable("testing","testing")
-    records = len(rt.parse_timetable_source(timetable_template))
-    assert records == 30, '30 records expected, {} records retrieved'.format(records)
 
 def test_fail_factory_method():
     try:
@@ -77,8 +70,12 @@ def test_fail_factory_method():
         assert True
 
 def test_rip_factory_method():
-    rf = RipperFactory.get_ripper("Rip","test","test")
-    assert type(rf) == RipTimeTable,"Rip did not return an instance of RipTimeTable"
+    rf = RipperFactory.get_ripper("NewRip","test","test")
+    assert type(rf) == RipTimeTable,"NewRip did not return an instance of RipTimeTable"
+
+def test_other_factory_method():
+    rf = RipperFactory.get_ripper("Other","test","test")
+    assert type(rf) == OtherClass, "Other did not return an instance of OtherClass"
 
 def test_login_factory_method():
     rf = RipperFactory.get_ripper("Login","test","test")
