@@ -177,9 +177,8 @@ class RipTimeTable(SIMConnect):
         """
         Attempts to login to the SIMConnect website, before navigating to
         the timetable page (441) in order to scrape the timetable page
-
         In the event that it is not able to login, an exception is raised.
-
+        
         @return str, the page source of the timetable page.
         """
 
