@@ -75,6 +75,7 @@ class RipTimeTable(SIMConnect):
         return soup
 
     def process_subject_divs(self,subjectdiv: ResultSet, holding_list: List):
+
         """
         Processes subject div, performs regex queries to extract data, initalize a class structure, and 
         place the values into the structure
@@ -95,24 +96,28 @@ class RipTimeTable(SIMConnect):
             subject_rows = div.findAll('tr',{'id':re.compile(r'(^trCLASS_MTG_VW\$)(\d{1,3})(_row)(\d{1,3}$)')})
             class_type = None
             for row in subject_rows:
-                
-                ic = IndividualClassStructure(class_name)
-                class_type_soup = row.find('span',{'id':re.compile(r'(^MTG_COMP\$)(\d{1,3}$)')})
+                try:
+                    ic = IndividualClassStructure(class_name)
+                    class_type_soup = row.find('span',{'id':re.compile(r'(^MTG_COMP\$)(\d{1,3}$)')})
 
-                class_date_soup = row.find('span',{'id':re.compile(r'(^MTG_DATES\$)(\d{1,3}$)')})
-                class_time_soup = row.find('span',{'id':re.compile(r'(^MTG_SCHED\$)(\d{1,3}$)')})
-                class_loc_soup = row.find('span',{'id':re.compile(r'(^MTG_LOC\$)(\d{1,3}$)')})
+                    class_date_soup = row.find('span',{'id':re.compile(r'(^MTG_DATES\$)(\d{1,3}$)')})
+                    class_time_soup = row.find('span',{'id':re.compile(r'(^MTG_SCHED\$)(\d{1,3}$)')})
+                    class_loc_soup = row.find('span',{'id':re.compile(r'(^MTG_LOC\$)(\d{1,3}$)')})
+                    cn = self.__get_class_name(class_type_soup.text)
+                    class_type = cn if cn else class_type
 
-                cn = self.__get_class_name(class_type_soup.text)
-                class_type = cn if cn else class_type
-                ic.class_type = class_type
-                ic.date = self.__get_class_date(class_date_soup.text)
-                ic.start_time = self.__get_time(class_time_soup.text,True)
-                ic.end_time = self.__get_time(class_time_soup.text,False)
-                ic.location = class_loc_soup.text
+                    ic.class_type = class_type
+                    ic.date = self.__get_class_date(class_date_soup.text)
+                    ic.start_time = self.__get_time(class_time_soup.text,True)
+                    ic.end_time = self.__get_time(class_time_soup.text,False)
+                    ic.location = class_loc_soup.text
 
-                # adds the class to the list.
-                holding_list.append(ic)
+                    # adds the class to the list.
+                    holding_list.append(ic)
+                except IndexError:
+                    # Normally for those that have TBA classes.
+                    pass
+
 
 
 
@@ -225,11 +230,15 @@ class RipTimeTable(SIMConnect):
         
         self.driver.close()
         return list_of_results
-
+    def output_for_debug(self,timetable_source:str):
+        with open("debug.log","w") as f:
+            f.write(timetable_source)
     def execute(self) -> List:
         """
         An override method for the super class.
         @return a list of class objects
         """
         formatted_result = self.get_timetable_page()
+        #self.output_for_debug(formatted_result)
+        #print("Logged")
         return self.parse_timetable_source(formatted_result)
