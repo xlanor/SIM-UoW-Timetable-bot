@@ -38,6 +38,9 @@ Author - xlanor
 | Proper partitioning            | :no_entry_sign:    |
 | Open Github issue on exception | :no_entry_sign:    |
 | Task management with Celery    | :no_entry_sign:    |
+| Server Migration               | :heavy_check_mark: |
+| Integration of MQ feature      | :heavy_check_mark: | ( Initial testing )
+| Redesign of configuration file | :heavy_check_mark: |
 
 # Special thanks
 Authors of all libraries / modules used in the development of this bot, in no particular order:

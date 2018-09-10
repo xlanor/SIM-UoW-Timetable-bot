@@ -37,6 +37,7 @@ class RipperFactory():
         if method == "Login":
             return SIMConnect(username,password)
         elif method == "Other":
+            # Other class in this context refers to IS class.
             return OtherClass(username,password)
         elif method == "NewRip":
             return NewRip(username,password)
