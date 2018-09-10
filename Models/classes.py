@@ -17,8 +17,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##
-#   Model to hold class time.
-#   Written by xlanor
+#   Model to hold data from a Class retrieved via scraping
 ##
 
 import time as clock

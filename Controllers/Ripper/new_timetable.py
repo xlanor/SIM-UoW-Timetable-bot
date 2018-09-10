@@ -20,15 +20,21 @@
 ##
 #   New Timetable ripper
 ##
-from .login import SIMConnect
-from Models.exceptions import *
-from Models.classes import IndividualClassStructure
-from .RipperDecorators import RipperDecorators
+
+# External/default library imports.
 from contextlib import closing
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet
 from typing import Union,List
 import re
+
+# Imports from wiuthin the project.
+from Models.exceptions import *
+from Models.classes import IndividualClassStructure
+
+from .login import SIMConnect
+from .RipperDecorators import RipperDecorators
+
 
 class RipTimeTable(SIMConnect):
 
