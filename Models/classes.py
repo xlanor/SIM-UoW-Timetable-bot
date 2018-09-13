@@ -20,12 +20,18 @@
 #   Model to hold data from a Class retrieved via scraping
 ##
 
+# Native/3rd party imports.
 import time as clock
-from bs4 import BeautifulSoup
 import re
+from bs4 import BeautifulSoup
+from datetime import datetime
+from typing import Dict, Union
+import calendar
+
+
+# Local imports
 from .exceptions import *
 
-from typing import Dict, Union
 
 class IndividualClassStructure():
     def __init__(self, name: str):
@@ -36,22 +42,41 @@ class IndividualClassStructure():
         self.__endtime = None
         self.__location = None
         self.__class_type = None
+        self.__class_day = None
+        self.__class_numeric_day = None
 
     def get_dict(self) -> Dict[str,str]:
         """
         Gets the variables in a dictionary format.
         @return dict
         """
+        self.get_date_text_index()
         return_dict = {
                         "class_name": self.__name,
                         "date": self.__date,
+                        "day": self.__class_day,
+                        "numeric_day" : self.__class_numeric_day,
                         "start_time": self.__starttime,
                         "end_time": self.__endtime,
                         "location": self.__location,
-                        "type": self.__class_type
+                        "type": self.__class_type,
                         }
         return return_dict
 
+    def get_dict_mongo(self) -> Dict[str,str]:
+        self.get_date_text_index()
+        return_dict = {
+                            "class_name": self.__name,
+                            "date": datetime.strptime(self.__date, '%d/%m/%Y'),
+                            "day": self.__class_day,
+                            "numeric_day" : self.__class_numeric_day,
+                            "start_time": datetime.strptime(self.__starttime, '%d/%m/%Y %I:%M%p'),
+                            "end_time": datetime.strptime(self.__endtime, '%d/%m/%Y %I:%M%p'),
+                            "location": self.__location,
+                            "type": self.__class_type
+                        }
+        return return_dict
+    
     """
     A whole bunch of getter methods.
     """
@@ -83,25 +108,32 @@ class IndividualClassStructure():
     A whole bunch of setter methods.
     """
     @name.setter
-    def name(self,n: str) -> Union[str,None]:
+    def name(self,n: str):
         self.__name = n
     
     @date.setter
-    def date(self,d: str) -> Union[str,None]:
+    def date(self,d: str):
         self.__date = d
     
     @start_time.setter
-    def start_time(self,st: str) -> Union[str,None]:
+    def start_time(self,st: str):
         self.__starttime = st
     
     @end_time.setter
-    def end_time(self, ed: str) -> Union[str,None]:
+    def end_time(self, ed: str):
         self.__endtime = ed
     
     @location.setter
-    def location(self,l: str) -> Union[str,None]:
+    def location(self,l: str):
         self.__location = l
 
     @class_type.setter
     def class_type(self,ct: str) -> Union[str,None]:
         self.__class_type = ct
+        
+    def get_date_text_index(self):
+        date = datetime.strptime(self.__date, '%d/%m/%Y')
+        numeric_day = date.weekday()
+        string_day = calendar.day_name[numeric_day]
+        self.__class_numeric_day = numeric_day
+        self.__class_day = string_day
