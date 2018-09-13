@@ -233,9 +233,11 @@ class RipTimeTable(SIMConnect):
         
         self.driver.close()
         return list_of_results
+
     def output_for_debug(self,timetable_source:str):
         with open("debug.log","w") as f:
             f.write(timetable_source)
+
     def execute(self) -> List:
         """
         An override method for the super class.

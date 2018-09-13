@@ -103,7 +103,4 @@ class SIMConnect():
         page_source = self.attempt_login()
         ps = self.is_logged_in(page_source)
         self.driver.close()
-        if ps:
-           return ps
-        else:
-            raise UnableToLogin("Unable to login using given credentials")
+        return ps
