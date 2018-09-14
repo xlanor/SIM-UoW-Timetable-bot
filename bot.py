@@ -45,10 +45,11 @@ import celery_test as ct
 # Controller imports
 import Controllers.Commands.chatbot as Registeration
 # Import states from controller
-from Controller.Commands.chatbot import NAME
-from Controller.Commands.chatbot import USERNAME
-from Controller.Commands.chatbot import PASSWORD
-from Controller.Commands.chatbot import APP_KEY
+from Controllers.Commands.chatbot import NAME
+from Controllers.Commands.chatbot import USERNAME
+from Controllers.Commands.chatbot import PASSWORD
+from Controllers.Commands.chatbot import APP_KEY
+
 
 class Hera():
     def __init__(self):
@@ -66,7 +67,7 @@ class Hera():
         self.__queue_bot = MQBot(self.__config.BOT_API_KEY,request = request, mqueue = q)
         self.__updater = Updater(bot = self.__queue_bot)
         self.__dp = self.__updater.dispatcher
-        self.add_hello()
+        self.reg()
         self.start_webhooks() # must always come last.
         print("Bot online")
     
@@ -78,7 +79,8 @@ class Hera():
         start_handler = CommandHandler('test', ct.test_message)
         self.__dp.add_handler(start_handler)
 
-    def registeration(self):
+    def reg(self):
+
         """
         The accumulated user data will be passed through the respective states
         at the end, it will be passed into celery.
@@ -89,35 +91,45 @@ class Hera():
         then will their credentials be stored in the database.
         """
         conv_handler = ConversationHandler(
-            entry_points = [CommandHandler('register',Registeration.register.start_register)],
+            entry_points = [CommandHandler('register',Registeration.start_register)],
+
 
             states = {
                 NAME: [MessageHandler(
                                     Filters.text,
-                                    Registeration.register.name,
+
+                                    Registeration.name,
+
                                     pass_user_data=True
                                 )
                         ],
                 USERNAME: [MessageHandler(
                                     Filters.text,
-                                    Registeration.register.username,
+
+                                    Registeration.username,
+
                                     pass_user_data=True
                                 )
                         ],
                 PASSWORD: [MessageHandler(
                                     Filters.text,
-                                    Registeration.register.password,
+
+                                    Registeration.password,
+
                                     pass_user_data=True
                                 )
                         ],
                 APP_KEY: [MessageHandler(
                                     Filters.text,
-                                    Registeration.register.application_key,
+
+                                    Registeration.application_key,
+
                                     pass_user_data=True
                                 )
                         ]
             },
-            fallbacks=[CommandHandler('cancel', Registeration.register.cancel)],
+            fallbacks=[CommandHandler('cancel', Registeration.cancel)],
+
             per_user = 'true'
         )
         self.__dp.add_handler(conv_handler,1)

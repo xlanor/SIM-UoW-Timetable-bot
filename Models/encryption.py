@@ -11,7 +11,7 @@ from Cryptodome.Cipher import AES
 
 class Encrypt():
     def __init__(self,password:str,application_key:str):
-        self.BS=16
+        BS=16
         self.__pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
         self.__unpad = lambda s : s[0:-s[-1]]
         self.__pw = password

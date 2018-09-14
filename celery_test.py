@@ -1,9 +1,17 @@
 from celery import Celery
-app = Celery('tasks', broker='pyamqp://guest@localhost//')
+from celery import current_app
+app = Celery('queue',
+             broker='amqp://',
+             backend='amqp://',
+             include=['Controllers.celery_queue'])
 
-@app.task
-def test_message(bot,update):
-    print("MESSAAGE RECEIVED")
-    chat_id = update.message.chat_id
-    for i in range(10):
-        bot.send_message(chat_id= chat_id, text = "Hi, yoona!")
+process_order = app.signature('Controllers.celery_queue.register_user')
+user = {}
+user["user_id"] = "test",
+user["username"] = "username",
+user["password"] = "password",
+user["name"] = "name"
+user["encrypted_password"] = "12345"
+process_order.delay(user,"b")
+#result = process_order.delay("test")  # standard calling api works
+#print(result)#

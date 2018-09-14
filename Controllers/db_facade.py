@@ -24,7 +24,12 @@ import Models.db_models as db
 from Models.user_object import UserObject
 
 def user_exist(telegram_id:str)->bool:
-    return False if not db.getUser(telegram_id) else True
+    user_result = db.getUser(telegram_id)
+    if user_result:
+        print("found")
+        return True
+    return False
+
 
 def insert_new_user(uo:UserObject):
     db.insert_new_user(uo)

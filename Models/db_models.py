@@ -50,7 +50,8 @@ class MongoDB(metaclass = Singleton):
 
 def getUser(telegram_id:str):
     mdb = MongoDB().db
-    return mdb.tgbot_records.find(
+    return mdb.tgbot_records.find_one(
+
                             {
                                 "telegram_id":telegram_id
                             }
