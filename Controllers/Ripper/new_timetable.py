@@ -27,6 +27,7 @@ from bs4 import BeautifulSoup
 from bs4.element import ResultSet
 from typing import Union,List
 import re
+import time as clock
 
 # Imports from wiuthin the project.
 from Models.exceptions import *

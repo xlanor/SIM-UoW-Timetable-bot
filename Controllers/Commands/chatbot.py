@@ -21,12 +21,15 @@
 ##
 # 3rd party or native import
 from telegram.ext import ConversationHandler
+import traceback
+import jsonpickle
 
 # internal Controller imports
 import Controllers.db_facade as db_interface
 
 # internal Model imports
-from Models.encryption import Encrypt
+from cfg import Configuration
+#from celery_queue import register_user
 
 # declares state for subsequent import.
 NAME,USERNAME,PASSWORD,APP_KEY = range(4)
@@ -125,8 +128,16 @@ def application_key(bot,update,user_data):
         user_input_application_key = update.message.text
         user_input_application_key = user_input_application_key.strip()
         if len(user_input_application_key) <= 16:
-            #TODO: Place the encrypted password in user_data encrypted_password
-            pass #TODO: Send to celery for testing. 
+            user_data["application_key"] = user_input_application_key
+            # passes into celery. No longer my problem.
+            config = Configuration()
+            cel_reg = config.CELERY_INSTANCE.signature('Controllers.celery_queue.register_user')
+            print("AM HERE")
+            cel_reg.delay(user_data,jsonpickle.encode(bot))
+            print("AM NOT HERE")
+            message = "Delegated to Celery for Login and Scraping. Please await your results"
+            update.message.reply_text(message,parse_mode = 'Markdown')
+            return ConversationHandler.END
         else:
             if not user_input_application_key:
                 message = "Please enter an application key"
@@ -136,6 +147,7 @@ def application_key(bot,update,user_data):
             return KEY
     
     except Exception as e:
+        print(traceback.format_exc())
         print(str(e))
         return ConversationHandler.END
 def cancel(bot,update):
@@ -144,4 +156,4 @@ def cancel(bot,update):
     """
     message = "Cancelling registeration! Goodbye"
     update.message.reply_text(message, parse_mode='Markdown')
-	return ConversationHandler.END
+    return ConversationHandler.END
