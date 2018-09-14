@@ -30,6 +30,7 @@ import Controllers.db_facade as db_interface
 # internal Model imports
 from cfg import Configuration
 #from celery_queue import register_user
+from Models.encryption import Encrypt
 
 # declares state for subsequent import.
 NAME,USERNAME,PASSWORD,APP_KEY = range(4)

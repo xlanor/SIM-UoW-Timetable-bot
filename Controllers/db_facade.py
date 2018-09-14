@@ -30,5 +30,6 @@ def user_exist(telegram_id:str)->bool:
         return True
     return False
 
+
 def insert_new_user(uo:UserObject):
     db.insert_new_user(uo)

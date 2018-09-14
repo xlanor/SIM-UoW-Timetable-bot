@@ -50,6 +50,7 @@ from Controllers.Commands.chatbot import USERNAME
 from Controllers.Commands.chatbot import PASSWORD
 from Controllers.Commands.chatbot import APP_KEY
 
+
 class Hera():
     def __init__(self):
         self.__config = Configuration()
@@ -79,6 +80,7 @@ class Hera():
         self.__dp.add_handler(start_handler)
 
     def reg(self):
+
         """
         The accumulated user data will be passed through the respective states
         at the end, it will be passed into celery.
@@ -91,33 +93,43 @@ class Hera():
         conv_handler = ConversationHandler(
             entry_points = [CommandHandler('register',Registeration.start_register)],
 
+
             states = {
                 NAME: [MessageHandler(
                                     Filters.text,
+
                                     Registeration.name,
+
                                     pass_user_data=True
                                 )
                         ],
                 USERNAME: [MessageHandler(
                                     Filters.text,
+
                                     Registeration.username,
+
                                     pass_user_data=True
                                 )
                         ],
                 PASSWORD: [MessageHandler(
                                     Filters.text,
+
                                     Registeration.password,
+
                                     pass_user_data=True
                                 )
                         ],
                 APP_KEY: [MessageHandler(
                                     Filters.text,
+
                                     Registeration.application_key,
+
                                     pass_user_data=True
                                 )
                         ]
             },
             fallbacks=[CommandHandler('cancel', Registeration.cancel)],
+
             per_user = 'true'
         )
         self.__dp.add_handler(conv_handler,1)

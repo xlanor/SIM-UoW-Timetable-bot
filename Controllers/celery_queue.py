@@ -37,12 +37,14 @@ from Models.encryption import Encrypt
 def register_user(user_data:Dict, bot):
     try:
         bot = jsonpickle.decode(bot)
+
         user_id = user_data["user_id"]
         username = user_data["username"]
         password = user_data["password"]
         name = user_data["name"]
         user_input_application_key = user_data["application_key"]
         encrypted_password = Encrypt(user_data["password"],user_input_application_key).encrypt()
+
         try:
             # Able to login with given credentials.
             timetable_ripper = RipperFactory.get_ripper("NewRip",username,password)
@@ -70,6 +72,7 @@ def register_user(user_data:Dict, bot):
             success_message.append("In addition, please take note of the following handlers:\n")
             success_message.append("```/alert - Daily reminder at 7am in the morning```\n")
             success_message.append("```/nightly - Nightly reminder at 10pm at night```\n")
+
             success_message.append("Both of these handlers act as a toggle.")
             message = "".join(success_message)
             bot.send_message(
