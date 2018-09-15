@@ -65,7 +65,7 @@ def resetClasses(telegram_id:str):
                     },
                     {
                         "$set":{
-                                "class_name":[]
+                                "class_list":[]
                             }
                     }
                 )
@@ -92,7 +92,7 @@ def add_class(telegram_id:str,class_object:IndividualClassStructure):
                     },
                     {
                         "$push":{
-                                "class_name":class_dict
+                                "class_list":class_dict
                             }
                     }                
                 )

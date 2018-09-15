@@ -65,13 +65,15 @@ class IndividualClassStructure():
 
     def get_dict_mongo(self) -> Dict[str,str]:
         self.get_date_text_index()
+        start_time_w_date = f"{self.__date} {self.__starttime}"
+        end_time_w_date = f"{self.__date} {self.__endtime}"
         return_dict = {
                             "class_name": self.__name,
                             "date": datetime.strptime(self.__date, '%d/%m/%Y'),
                             "day": self.__class_day,
                             "numeric_day" : self.__class_numeric_day,
-                            "start_time": datetime.strptime(self.__starttime, '%d/%m/%Y %I:%M%p'),
-                            "end_time": datetime.strptime(self.__endtime, '%d/%m/%Y %I:%M%p'),
+                            "start_time": datetime.strptime(start_time_w_date, '%d/%m/%Y %I:%M%p'),
+                            "end_time": datetime.strptime(end_time_w_date , '%d/%m/%Y %I:%M%p'),
                             "location": self.__location,
                             "type": self.__class_type
                         }
@@ -137,3 +139,28 @@ class IndividualClassStructure():
         string_day = calendar.day_name[numeric_day]
         self.__class_numeric_day = numeric_day
         self.__class_day = string_day
+
+    def set_from_dict(self,class_object_dict:Dict):
+        """
+        self.__name = name
+        # Initialize a few empty holding vars.
+        self.__date = None
+        self.__starttime = None
+        self.__endtime = None
+        self.__location = None
+        self.__class_type = None
+        self.__class_day = None
+        self.__class_numeric_day = None
+        WHENEVER YOU POPULATE WITH THIS METHOD YOU MUST USE 
+        "get_dict" instead of "get_dict_mongo" to retrieve the dict.
+        """
+        self.__name = class_object_dict["class_name"]
+        # this should be an iso datetime obj. 
+        self.__date = class_object_dict["date"]
+        self.__class_day = class_object_dict["day"]
+        self.__class_numeric_day = class_object_dict["numeric_day"]
+        # this should be an iso datetime object
+        self.__starttime = class_object_dict["start_time"]
+        self.__endtime = class_object_dict["end_time"]
+        self.__location = class_object_dict["location"]
+        self.__class_type = class_object_dict["type"]

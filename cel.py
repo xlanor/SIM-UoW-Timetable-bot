@@ -26,7 +26,7 @@ from celery import Celery
 from celery import current_app
 app = Celery('queue',
              broker='amqp://',
-             backend='amqp://',
+             backend='rpc://',
              include=['Controllers.celery_queue'])
 
 if __name__ == '__main__':

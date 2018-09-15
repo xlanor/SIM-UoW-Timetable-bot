@@ -48,10 +48,10 @@ def start_register(bot,update):
         message_array = []
         if not db_interface.user_exist(tg_id):
             message_array.append("Hi! Let's get started by registering with this bot\n")
-            message_array.append("By using this bot, you hereby declare that you have read the documentation and disclaimer on github.\n")
-            message_array.append("*As such, you release the author from any responsibilities of events incurred by the usage of this bot*\n")
-            message_array.append("At any point of time during this process, you can stop the bot by typing /cancel\n")
-            message_array.append("Now, can I have your name?")
+            message_array.append("❇️By using this bot, you hereby declare that you have read the documentation and disclaimer on github.\n")
+            message_array.append("❇️*As such, you release the author from any responsibilities of events incurred by the usage of this bot*\n")
+            message_array.append("❇️At any point of time during this process, you can stop the bot by typing /cancel\n")
+            message_array.append("Now, can I have your *name*?")
             message = "".join(message_array)
             update.message.reply_text(message,parse_mode='Markdown')
             # instructs the chatbox to move to the next method.
@@ -78,7 +78,7 @@ def name(bot,update,user_data):
         user_data["user_id"] = update.message.from_user.id
         user_data["name"] = user_input_name
         message_array = [f"Thank you, {user_input_name}.\n"]
-        message_array.append("Now, can I have your *SIMConnect* User ID?")
+        message_array.append("❇️Now, can I have your *SIMConnect User ID*?")
         message = "".join(message_array)
         update.message.reply_text(message,parse_mode = 'Markdown')
         return USERNAME
@@ -94,8 +94,8 @@ def username(bot,update,user_data):
         user_input_username = update.message.text
         user_data["username"] = user_input_username
         message_array = ["Successfully received your username\n"]
-        message_array.append("Now, I need your SIMConnect password.\n")
-        message_array.append("For more information about how your password will be stored, please read the github README.md page.")
+        message_array.append("❇️Now, I need your *SIMConnect password*.\n")
+        message_array.append("❇️For more information about how your password will be stored, please read the github README.md page.")
         message = "".join(message_array)
         update.message.reply_text(message,parse_mode='Markdown')
         return PASSWORD
@@ -113,9 +113,9 @@ def password(bot,update,user_data):
         user_input_password = update.message.text
         user_data["password"] = user_input_password
         message_array = ["Successfully received your password\n"]
-        message_array.append("Now, I need you to enter an *Application Key*\n")
-        message_array.append("This key will be case-sensetive and stripped of all spaces\n")
-        message_array.append("This key will be *used to encrypt your password, DO NOT FORGET IT!*\n")
+        message_array.append("❇️Now, I need you to enter an *Application Key*\n")
+        message_array.append("❇️This key will be case-sensetive and stripped of all spaces\n")
+        message_array.append("❇️This key will be *used to encrypt your password, DO NOT FORGET IT!*\n")
         message = "".join(message_array)
         update.message.reply_text(message,parse_mode='Markdown')
         return APP_KEY
@@ -136,7 +136,7 @@ def application_key(bot,update,user_data):
             print("AM HERE")
             cel_reg.delay(user_data,jsonpickle.encode(bot))
             print("AM NOT HERE")
-            message = "Delegated to Celery for Login and Scraping. Please await your results"
+            message = "Your details have been enqueued for scraping!\n This process might take up to 5 minutes, please wait for the results."
             update.message.reply_text(message,parse_mode = 'Markdown')
             return ConversationHandler.END
         else:
@@ -148,7 +148,7 @@ def application_key(bot,update,user_data):
             return KEY
     
     except Exception as e:
-        print(traceback.format_exc())
+
         print(str(e))
         return ConversationHandler.END
 def cancel(bot,update):

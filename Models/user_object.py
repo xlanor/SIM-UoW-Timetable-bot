@@ -45,7 +45,7 @@ class UserObject():
         return len(self.__classes)
 
     def get_mongo_dict(self)->Dict:
-        class_list = [x.get_dict() for x in self.__classes]
+        class_list = [x.get_dict_mongo() for x in self.__classes]
         # we will now enable both by default.
         generated_dict = {
             "telegram_id":self.__telegram_id,
