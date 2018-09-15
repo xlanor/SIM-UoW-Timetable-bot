@@ -28,4 +28,4 @@ class Encrypt():
         enc = base64.b64decode(self.__pw)
         iv = enc[:16]
         cipher = AES.new(self.__key, AES.MODE_CBC, iv )
-        return unpad(cipher.decrypt( enc[16:] )).decode("utf-8")
+        return self.__unpad(cipher.decrypt( enc[16:] )).decode("utf-8")

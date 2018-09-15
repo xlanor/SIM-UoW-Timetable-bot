@@ -22,6 +22,7 @@
 # Celery functions.
 ##
 from typing import Dict
+from typing import List
 import jsonpickle
 
 # Local Imports 
@@ -46,17 +47,7 @@ def register_user(user_data:Dict, bot):
         encrypted_password = Encrypt(user_data["password"],user_input_application_key).encrypt()
 
         try:
-            # Able to login with given credentials.
-            timetable_ripper = RipperFactory.get_ripper("NewRip",username,password)
-            timetable_result = timetable_ripper.execute()
-            other_ripper = RipperFactory.get_ripper("Other",username,password)
-            other_result = other_ripper.execute()
-            # now, you should have a list of both timetable AND other results.
-            # timettable_result at this stage should be a List of CLASSES
-            # let us merge the two list. for all intends and purposes, we have
-            # placed them into an IndividualClassStructure Object, so they are 
-            # the same to us.
-            timetable_result.extend(other_result)
+            timetable_result = get_timetable(username,password,user_id,bot)
             print(f"Classes retrieved: {len(timetable_result)}")
             # Now, let us begin constructing our database insertion object.
             obj_to_insert = UserObject(
@@ -70,8 +61,8 @@ def register_user(user_data:Dict, bot):
             success_message=[f"A total of {obj_to_insert.get_class_leng()} records have been synced to the database\n"]
             success_message.append("You can now use /timetable to retrieve your timetable\n")
             success_message.append("In addition, please take note of the following handlers:\n")
-            success_message.append("```/alert - Daily reminder at 7am in the morning```\n")
-            success_message.append("```/nightly - Nightly reminder at 10pm at night```\n")
+            success_message.append("```Daily reminder at 7am in the morning - /alert ```\n")
+            success_message.append("```Nightly reminder at 10pm at night - /nightly ```\n")
 
             success_message.append("Both of these handlers act as a toggle.")
             message = "".join(success_message)
@@ -97,3 +88,64 @@ def register_user(user_data:Dict, bot):
         # to send to github
         print(str(e))
         pass
+
+@app.task
+def update_user(
+                    telegram_id:str,
+                    user_name:str,
+                    password:str,
+                    bot
+                ):
+    bot = jsonpickle.decode(bot)
+    try:
+        
+        list_of_classes = get_timetable(user_name,password,telegram_id,bot)
+        dbInterface.update_classes(list_of_classes,telegram_id)
+        message = f"A total of *{len(list_of_classes)}* records were resynced to the database"
+        bot.send_message(
+                    chat_id = telegram_id,
+                    text = message,
+                    parse_mode='Markdown'
+                )
+    except UnableToLogin:
+            # Unable to login with given credentials.
+            # new_ripper attempts to login and raises an UnableToLogin exception
+            # if it cant be logged in.
+            error_message = ["Unable to login with your credentials!\n"]
+            error_message.append("Please try to wipe your details and register again using /register")
+            err = "".join(error_message)
+            bot.send_message(
+                        chat_id = telegram_id,
+                        text = err,
+                        parse_mode = 'Markdown'
+                    )
+    except Exception as e:
+        # to send to github
+        print(str(e))
+        pass
+def get_timetable(username: str, password: str, user_id:str, bot)->List:
+     # Able to login with given credentials.
+    timetable_ripper = RipperFactory.get_ripper("NewRip",username,password)
+    timetable_result = timetable_ripper.execute()
+    message = "Finished scraping *Regular* timetables. Now looking at Other timtables."
+    bot.send_message(
+        chat_id = user_id,
+        text = message,
+        parse_mode='Markdown'
+    )
+    other_ripper = RipperFactory.get_ripper("Other",username,password)
+    other_result = other_ripper.execute()
+    
+    message = "Finished scraping *Other* timetables. Now updating database records.."
+    bot.send_message(
+        chat_id = user_id,
+        text = message,
+        parse_mode='Markdown'
+    )
+    # now, you should have a list of both timetable AND other results.
+    # timettable_result at this stage should be a List of CLASSES
+    # let us merge the two list. for all intends and purposes, we have
+    # placed them into an IndividualClassStructure Object, so they are 
+    # the same to us.
+    timetable_result.extend(other_result)
+    return timetable_result

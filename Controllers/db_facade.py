@@ -19,9 +19,11 @@
 ##
 #  A database facade to simplify operations for other controllers.
 ##
+from typing import List
 # Internal Model imports.
 import Models.db_models as db
 from Models.user_object import UserObject
+from Models.user_from_db import DbUser
 
 def user_exist(telegram_id:str)->bool:
     user_result = db.getUser(telegram_id)
@@ -33,3 +35,15 @@ def user_exist(telegram_id:str)->bool:
 
 def insert_new_user(uo:UserObject):
     db.insert_new_user(uo)
+
+def get_user(telegram_id:str)->UserObject:
+    telegram_database_user = db.getUser(telegram_id)
+    if not telegram_database_user: 
+        return None
+    else:
+        return DbUser(telegram_database_user)
+
+def update_classes(list_of_new_classes:List,telegram_id:str):
+    db.resetClasses(telegram_id)
+    for new_class in list_of_new_classes:
+        db.add_class(telegram_id,new_class)
