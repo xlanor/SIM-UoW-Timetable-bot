@@ -2,6 +2,15 @@
 
 ## This will currently keep a log of the refactoring as it goes along.
 
+### 2018-09-13 - 2018-09-16
+* Several changes were made to mongodb structure.
+* Namedly, additional fields were add in to store the date and time,class_name is now known as class_list
+* Finished delegation of entire scraping procedure to celery.
+* Both update, forget, and register are now completed.
+* Added redis to prepare for potential future caching. We will see how it goes.
+* For now, we use redis mainly to check if a user already has a queue job running
+* Will begin work on a) concurrency and b) displaying the timetable.
+
 ### 2018-09-10
 * Begin writing the telegram bot skeleton.
 * Setup nginx configuration in favour of a webhook model over long polling.

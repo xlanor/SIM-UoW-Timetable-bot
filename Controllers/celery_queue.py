@@ -33,19 +33,21 @@ from Models.user_object import UserObject
 from celery import Celery
 from cel import app
 from Models.encryption import Encrypt
+from cfg import Configuration
 
 @app.task
 def register_user(user_data:Dict, bot):
+    config = Configuration()
+    r = config.REDIS_INSTANCE
+    user_id = user_data["user_id"]
     try:
         bot = jsonpickle.decode(bot)
 
-        user_id = user_data["user_id"]
         username = user_data["username"]
         password = user_data["password"]
         name = user_data["name"]
         user_input_application_key = user_data["application_key"]
         encrypted_password = Encrypt(user_data["password"],user_input_application_key).encrypt()
-
         try:
             timetable_result = get_timetable(username,password,user_id,bot)
             print(f"Classes retrieved: {len(timetable_result)}")
@@ -66,6 +68,7 @@ def register_user(user_data:Dict, bot):
 
             success_message.append("Both of these handlers act as a toggle.")
             message = "".join(success_message)
+            r.delete(user_id)
             bot.send_message(
                     chat_id = user_id,
                     text = message,
@@ -79,6 +82,7 @@ def register_user(user_data:Dict, bot):
             error_message = ["Unable to login with your credentials!\n"]
             error_message.append("Please try to register again using /register")
             err = "".join(error_message)
+            r.delete(user_id)
             bot.send_message(
                         chat_id = user_id,
                         text = err,
@@ -87,6 +91,7 @@ def register_user(user_data:Dict, bot):
     except Exception as e:
         # to send to github
         print(str(e))
+        r.delete(user_id)
         pass
 
 @app.task
@@ -96,12 +101,16 @@ def update_user(
                     password:str,
                     bot
                 ):
+    
+    config = Configuration()
+    r = config.REDIS_INSTANCE
     bot = jsonpickle.decode(bot)
     try:
         
         list_of_classes = get_timetable(user_name,password,telegram_id,bot)
         dbInterface.update_classes(list_of_classes,telegram_id)
         message = f"A total of *{len(list_of_classes)}* records were resynced to the database"
+        r.delete(telegram_id)
         bot.send_message(
                     chat_id = telegram_id,
                     text = message,
@@ -114,6 +123,7 @@ def update_user(
             error_message = ["Unable to login with your credentials!\n"]
             error_message.append("Please try to wipe your details and register again using /register")
             err = "".join(error_message)
+            r.delete(telegram_id)
             bot.send_message(
                         chat_id = telegram_id,
                         text = err,
@@ -122,7 +132,9 @@ def update_user(
     except Exception as e:
         # to send to github
         print(str(e))
+        r.delete(telegram_id)
         pass
+
 def get_timetable(username: str, password: str, user_id:str, bot)->List:
      # Able to login with given credentials.
     timetable_ripper = RipperFactory.get_ripper("NewRip",username,password)

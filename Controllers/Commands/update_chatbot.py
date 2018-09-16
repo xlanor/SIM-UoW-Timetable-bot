@@ -40,10 +40,15 @@ def update(bot,update):
     """
     confirms that the update is meant to be handled.
     """
+    config = Configuration()
     try:
         uid = update.message.from_user.id
         if not db_interface.user_exist(uid):
             update.message.reply_text("You are not registered! Please register first")
+            return ConversationHandler.END
+        r = config.REDIS_INSTANCE
+        if r.get(uid):
+            update.message.reply_text("You are already enqueued in the queue!")
             return ConversationHandler.END
         message_array = ["Do you want to update your timetable?\n"]
         message_array.append("❇️This will erase *all* previous timetable schedules\n")
@@ -96,6 +101,8 @@ def decrypt(bot,update):
                     bot
                 ):
             """
+            r = config.REDIS_INSTANCE
+            r.set(uid,1)
             update_class.delay(uid,username,decrypted_password,jsonpickle.encode(bot))
             message = "Your details have been enqueued for scraping!\n This process might take up to 5 minutes, please wait for the results."
             update.message.reply_text(message,parse_mode = 'Markdown')

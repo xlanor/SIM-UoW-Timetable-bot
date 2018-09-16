@@ -26,18 +26,19 @@ Author - xlanor
 
 | Telegram Component             | status             |
 | ------------------------------ | ------------------ |
-| Chatbot component (Sign up)    | :no_entry_sign:    |
+| Chatbot component (Sign up)    | :heavy_check_mark: |
 | Timetable navigation           | :no_entry_sign:    |
 | Alert system                   | :no_entry_sign:    |
+| Mega system                    | :no_entry_sign:    |
 
 
 | Dev Component                  | status             |
 | ------------------------------ | ------------------ |
-| Definition of Holding Models   | :no_entry_sign:    |
-| Database redesign              | :no_entry_sign:    |
-| Proper partitioning            | :no_entry_sign:    |
+| Definition of Holding Models   | :heavy_check_mark: |
+| Database redesign              | :heavy_check_mark: |
+| Proper partitioning            | :heavy_check_mark: |
 | Open Github issue on exception | :no_entry_sign:    |
-| Task management with Celery    | :no_entry_sign:    |
+| Task management with Celery    | :heavy_check_mark: |
 | Server Migration               | :heavy_check_mark: |
 | Integration of MQ feature      | :heavy_check_mark: | ( Initial testing )
 | Redesign of configuration file | :heavy_check_mark: |
