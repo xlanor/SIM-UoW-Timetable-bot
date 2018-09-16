@@ -101,4 +101,11 @@ def insert_new_user(user_obj:UserObject):
     mdb = MongoDB().db
     mdb.tgbot_records.insert(user_obj.get_mongo_dict())
 
+def del_user(telegram_id:str)-> int:
+    mdb = MongoDB().db
+    result = mdb.tgbot_records.delete_one({
+                        "telegram_id":telegram_id
+                    })
+    print(result)
+    return result
 

@@ -23,6 +23,7 @@
 from telegram.ext import ConversationHandler
 import traceback
 import jsonpickle
+from celery import Celery
 
 # internal Controller imports
 import Controllers.db_facade as db_interface
@@ -42,20 +43,29 @@ def start_register(bot,update):
     subsequently passes it to the next handler in process.
     """
     try:
+        config = Configuration()
         # gets the telegram ID
         tg_id = update.message.from_user.id
         # Checks the database for the user ID
         message_array = []
         if not db_interface.user_exist(tg_id):
-            message_array.append("Hi! Let's get started by registering with this bot\n")
-            message_array.append("❇️By using this bot, you hereby declare that you have read the documentation and disclaimer on github.\n")
-            message_array.append("❇️*As such, you release the author from any responsibilities of events incurred by the usage of this bot*\n")
-            message_array.append("❇️At any point of time during this process, you can stop the bot by typing /cancel\n")
-            message_array.append("Now, can I have your *name*?")
-            message = "".join(message_array)
-            update.message.reply_text(message,parse_mode='Markdown')
-            # instructs the chatbox to move to the next method.
-            return NAME
+            r = config.REDIS_INSTANCE
+            if not r.get(tg_id):
+                message_array.append("Hi! Let's get started by registering with this bot\n")
+                message_array.append("❇️By using this bot, you hereby declare that you have read the documentation and disclaimer on github.\n")
+                message_array.append("❇️*As such, you release the author from any responsibilities of events incurred by the usage of this bot*\n")
+                message_array.append("❇️At any point of time during this process, you can stop the bot by typing /cancel\n")
+                message_array.append("Now, can I have your *name*?")
+                message = "".join(message_array)
+                update.message.reply_text(message,parse_mode='Markdown')
+                # instructs the chatbox to move to the next method.
+                return NAME
+            else:
+                message_array.append("You are already enqueued!\n")
+                message_array.append("If you are encountering issues, please pm @fatalityx directly.")
+                message = "".join(message_array)
+                update.message.reply_text(message,parse_mode='Markdown')
+                return ConversationHandler.END
         else:
             message_array.append("You are already registered!\n")
             message_array.append("If you have forgotten your application key, please use /forget to clear your information and re-register.")
@@ -130,13 +140,25 @@ def application_key(bot,update,user_data):
         user_input_application_key = user_input_application_key.strip()
         if len(user_input_application_key) <= 16:
             user_data["application_key"] = user_input_application_key
-            # passes into celery. No longer my problem.
+
             config = Configuration()
-            cel_reg = config.CELERY_INSTANCE.signature('Controllers.celery_queue.register_user')
-            print("AM HERE")
+            """ci = Celery(
+                            'queue',
+                            broker='amqp://',
+                            backend='rpc://',
+                            include=['Controllers.celery_queue']
+                        )"""
+            cel_reg =config.CELERY_INSTANCE.signature('Controllers.celery_queue.register_user')
+            # marks the user as already using the queue in redis.
+            r = config.REDIS_INSTANCE
+            r.set(user_data["user_id"],1)
+            # Starts a celery task
             cel_reg.delay(user_data,jsonpickle.encode(bot))
-            print("AM NOT HERE")
-            message = "Your details have been enqueued for scraping!\n This process might take up to 5 minutes, please wait for the results."
+
+            message_array = ["Your details have been enqueued for scraping!\n"]
+            message_array.append(f"You are currently position {len(r.keys())} in the queue.\n")
+            message_array.append("This process might take up to 5 minutes, please wait for the results.")
+            message = "".join(message_array)
             update.message.reply_text(message,parse_mode = 'Markdown')
             return ConversationHandler.END
         else:

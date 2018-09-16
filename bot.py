@@ -45,6 +45,7 @@ import celery_test as ct
 # Controller imports
 import Controllers.Commands.chatbot as Registeration
 import Controllers.Commands.update_chatbot as Update
+import Controllers.Commands.forget_chatbot as Forget
 # Import states from controller
 from Controllers.Commands.chatbot import NAME
 from Controllers.Commands.chatbot import USERNAME
@@ -52,10 +53,12 @@ from Controllers.Commands.chatbot import PASSWORD
 from Controllers.Commands.chatbot import APP_KEY
 from Controllers.Commands.update_chatbot import ENTERKEY
 from Controllers.Commands.update_chatbot import DECRYPT
+from Controllers.Commands.forget_chatbot import DELETEUSER
 
 class Hera():
     def __init__(self):
         self.__config = Configuration()
+        self.__flush_redis_cache()
         q = mq.MessageQueue(
                 all_burst_limit=3, 
                 all_time_limit_ms=1000, 
@@ -69,8 +72,9 @@ class Hera():
         self.__queue_bot = MQBot(self.__config.BOT_API_KEY,request = request, mqueue = q)
         self.__updater = Updater(bot = self.__queue_bot)
         self.__dp = self.__updater.dispatcher
-        self.reg()
-        self.update()
+        self.__reg()
+        self.__update()
+        self.__forget()
         self.start_webhooks() # must always come last.
         print("Bot online")
     
@@ -82,7 +86,7 @@ class Hera():
         start_handler = CommandHandler('test', ct.test_message)
         self.__dp.add_handler(start_handler)
 
-    def reg(self):
+    def __reg(self):
         """
         The accumulated user data will be passed through the respective states
         at the end, it will be passed into celery.
@@ -126,7 +130,7 @@ class Hera():
         )
         self.__dp.add_handler(conv_handler,1)
 
-    def update(self):
+    def __update(self):
         update_handler = ConversationHandler(
             entry_points = [CommandHandler('update',Update.update)],
             states = {
@@ -142,6 +146,26 @@ class Hera():
             per_user = 'true'
         )
         self.__dp.add_handler(update_handler,1)
+
+    def __forget(self):
+        forget_handler = ConversationHandler(
+            entry_points = [CommandHandler('forget',Forget.forget)],
+            states = {
+                DELETEUSER: [
+                            RegexHandler('(?iii)Yes', Forget.remove_user),
+                            RegexHandler('(?iii)No', Forget.cancel)
+                        ]
+            },
+            fallbacks=[CommandHandler('cancel', Forget.cancel)],
+            per_user = 'true'
+        )
+        self.__dp.add_handler(forget_handler,1)
+
+    def __flush_redis_cache(self):
+        r = self.__config.REDIS_INSTANCE
+        db_flush = r.flushdb()
+        print(f"Redis DB Flushed: {db_flush}")
+        
     def start_webhooks(self):
         self.__updater.start_webhook(
                             listen='127.0.0.1', 

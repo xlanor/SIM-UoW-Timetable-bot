@@ -47,3 +47,6 @@ def update_classes(list_of_new_classes:List,telegram_id:str):
     db.resetClasses(telegram_id)
     for new_class in list_of_new_classes:
         db.add_class(telegram_id,new_class)
+
+def delete_user(telegram_id:str):
+    return db.del_user(telegram_id)
