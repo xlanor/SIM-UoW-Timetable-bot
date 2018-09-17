@@ -35,7 +35,7 @@ class OtherClass(SIMConnect):
             tt_ps = self.driver.page_source
             return tt_ps
         else:
-            self.driver.close()
+            self.driver.quit()
             raise UnableToLogin("Unable to login using given credentials")
 
 
@@ -45,7 +45,7 @@ class OtherClass(SIMConnect):
         @return a list of class objects
         """
         formatted_result = self.get_timetable_page()
-        self.driver.close()
+        self.driver.quit()
         return self.parse_timetable_source(formatted_result)
 
 

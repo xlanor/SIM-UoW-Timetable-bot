@@ -102,5 +102,5 @@ class SIMConnect():
     def execute(self):
         page_source = self.attempt_login()
         ps = self.is_logged_in(page_source)
-        self.driver.close()
+        self.driver.quit()
         return ps
