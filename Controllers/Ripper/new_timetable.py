@@ -226,7 +226,7 @@ class RipTimeTable(SIMConnect):
                                     {
                                         'id': re.compile(r'(win2divDERIVED_REGFRM1_DESCR20\$)([0-9]{1})')  # noqa
                                     }
-                                    )
+                                )
 
         list_of_results = []
         self.process_subject_divs(subjectdiv,list_of_results)

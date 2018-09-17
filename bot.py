@@ -47,6 +47,7 @@ import Controllers.Commands.chatbot as Registeration
 import Controllers.Commands.update_chatbot as Update
 import Controllers.Commands.forget_chatbot as Forget
 import Controllers.Commands.retrieve_timetable as tt
+import Controllers.Commands.mega as mega
 # Import states from controller
 from Controllers.Commands.chatbot import NAME
 from Controllers.Commands.chatbot import USERNAME
@@ -78,6 +79,7 @@ class Hera():
         self.__forget()
         self.__timetable()
         self.__cbq()
+        self.__mega()
         self.start_webhooks() # must always come last.
         print("Bot online")
     
@@ -170,6 +172,11 @@ class Hera():
 
     def __cbq(self):
         self.__updater.dispatcher.add_handler(CallbackQueryHandler(tt.get_timetable),3)
+
+    def __mega(self):
+        
+        megaphone_handler = CommandHandler('mega',mega.megaphone)
+        self.__dp.add_handler(megaphone_handler,3)
 
     def __flush_redis_cache(self):
         r = self.__config.REDIS_INSTANCE
