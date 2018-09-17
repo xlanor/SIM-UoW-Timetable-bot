@@ -50,7 +50,7 @@ class IndividualClassStructure():
         Gets the variables in a dictionary format.
         @return dict
         """
-        self.get_date_text_index()
+        #self.get_date_text_index()
         return_dict = {
                         "class_name": self.__name,
                         "date": self.__date,
@@ -79,6 +79,21 @@ class IndividualClassStructure():
                         }
         return return_dict
     
+    def get_formatted_text(self):
+        # this is assuming the dates stored here are in
+        # DATE TIME OBJECT NOT STRING.
+        # markdown syntax.
+        class_text = []
+        class_text.append(f"📌 _{self.__name}_\n")
+        class_text.append("```\n")
+        class_text.append(f"Date: {datetime.strftime(self.__date,'%b %d %Y')}\n")
+        class_text.append(f"Type: {self.__class_type}\n")
+        class_text.append(f"Start Time: {datetime.strftime(self.__starttime,'%H:%M')}\n")
+        class_text.append(f"End Time: {datetime.strftime(self.__endtime,'%H:%M')}\n")
+        class_text.append(f"Location: {self.__location}\n")
+        class_text.append(f"```")
+        return "".join(class_text)
+    
     """
     A whole bunch of getter methods.
     """
@@ -105,7 +120,14 @@ class IndividualClassStructure():
     @property
     def class_type(self):
         return self.__class_type
-
+    
+    @property
+    def class_day(self):
+        return self.__class_day
+    
+    @property
+    def class_numeric_day(self):
+        return self.__class_numeric_day
     """
     A whole bunch of setter methods.
     """

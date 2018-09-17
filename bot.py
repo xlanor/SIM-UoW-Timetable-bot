@@ -46,6 +46,7 @@ import celery_test as ct
 import Controllers.Commands.chatbot as Registeration
 import Controllers.Commands.update_chatbot as Update
 import Controllers.Commands.forget_chatbot as Forget
+import Controllers.Commands.retrieve_timetable as tt
 # Import states from controller
 from Controllers.Commands.chatbot import NAME
 from Controllers.Commands.chatbot import USERNAME
@@ -60,7 +61,7 @@ class Hera():
         self.__config = Configuration()
         self.__flush_redis_cache()
         q = mq.MessageQueue(
-                all_burst_limit=3, 
+                all_burst_limit=30, 
                 all_time_limit_ms=1000, 
                 group_burst_limit=20, 
                 group_time_limit_ms=60000, 
@@ -75,6 +76,8 @@ class Hera():
         self.__reg()
         self.__update()
         self.__forget()
+        self.__timetable()
+        self.__cbq()
         self.start_webhooks() # must always come last.
         print("Bot online")
     
@@ -160,6 +163,13 @@ class Hera():
             per_user = 'true'
         )
         self.__dp.add_handler(forget_handler,1)
+
+    def __timetable(self):
+        timetable_handler = CommandHandler('timetable',tt.get_timetable)
+        self.__dp.add_handler(timetable_handler,2)
+
+    def __cbq(self):
+        self.__updater.dispatcher.add_handler(CallbackQueryHandler(tt.get_timetable),3)
 
     def __flush_redis_cache(self):
         r = self.__config.REDIS_INSTANCE

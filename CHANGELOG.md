@@ -2,6 +2,9 @@
 
 ## This will currently keep a log of the refactoring as it goes along.
 
+### 2018-09-17
+* Added /timetable and the relevant callbacks for scrolling.
+
 ### 2018-09-13 - 2018-09-16
 * Several changes were made to mongodb structure.
 * Namedly, additional fields were add in to store the date and time,class_name is now known as class_list
