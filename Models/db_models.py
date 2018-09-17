@@ -106,6 +106,85 @@ def del_user(telegram_id:str)-> int:
     result = mdb.tgbot_records.delete_one({
                         "telegram_id":telegram_id
                     })
-    print(result)
     return result
 
+def get_classes_as_object(telegram_id:str,start_date,end_date):
+    mdb = MongoDB().db
+    return mdb.tgbot_records.aggregate([
+                                    {
+                                        "$unwind": "$class_list"
+                                    },
+                                    {
+                                        "$match":
+                                        {
+                                            "$and":[
+                                            {
+                                                "telegram_id":telegram_id
+                                            },
+                                            {
+                                                "class_list.date":
+                                                {
+                                                    "$gte":start_date,
+                                                    "$lte":end_date
+                                                }
+                                            }
+                                            
+                                            ]
+                                        }
+                                    },
+                                    { 
+                                        "$group": { "_id":None, "classes":{"$push":"$class_list"} } 
+                                    }
+                            ])
+
+def get_later_date(telegram_id:str,current_date):
+    mdb = MongoDB().db
+    return mdb.tgbot_records.aggregate([
+                            {
+                                "$unwind": "$class_list"
+                            },
+                            {
+                                "$match":
+                                {
+                                    "$and":[
+                                    {
+                                        "telegram_id":telegram_id
+                                     },
+                                      {
+                                        "class_list.date":
+                                        {
+                                            "$gt": current_date
+                                        }
+                                     }
+                                     
+                                    ]
+                                 }
+                             },
+                              { "$group": { "_id": "null", "count": { "$sum": 1 } } }
+                         ])
+
+def get_earlier_date(telegram_id:str,current_date):
+    mdb = MongoDB().db
+    return mdb.tgbot_records.aggregate([
+                            {
+                                "$unwind": "$class_list"
+                            },
+                            {
+                                "$match":
+                                {
+                                    "$and":[
+                                    {
+                                        "telegram_id":telegram_id
+                                     },
+                                      {
+                                        "class_list.date":
+                                        {
+                                            "$lt": current_date
+                                        }
+                                     }
+                                     
+                                    ]
+                                 }
+                             },
+                              { "$group": { "_id": "null", "count": { "$sum": 1 } } }
+                         ])

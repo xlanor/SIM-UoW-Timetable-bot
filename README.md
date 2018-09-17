@@ -16,6 +16,9 @@ Author - xlanor
 
 # Current Rewrite Progress
 
+* :no_entry_sign: = Not done
+* :heavy_check_mark: = Done
+
 | SIMConnect Ripper Module       | status             |
 | ------------------------------ | ------------------ |
 | Login                          | :heavy_check_mark: |
@@ -27,7 +30,8 @@ Author - xlanor
 | Telegram Component             | status             |
 | ------------------------------ | ------------------ |
 | Chatbot component (Sign up)    | :heavy_check_mark: |
-| Timetable navigation           | :no_entry_sign:    |
+| Timetable Initial call         | :heavy_check_mark: |
+| Timetable callback navigation  | :heavy_check_mark: |
 | Alert system                   | :no_entry_sign:    |
 | Mega system                    | :no_entry_sign:    |
 
@@ -49,5 +53,8 @@ Authors of all libraries / modules used in the development of this bot, in no pa
 * [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - best HTML parser
 * [Selenium](https://pypi.org/project/selenium/) - making headless navigation easy
 * [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/) - Chromedriver and chromium authors.
-* [SIMConnect](https://simconnect.simge.edu.sg/) - For not providing native API methods 
+* [SIMConnect](https://simconnect.simge.edu.sg/) - For not providing native API methods
+* [Celery](https://github.com/celery/celery)
+* [RabbitMQ](https://github.com/rabbitmq/rabbitmq-server)
+* [Redis](https://github.com/antirez/redis)
 * Anybody else I missed
