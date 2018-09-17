@@ -188,3 +188,15 @@ def get_earlier_date(telegram_id:str,current_date):
                              },
                               { "$group": { "_id": "null", "count": { "$sum": 1 } } }
                          ])
+
+def get_telegram_users():
+    mdb = MongoDB().db
+    return mdb.tgbot_records.distinct(
+                "telegram_id",
+                {
+                    "telegram_id":
+                    {
+                        "$exists":True
+                    }
+                }
+            )

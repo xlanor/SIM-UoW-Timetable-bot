@@ -139,7 +139,9 @@ def get_timetable(username: str, password: str, user_id:str, bot)->List:
      # Able to login with given credentials.
     timetable_ripper = RipperFactory.get_ripper("NewRip",username,password)
     timetable_result = timetable_ripper.execute()
-    message = "Finished scraping *Regular* timetables. Now looking at Other timtables."
+    message_array = ["Finished scraping *Regular* timetables. Now looking at _Other_ timetables.\n"]
+    message_array.append("_Other_ timetable - ie: IS timetables")
+
     bot.send_message(
         chat_id = user_id,
         text = message,

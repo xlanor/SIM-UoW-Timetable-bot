@@ -99,3 +99,8 @@ def check_if_exist(type:str,telegram_id:str,current_date):
         result = db.get_later_date(telegram_id,current_date)
     
     return list(result)
+
+def get_all_telegram_ids():
+    document =  db.get_telegram_users()
+    int_doc = [int(x) for x in document]
+    return int_doc

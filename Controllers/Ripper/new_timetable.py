@@ -195,7 +195,7 @@ class RipTimeTable(SIMConnect):
             tt_ps = self.driver.page_source
             return tt_ps
         else:
-            self.driver.close()
+            self.driver.quit()
             raise UnableToLogin("Unable to login using given credentials")
 
     def parse_timetable_source(self,formatted_result: str) -> List:
@@ -226,13 +226,13 @@ class RipTimeTable(SIMConnect):
                                     {
                                         'id': re.compile(r'(win2divDERIVED_REGFRM1_DESCR20\$)([0-9]{1})')  # noqa
                                     }
-                                    )
+                                )
 
         list_of_results = []
         self.process_subject_divs(subjectdiv,list_of_results)
 
         
-        self.driver.close()
+        self.driver.quit()
         return list_of_results
 
     def output_for_debug(self,timetable_source:str):

@@ -1,3 +1,25 @@
+
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+##
+#   Copyright (C) 2018 JING KAI TAN
+#
+#   This program is free software: you can redistribute it and/or modify it
+#   under the terms of the GNU Affero General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or (at your
+#   option) any later version.
+#
+#   This program is distributed in the hope that it will be useful, but WITHOUT
+#   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+#   FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public
+#   License for more details.
+#
+#   You should have received a copy of the GNU Affero General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##
+#   Other ripper for SIMConnect
+##
 from bs4 import BeautifulSoup
 from .login import SIMConnect
 from Models.exceptions import *
@@ -35,7 +57,7 @@ class OtherClass(SIMConnect):
             tt_ps = self.driver.page_source
             return tt_ps
         else:
-            self.driver.close()
+            self.driver.quit()
             raise UnableToLogin("Unable to login using given credentials")
 
 
@@ -45,7 +67,7 @@ class OtherClass(SIMConnect):
         @return a list of class objects
         """
         formatted_result = self.get_timetable_page()
-        self.driver.close()
+        self.driver.quit()
         return self.parse_timetable_source(formatted_result)
 
 
