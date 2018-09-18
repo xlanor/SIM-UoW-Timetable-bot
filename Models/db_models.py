@@ -205,3 +205,43 @@ def get_telegram_users():
 def find_all_users():
     mdb = MongoDB().db
     return mdb.tgbot_records.find()
+
+def find_all_users_by_alert(user_type:str):
+    mdb = MongoDB().db
+    if user_type.lower() == "morning":
+        return mdb.tgbot_records.find({
+                "alert":True
+            })
+    else:
+
+        return mdb.tgbot_records.find({
+                "nightly_alert":True
+            })
+
+def update_alert(telegram_id:str,type_to_change:bool):
+    mdb = MongoDB().db
+    mdb.tgbot_records.update(
+            {
+                "telegram_id":telegram_id
+            },
+            {
+                "$set":
+                {
+                    "alert":type_to_change
+                }
+            }
+        )
+
+def update_nightly(telegram_id:str,type_to_change:bool):
+    mdb = MongoDB().db
+    mdb.tgbot_records.update(
+            {
+                "telegram_id":telegram_id
+            },
+            {
+                "$set":
+                {
+                    "nightly_alert":type_to_change
+                }
+            }
+        )

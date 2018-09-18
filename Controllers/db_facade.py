@@ -105,5 +105,33 @@ def get_all_telegram_ids():
     int_doc = [int(x) for x in document]
     return int_doc
 
-def get_all_users():
-    return db.find_all_users()
+def get_all_users_alert(user_type:str)->List:
+    users = db.find_all_users_by_alert(user_type)
+    user_list = []
+    if users:
+        for user in users:
+            user_list.append(DbUser(user))
+    return user_list
+
+def toggle_alert(telegram_id:str,type_of_toggle:bool)->bool:
+    obj = db.getUser(telegram_id)
+    if not obj:
+        return None
+    else:
+        if type_of_toggle: # morning
+            if obj["alert"]:
+                toggle = False
+            else:
+                toggle = True
+            
+            db.update_alert(telegram_id,toggle)
+            return toggle
+        else: # night
+            if obj["nightly_alert"]:
+                toggle = False
+            else:
+                toggle = True
+            
+            db.update_nightly(telegram_id,toggle)
+            return toggle
+
