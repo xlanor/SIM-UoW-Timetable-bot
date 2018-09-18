@@ -10,5 +10,4 @@ selenium==3.10.0
 beautifulsoup4==4.6.3
 telegram==0.0.1
 typing==3.6.6
-pytest==3.8.0
 pytest-cov==2.6.0
