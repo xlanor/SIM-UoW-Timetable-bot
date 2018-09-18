@@ -42,7 +42,6 @@ from cfg import Configuration
 # Model imports
 from Models.mqbot import MQBot
 
-import celery_test as ct
 
 # Controller imports
 import Controllers.Commands.chatbot as Registeration

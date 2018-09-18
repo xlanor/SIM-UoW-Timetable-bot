@@ -23,6 +23,7 @@
 ##
 from typing import Dict
 from typing import List
+import traceback
 import jsonpickle
 
 # Local Imports 
@@ -90,6 +91,7 @@ def register_user(user_data:Dict, bot):
                     )
     except Exception as e:
         # to send to github
+        print(traceback.format_exc())
         print(str(e))
         r.delete(user_id)
         pass
@@ -141,7 +143,7 @@ def get_timetable(username: str, password: str, user_id:str, bot)->List:
     timetable_result = timetable_ripper.execute()
     message_array = ["Finished scraping *Regular* timetables. Now looking at _Other_ timetables.\n"]
     message_array.append("_Other_ timetable - ie: IS timetables")
-
+    message = "".join(message_array)
     bot.send_message(
         chat_id = user_id,
         text = message,

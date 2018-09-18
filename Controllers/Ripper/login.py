@@ -44,7 +44,7 @@ class SIMConnect():
     def __loadDriver(self):
         capabilities = webdriver.DesiredCapabilities().CHROME.copy()
         capabilities['acceptInsecureCerts'] = True
-        self.driver = webdriver.Chrome(chrome_options=self.__chrome_options(),service_args=["--verbose", "--log-path=./chromedriver.log"],desired_capabilities=capabilities, executable_path="./chromedriver")  # noqa
+        self.driver = webdriver.Chrome(chrome_options=self.__chrome_options(),service_args=["--verbose", "--log-path=/projects/timetable_v2/src/chromedriver.log"],desired_capabilities=capabilities, executable_path="/projects/timetable_v2/src/chromedriver")  # noqa
 
     def __chrome_options(self):
         # instantiate a chrome options object so you can set the size and headless preference
@@ -52,6 +52,7 @@ class SIMConnect():
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--window-size=1124x850")
         chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument('--disable-dev-shm-usage')
         chrome_options.add_argument("--test-type")
         return chrome_options
 
