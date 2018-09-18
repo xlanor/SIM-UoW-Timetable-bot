@@ -1,5 +1,12 @@
-pytest==3.6.3
 selenium==3.10.0
-beautifulsoup4==4.6.0
-codecov>=1.4.0
-pytest-cov>=2.4.0
+setuptools==40.3.0
+jsonpickle==0.9.6
+pymongo==3.7.1
+pip==9.0.1
+celery==4.1.1
+redis==2.10.6
+pytest==3.8.0
+python_telegram_bot==11.1.0
+beautifulsoup4==4.6.3
+telegram==0.0.1
+typing==3.6.6

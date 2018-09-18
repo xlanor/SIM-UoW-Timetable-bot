@@ -32,8 +32,8 @@ class DbUser():
         self.user_name = retrieved_user["username"]
         self.encrypted_pass = retrieved_user["encrypted_pass"]
         self.last_synced_date = retrieved_user["last_synced_date"]
-        self.alert = None
-        self.nightly = None
+        self.alert = False
+        self.nightly = False
         self.raw_class_list = retrieved_user["class_list"]
         self.class_list = []
         try:
@@ -55,6 +55,6 @@ class DbUser():
     def get_list_of_class_by_date(self,date_object):
         return_list = []
         for class_obj in self.class_list:
-            if class_obj.date == date_object:
+            if class_obj.date.date() == date_object:
                 return_list.append(class_obj)
         return return_list

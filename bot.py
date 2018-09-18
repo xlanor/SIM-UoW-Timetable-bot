@@ -31,6 +31,8 @@ from telegram.ext import Filters
 from telegram.ext import RegexHandler
 from telegram.ext import ConversationHandler
 from telegram.ext import messagequeue as mq
+from datetime import datetime
+from datetime import timedelta
 
 from telegram.utils.request import Request
 
@@ -48,6 +50,7 @@ import Controllers.Commands.update_chatbot as Update
 import Controllers.Commands.forget_chatbot as Forget
 import Controllers.Commands.retrieve_timetable as tt
 import Controllers.Commands.mega as mega
+import Controllers.Jobs.reminders as rmd
 # Import states from controller
 from Controllers.Commands.chatbot import NAME
 from Controllers.Commands.chatbot import USERNAME
@@ -74,14 +77,19 @@ class Hera():
         self.__queue_bot = MQBot(self.__config.BOT_API_KEY,request = request, mqueue = q)
         self.__updater = Updater(bot = self.__queue_bot)
         self.__dp = self.__updater.dispatcher
+        self.__jq = self.__updater.job_queue
         self.__reg()
         self.__update()
         self.__forget()
         self.__timetable()
         self.__cbq()
         self.__mega()
+        self.__alert()
+        self.__nightly()
+        self.__toggles()
         self.start_webhooks() # must always come last.
         print("Bot online")
+        print(f"Current Time: {datetime.now()}")
     
     def add_hello(self):
         """
@@ -143,7 +151,7 @@ class Hera():
                             RegexHandler('(?iii)Yes', Update.enter_key),
                             RegexHandler('(?iii)No', Update.cancel)
                         ],
-			    DECRYPT: [
+                DECRYPT: [
                             MessageHandler(Filters.text,Update.decrypt)
                         ]
             },
@@ -177,6 +185,24 @@ class Hera():
         
         megaphone_handler = CommandHandler('mega',mega.megaphone)
         self.__dp.add_handler(megaphone_handler,3)
+
+    def __alert(self):
+        # have to set -8 hours UTC time.
+        alert_time = datetime.strptime('00:30','%H:%M').time()
+        #self.__jq.run_once(rmd.morning_alert,0)
+        job_minute = self.__jq.run_repeating(rmd.morning_alert,timedelta(hours=24),alert_time)
+
+    def __nightly(self):
+        # have to set -8 hours UTC time.
+        alert_time = datetime.strptime('14:00','%H:%M').time()
+        #self.__jq.run_once(rmd.nightly_alert,0)
+        job_minute = self.__jq.run_repeating(rmd.nightly_alert,timedelta(hours=24),alert_time)
+
+    def __toggles(self):
+        toggle_morning = CommandHandler('alert',rmd.toggle_morning)
+        self.__dp.add_handler(toggle_morning,2)
+        toggle_night = CommandHandler('nightly',rmd.toggle_night)
+        self.__dp.add_handler(toggle_night,2)
 
     def __flush_redis_cache(self):
         r = self.__config.REDIS_INSTANCE
