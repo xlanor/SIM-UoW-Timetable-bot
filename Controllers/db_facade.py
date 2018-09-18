@@ -104,3 +104,6 @@ def get_all_telegram_ids():
     document =  db.get_telegram_users()
     int_doc = [int(x) for x in document]
     return int_doc
+
+def get_all_users():
+    return db.find_all_users()

@@ -200,3 +200,7 @@ def get_telegram_users():
                     }
                 }
             )
+
+def find_all_users():
+    mdb = MongoDB().db
+    return mdb.tgbot_records.find()

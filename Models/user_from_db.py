@@ -21,6 +21,7 @@
 ##
 # native/3rd party lib imports
 from typing import Dict
+from datetime import date
 
 #local imports
 from Models.classes import IndividualClassStructure
@@ -50,3 +51,10 @@ class DbUser():
             ic = IndividualClassStructure("")
             ic.set_from_dict(classes)
             self.class_list.append(ic)
+    
+    def get_list_of_class_by_date(self,date_object):
+        return_list = []
+        for class_obj in self.class_list:
+            if class_obj.date == date_object:
+                return_list.append(class_obj)
+        return return_list
