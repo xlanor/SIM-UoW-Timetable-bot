@@ -44,7 +44,7 @@ class SIMConnect():
     def __loadDriver(self):
         capabilities = webdriver.DesiredCapabilities().CHROME.copy()
         capabilities['acceptInsecureCerts'] = True
-        self.driver = webdriver.Chrome(chrome_options=self.__chrome_options(),service_args=["--verbose", "--log-path=/projects/timetable_v2/src/chromedriver.log"],desired_capabilities=capabilities, executable_path="/projects/timetable_v2/src/chromedriver")  # noqa
+        self.driver = webdriver.Chrome(chrome_options=self.__chrome_options(),service_args=["--verbose", "--log-path=./chromedriver.log"],desired_capabilities=capabilities, executable_path="./chromedriver")  # noqa
 
     def __chrome_options(self):
         # instantiate a chrome options object so you can set the size and headless preference
