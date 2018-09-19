@@ -1,4 +1,6 @@
-# Hera  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2)
+## This is SIM-UoW Timetable Bot 2.0.0 beta 1: Hera 
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2)
 
 A telegram bot for ripping timetables from SIM Connect built in python3
 
@@ -6,15 +8,43 @@ This bot is **not** an official bot sanctioned by either the University of Wollo
 
 Please read the [Disclaimer](DISCLAIMER.md) before proceeding.
 
+<hr>
 
-## Why?
+### Why?
 
 ![Why?](https://i.imgur.com/7b3GTNU.png "Why?")
 
 And also to familarize myself with mongoDB
 
+<hr>
 
-## Encryption
+### Commands
+
+* **/register**
+>  Registers your details with the bot.
+
+* **/timetable**
+
+>  Retrieves your timetable from the stored database.
+
+* **/forget**
+
+>  Removes your details from the stored database.
+
+* **/update**
+
+>  Re-scrapes the timetable from SIMConnect
+
+* **/alert**
+
+>  Toggle for the morning alert.
+
+* **/nightly**
+
+>  Toggle for the nightly alert
+<hr>
+
+### Encryption
 
 **I strongly encourage users to run their own instance of this bot instead of relying on the one I'm hosting.**
 
@@ -34,8 +64,9 @@ As such, I strongly reccomend that you do not reuse your SIM Connect password an
 
 I am not responsible for any damages incurred from the usage of this bot.
 
+<hr>
 
-## Licensing
+### Licensing
 
 The bot is licensed under the [GNU Affero General Public License v3](LICENSE).
 
@@ -49,47 +80,46 @@ If you wish to host a current instance of the bot but are not willing to modify 
 
 The stipulated conditions above are due to the sensitive nature of the data that the bot is handling. Users of any instance must at all times be aware of the sensitive nature of the data and the measures that are being taken to protect against said data falling into the hands of any unknown persons. 
 
+<hr>
 
-## F.A.Q
+### F.A.Q
 
-**What is a "Key?"**
+* **What is a "Key?"**
 
-Like the name suggests, a key is used to unlock a lock. In this case, a key is used to unlock the encrypted password. It can be any alphanumeric string you want.
+>  Like the name suggests, a key is used to unlock a lock. In this case, a key is used to unlock the encrypted password. It can be any alphanumeric string you want.
 
-**But you're stealing my passwords!**
+* **But you're stealing my passwords!**
 
-Read above section regarding encryption and **running your own local instance**
+>  Read above section regarding encryption and **running your own local instance**
 
-**When do I need to sync? Do I sync it weekly?**
+* **When do I need to sync? Do I sync it weekly?**
 
-You only need to sync your timetable when theres an update to your timetable. ie: New semester, change of venue.
+>  You only need to sync your timetable when theres an update to your timetable. ie: New semester, change of venue.
 Other than that, the bot should detect the current day of the week and pull the entire week's timetable automatically with /timetable.
+>
+>  The flow of this program is as such:
+>   `Register -> Update -> Rips timetable to Database -> Pull out with /timetable. `
 
-The flow of this program is as such.
+* **Your bot sucks! It didnt tell me that I had a class and I missed it!**
 
-Register -> Update -> Rips timetable to Database -> Pull out with /timetable.
+>  Read the disclaimer, and notify me so that I can fix the bug.
 
-**Your bot sucks! It didnt tell me that I had a class and I missed it!**
+* **I read the output wrongly and missed my class!**
 
-Read the disclaimer, and notify me so that I can fix the bug.
+> **User Problem.**
 
-**I read the output wrongly and missed my class!**
+* **The bot is not responding! Why?!**
 
-User Problem.
-
-**The bot is not responding! Why?!**
-
-2.0.0+ takes advantages of the new MessageQueue class in PTB to enqueue messages to avoid breaching telegram's API limits.
-
-Unfortunately, telegram API limits are enforced on a per bot, not a per user basis. Thus, this bot can only send/edit 30 messages a minute
-
-There are 2 solutions to this, only one of which is feasible
-
-* User can self host the bot
-* Donate to a bitcoin fund for me to raise enough money to buy over telegram and increase the API limits.
+> 2.0.0+ takes advantages of the new MessageQueue class in PTB to enqueue messages to avoid breaching telegram's API limits.
+> 
+>Unfortunately, telegram API limits are enforced on a per bot, not a per user basis. Thus, this bot can only send/edit 30 messages a minute
+>
+> There are 2 solutions to this, only one of which is feasible
+> * User can self host the bot
+> * Donate to a bitcoin fund for me to raise enough money to buy over telegram and increase the API limits.
 
 
-## Current Rewrite Progress
+### Current Rewrite Progress
 
 * :no_entry_sign: = Not done
 * :heavy_check_mark: = Done
@@ -122,14 +152,20 @@ There are 2 solutions to this, only one of which is feasible
 | Integration of MQ feature      | :heavy_check_mark: | ( Initial testing )
 | Redesign of configuration file | :heavy_check_mark: |
 
-## Special thanks
+### Special thanks
 Authors of all libraries / modules used in the development of this bot, in no particular order:
 * [Python Telegram Bot](https://github.com/python-telegram-bot/python-telegram-bot) - the most readable framework for the telegram bot API .
 * [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - best HTML parser
 * [Selenium](https://pypi.org/project/selenium/) - making headless navigation easy
 * [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/) - Chromedriver and chromium authors.
+* [Celery](https://github.com/celery/celery) - Task delegation. This is utilized during the timetable ripping
+* [RabbitMQ](https://github.com/rabbitmq/rabbitmq-server) - RabbitMQ is used as a message broker.
+* [Redis](https://github.com/antirez/redis) - Experimenting with Redis as a in-memory data store for communication between celery and the bot.
+* [Arrow](https://github.com/crsmithdev/arrow) - Arrow is ocassionally used in place of the date-time module. I will probably replace all of them soon, I'm just lazy.
+* [jsonpickle](https://github.com/jsonpickle/jsonpickle) - jsonpickle is used to seralize the bot object that is then passed to celery, enabling communications to be maintained.
+* [PyMongo](https://github.com/mongodb/mongo-python-driver) - PyMongo is objectively the best raw mongo connector, coming with a default connection pool enabled by default.
+* [MongoDB](https://www.mongodb.com/) - mongoDB is used as the main database for this system, because I wanted to experiment with noSQL systems.
+
+Last but not least,
 * [SIMConnect](https://simconnect.simge.edu.sg/) - For not providing native API methods
-* [Celery](https://github.com/celery/celery)
-* [RabbitMQ](https://github.com/rabbitmq/rabbitmq-server)
-* [Redis](https://github.com/antirez/redis)
 * Anybody else I missed
