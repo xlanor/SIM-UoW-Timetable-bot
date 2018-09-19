@@ -1,19 +1,46 @@
-Current Version: 
-**2.0.0 beta 1 - Hera**
-~~1.4.0 - Styx~~
-~~1.3.0 - Eris~~
-~~1.2.0 - Rhea~~
-~~1.1.0 - Prometheus~~
-~~1.0.0 - Cronus~~
+## Current Version: 2.0.0 beta 1 - Hera
 
+>  *Gone but not forgotten:*
+>  
+>  ~~*1.4.0* - Styx~~
+>
+>  ~~*1.3.0* - Eris~~
+>  
+>  ~~*1.2.0* - Rhea~~
+>  
+>  ~~*1.1.0* - Prometheus~~
+>  
+>  ~~*1.0.0* - Cronus~~
 
+<hr>
+
+### Bump in major from 1.x.x to 2.x.x
+
+* The entire backend has been rewritten for this major bump.
+* There are some significant changes to the back-end and logical processes. End users may only notice a front-end change.
+  * Noticeably, where the scraping used to be handled by the bot directly, this resulted in issues when high sign-up volumes were encountered. As a result, **celery** was used to handle the jobs instead. This ensures that the bot will not freeze during the scraping progress.
+  * As such, it can be right to say that this bot runs with two seperate applications entirely, one application handles the bot while the other handles the job queue delegation.
+  * The entire ripper has been written to reduce code. In total, I estimate that about 50% of code was reduced.
+  * The entire configuration now acts as a singleton class because it is kind of redundant to keep instantiating a new instance everytime I want to use a variable.
+  * Instead of opening and closing connections, PyMongo's connection pool is utilised instead to recycle connections.
+  * The entire server has been moved to a Netherlands instance. This means that the response from users to the bot API takes significantly lesser latency (200ms down to 1ms), but the downside is that the scraping takes a longer time.
+  * The entire codebase was repartitioned to make it easier to maintain in future.
+  * Some fields in the database were renamed to make more sense.
+  * Some additional fields were computed at scraping time instead of at retrival time.
+  * The majority of the other changes are with the system design and should not ultimately affect the end users.
+
+<hr>
 
 ### 2018-09-18 - 2018-09-19
 * Various bug fixes and exception handlers added.
 * Began beta testing
 
+<hr>
+
 ### 2018-09-17
 * Added /timetable and the relevant callbacks for scrolling.
+
+<hr>
 
 ### 2018-09-13 - 2018-09-16
 * Several changes were made to mongodb structure.
@@ -23,6 +50,8 @@ Current Version:
 * Added redis to prepare for potential future caching. We will see how it goes.
 * For now, we use redis mainly to check if a user already has a queue job running
 * Will begin work on a) concurrency and b) displaying the timetable.
+
+<hr>
 
 ### 2018-09-10
 * Begin writing the telegram bot skeleton.
@@ -45,10 +74,14 @@ rtt min/avg/max/mdev = 0.978/1.096/1.153/0.062 ms
 ```
 * Will begin integrating mongoDB and rewriting some other methods next week
 
+<hr>
+
 ### 2018-07-18
 * Rewrote entire class model to allow it to be reusable from other class and individual class.
 * Rewrote unit tests to handle for the new ripper
 * Deleted old and redundant classes.
+
+<hr>
 
 ### 2018-07-17
 * Began refactoring TimeTable ripper code to enable class compatibility with Other Timetable
@@ -61,18 +94,26 @@ rtt min/avg/max/mdev = 0.978/1.096/1.153/0.062 ms
 * Adding type-hinting for funcs.
 * Adding docstrings
 
+<hr>
+
 ### 2018-07-13
 * Wrote some code for Other Timetable (ie: IS)
+
+<hr>
 
 ### 2018-07-12
 * Started refactoring ripper
 * Added some unit tests for ripper.
+
+<hr>
 
 ### 2018-07-11
 * Deprecated PhantomJS in favour of headless chrome.
 * Theoretical code for attendance module. Untested.
 * Added unit tests for class structure.
 * Added base travis integration.
+
+<hr>
 
 ### 2018-06-12
 * Began refactoring the most basic portion - the ripper script.
