@@ -1,20 +1,95 @@
-## IN PROGRESS  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2)
+# Hera  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2)
+
+A telegram bot for ripping timetables from SIM Connect built in python3
+
+This bot is **not** an official bot sanctioned by either the University of Wollongong or the Singapore Institute of Management.
+
+Please read the [Disclaimer](DISCLAIMER.md) before proceeding.
 
 
-Refactored version of the current SIM Timetable bot.
+## Why?
 
-Development is still in progress. v1 is still up.
+![Why?](https://i.imgur.com/7b3GTNU.png "Why?")
 
-v2.0.0
-Author - xlanor
+And also to familarize myself with mongoDB
 
-# Disclaimer
-* This bot is an unofficial bot which is not being developed with any support from the SIMConnect team.
-* I have attempted to go through official channels to get some form of support to no avail.
-* As such, please understand that it may not work smoothly.
-* For current status of the rewrite, please look at the [changelog](https://github.com/xlanor/SIM-UoW-Timetable-bot-v2/blob/master/CHANGELOG.md)
 
-# Current Rewrite Progress
+## Encryption
+
+**I strongly encourage users to run their own instance of this bot instead of relying on the one I'm hosting.**
+
+However, if you're using the instance that I am hosting, please read the following sentence
+
+Although you are asked to enter your login credentials, At no point of time whatsoever does the bot store your password **in plaintext** to the database.
+
+The bot encrypts your password with a key of your choice with AES-256 and requires the key to decrypt the password each time it syncs. The module can be found under modules/encryption.py
+
+The stored password is the **encrypted text**. The key is kept by **you**. This is why you will need to enter the key each time to decrypt it on sync.
+
+You are free to audit the source code.
+
+You should take note that this is not the most secure method, but is the most convenient method for users.
+
+As such, I strongly reccomend that you do not reuse your SIM Connect password anywhere else should you use this instance.
+
+I am not responsible for any damages incurred from the usage of this bot.
+
+
+## Licensing
+
+The bot is licensed under the [GNU Affero General Public License v3](LICENSE).
+
+All derivatives works not intended for personal use must be released into the public domain for the sake of transparency
+
+Derivatives works which are intended for personal use, but if hosted on a live server, may be used by others, even against the intentions of the owner of that particular instance, are not considered as "intended for personal use" and **must** be released into the public domain
+
+If you wish to host a current instance of the bot for personal usage, you **must** modify the source code to prevent usage by any persons other than yourself.
+
+If you wish to host a current instance of the bot but are not willing to modify the source code, you must run the current version of the source code at all times, and explicitly link to this source code.
+
+The stipulated conditions above are due to the sensitive nature of the data that the bot is handling. Users of any instance must at all times be aware of the sensitive nature of the data and the measures that are being taken to protect against said data falling into the hands of any unknown persons. 
+
+
+## F.A.Q
+
+**What is a "Key?"**
+
+Like the name suggests, a key is used to unlock a lock. In this case, a key is used to unlock the encrypted password. It can be any alphanumeric string you want.
+
+**But you're stealing my passwords!**
+
+Read above section regarding encryption and **running your own local instance**
+
+**When do I need to sync? Do I sync it weekly?**
+
+You only need to sync your timetable when theres an update to your timetable. ie: New semester, change of venue.
+Other than that, the bot should detect the current day of the week and pull the entire week's timetable automatically with /timetable.
+
+The flow of this program is as such.
+
+Register -> Update -> Rips timetable to Database -> Pull out with /timetable.
+
+**Your bot sucks! It didnt tell me that I had a class and I missed it!**
+
+Read the disclaimer, and notify me so that I can fix the bug.
+
+**I read the output wrongly and missed my class!**
+
+User Problem.
+
+**The bot is not responding! Why?!**
+
+2.0.0+ takes advantages of the new MessageQueue class in PTB to enqueue messages to avoid breaching telegram's API limits.
+
+Unfortunately, telegram API limits are enforced on a per bot, not a per user basis. Thus, this bot can only send/edit 30 messages a minute
+
+There are 2 solutions to this, only one of which is feasible
+
+* User can self host the bot
+* Donate to a bitcoin fund for me to raise enough money to buy over telegram and increase the API limits.
+
+
+## Current Rewrite Progress
 
 * :no_entry_sign: = Not done
 * :heavy_check_mark: = Done
@@ -32,8 +107,8 @@ Author - xlanor
 | Chatbot component (Sign up)    | :heavy_check_mark: |
 | Timetable Initial call         | :heavy_check_mark: |
 | Timetable callback navigation  | :heavy_check_mark: |
-| Alert system                   | :no_entry_sign:    |
-| Mega system                    | :no_entry_sign:    |
+| Alert system                   | :heavy_check_mark: |
+| Mega system                    | :heavy_check_mark: |
 
 
 | Dev Component                  | status             |
@@ -47,7 +122,7 @@ Author - xlanor
 | Integration of MQ feature      | :heavy_check_mark: | ( Initial testing )
 | Redesign of configuration file | :heavy_check_mark: |
 
-# Special thanks
+## Special thanks
 Authors of all libraries / modules used in the development of this bot, in no particular order:
 * [Python Telegram Bot](https://github.com/python-telegram-bot/python-telegram-bot) - the most readable framework for the telegram bot API .
 * [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - best HTML parser

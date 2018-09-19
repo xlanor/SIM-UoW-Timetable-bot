@@ -1,6 +1,16 @@
-# Changelog will begin from version 2.
+Current Version: 
+**2.0.0 beta 1 - Hera**
+~~1.4.0 - Styx~~
+~~1.3.0 - Eris~~
+~~1.2.0 - Rhea~~
+~~1.1.0 - Prometheus~~
+~~1.0.0 - Cronus~~
 
-## This will currently keep a log of the refactoring as it goes along.
+
+
+### 2018-09-18 - 2018-09-19
+* Various bug fixes and exception handlers added.
+* Began beta testing
 
 ### 2018-09-17
 * Added /timetable and the relevant callbacks for scrolling.
