@@ -31,6 +31,8 @@ class ReminderMessage():
         ):
         self.__name = name
         self.__list_of_classes = list_of_classes
+
+        self.__list_of_classes.sort(key = lambda x: x.start_time)
         self.__reminder_type = type_of_reminder
         self.__date = date_to_show
     

@@ -86,6 +86,7 @@ class Hera():
         self.__alert()
         self.__nightly()
         self.__toggles()
+        self.__test_alert()
         self.start_webhooks() # must always come last.
         print("Bot online")
         print(f"Current Time: {datetime.now()}")
@@ -187,7 +188,7 @@ class Hera():
 
     def __alert(self):
         # have to set -8 hours UTC time.
-        alert_time = datetime.strptime('00:30','%H:%M').time()
+        alert_time = datetime.strptime('00:00','%H:%M').time()
         #self.__jq.run_once(rmd.morning_alert,0)
         job_minute = self.__jq.run_repeating(rmd.morning_alert,timedelta(hours=24),alert_time)
 
@@ -196,6 +197,10 @@ class Hera():
         alert_time = datetime.strptime('14:00','%H:%M').time()
         #self.__jq.run_once(rmd.nightly_alert,0)
         job_minute = self.__jq.run_repeating(rmd.nightly_alert,timedelta(hours=24),alert_time)
+
+    def __test_alert(self):
+        test_handler = CommandHandler('testrmd',rmd.morning_alert)
+        self.__dp.add_handler(test_handler,3)
 
     def __toggles(self):
         toggle_morning = CommandHandler('alert',rmd.toggle_morning)
