@@ -25,6 +25,7 @@ from typing import Dict
 from typing import List
 import traceback
 import jsonpickle
+import arrow
 
 # Local Imports 
 from Controllers.Ripper.ripper import RipperFactory
@@ -91,8 +92,11 @@ def register_user(user_data:Dict, bot):
                     )
     except Exception as e:
         # to send to github
-        print(traceback.format_exc())
-        print(str(e))
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in celery. User data: {str(user_data)}")
         r.delete(user_id)
         pass
 
@@ -132,8 +136,11 @@ def update_user(
                         parse_mode = 'Markdown'
                     )
     except Exception as e:
-        # to send to github
-        print(str(e))
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in celery. Triggered by: {telegram_id}")
         r.delete(telegram_id)
         pass
 
