@@ -19,29 +19,28 @@
 ##
 #   Configuration class file held in a singleton.
 ##
-
-class Singleton(type):
-    """
-    An metaclass for singleton purpose. Every singleton class should inherit from this class by 'metaclass=Singleton'.
-    """
-    _instances = {}
-
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-        return cls._instances[cls]
+from Models.singleton_sp import Singleton
+from celery import Celery
+import redis
 
 class Configuration(metaclass = Singleton):
     def __init__(self):
         self.BOT_API_KEY = "" # Your api token here
         self.IS_STAGING = True
         self.ERROR_CHANNEL = "" # Your error channel token here
-        self.ADMIN_LIST = ["44855174"]
+        self.ADMIN_LIST = ["YOUR_TELEGRAM_ID"]
         self.STAGING_PORT = 0 # Your port number here
         self.PRODUCTION_PORT = 1 # Your port number here
         self.LOCATION_OF_CERTS = '/some/absolute/pathing/here' # path to certificates for nginx (pem and cert, generated via openssl.)
         self.DOMAIN = "https://your.doma.in" # domain for webhook.
-
+        self.CELERY_INSTANCE = Celery(
+                                        """POPULATE WITH YOUR CELERY INFO"""
+                                        include=['Controllers.celery_queue']
+                                    )
+        self.REDIS_INSTANCE = redis.StrictRedis(
+                                       """POPULATE WITH YOUR REDIS INFORMATION"""
+                                    )
+                                    
     def is_admin(self, id_to_check:str )->bool:
         if id_to_check in self.ADMIN_LIST:
             return True

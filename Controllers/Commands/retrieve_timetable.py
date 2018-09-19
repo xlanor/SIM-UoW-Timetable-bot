@@ -26,18 +26,21 @@ from datetime import time
 import traceback
 from telegram import InlineKeyboardButton
 from telegram import InlineKeyboardMarkup
+import arrow
 
 import Controllers.db_facade as db_interface
 from Models.class_message import MessageTimetable
-def get_timetable(bot,update):
-    try:
-        is_callback = False
-        if not update.message:
-            uid = update.callback_query.from_user.id
-            is_callback = True
-        else:
-            uid = update.message.from_user.id
+from cfg import Configuration
 
+def get_timetable(bot,update):
+    config = Configuration()
+    is_callback = False
+    if not update.message:
+        uid = update.callback_query.from_user.id
+        is_callback = True
+    else:
+        uid = update.message.from_user.id
+    try:
         if db_interface.user_exist(uid):
             # if its not a callback type:
             if not is_callback:
@@ -91,24 +94,13 @@ def get_timetable(bot,update):
             update.message.reply_text(message,parse_mode ='Markdown')
 
     except Exception as e:
-        # to do something
-        print(traceback.format_exc())
-        print(str(e))
-        pass
+        
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in get timetable by {uid}.")
 
-def callback_timetable(bot,update):
-    try:
-        query = update.callback_query
-        current_date = datetime.strptime(query.data[2:],'%b%d%Y')
-        start_date = current_date-timedelta(days=current_date.weekday())
-        end_date = start_date + timedelta(days=6)
-
-
-    except Exception as e:
-        # to do something
-        print(traceback.format_exc())
-        print(str(e))
-        pass
 
 def get_keyboard(tg_id:str,current_date,start_date,end_date):
     keyboard = []

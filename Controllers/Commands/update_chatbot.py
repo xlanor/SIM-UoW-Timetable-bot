@@ -22,6 +22,8 @@
 import traceback
 import jsonpickle
 from telegram.ext import ConversationHandler
+import arrow
+import traceback
 
 
 # Local imports
@@ -59,20 +61,31 @@ def update(bot,update):
         return ENTERKEY
 
     except Exception as e:
-        print(str(e)) #To be changed.
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in get timetable by {uid}.")
         return ConversationHandler.END
 
 def enter_key(bot,update):
+    config = Configuration()
     try:
         message = "Please enter your decryption key\n"
         update.message.reply_text(message,parse_mode='Markdown')
         return DECRYPT
 
     except Exception as e:
-        print(str(e)) #To be changed.
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in enter your decryption key.")
         return ConversationHandler.END
 
 def decrypt(bot,update):
+    config = Configuration()
+    uid = update.message.from_user.id
     try:
         application_key = update.message.text
         application_key = application_key.strip()
@@ -81,7 +94,7 @@ def decrypt(bot,update):
             update.message.reply_text(message,parse_mode='Markdown')
             return ENTERKEY
         else:
-            uid = update.message.from_user.id
+            
             print(uid)
             user_in_db = db_interface.get_user(uid)
             print(user_in_db)
@@ -109,7 +122,11 @@ def decrypt(bot,update):
             return ConversationHandler.END
     except Exception as e:
         update.message.reply_text("Unknown error occured",parse_mode='Markdown')
-        print(str(e)) #To be changed.
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in get timetable by {uid}.")
         return ConversationHandler.END
 
 def cancel(bot,update):

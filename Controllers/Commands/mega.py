@@ -20,6 +20,8 @@
 #   Megaphones!
 ##
 from telegram.error import Unauthorized
+import arrow
+import traceback
 
 # internal Controller imports
 import Controllers.db_facade as db_interface
@@ -29,9 +31,9 @@ from cfg import Configuration
 
 def megaphone(bot,update):
     uid = update.message.from_user.id
+    config = Configuration()
     try:
-        message = update.message.text[6:]
-        config = Configuration()
+        message = update.message.text[6:] 
         if str(uid) in config.ADMIN_LIST:
             list_of_ids = db_interface.get_all_telegram_ids()
             for id in list_of_ids:
@@ -46,6 +48,8 @@ def megaphone(bot,update):
         else:
             update.message.reply_text("You are not an administrator!")
     except Exception as e:
-        print(str(e))
-        # to be changed
-        pass
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in megaphone.")

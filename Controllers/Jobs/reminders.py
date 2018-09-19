@@ -22,6 +22,7 @@
 from datetime import datetime
 from datetime import timedelta
 import traceback
+import arrow
 
 # internal Controller imports
 import Controllers.db_facade as db_interface
@@ -32,6 +33,7 @@ from Models.reminder_message import ReminderMessage
 
 def toggle_morning(bot,update):
     uid = update.message.from_user.id
+    config = Configuration()
     try:
         if db_interface.user_exist(uid):
             if db_interface.toggle_alert(uid,True):
@@ -45,12 +47,17 @@ def toggle_morning(bot,update):
             message = "".join(message_array)
             update.message.reply_text(message,parse_mode='Markdown')
     except Exception as e:
-        print(traceback.format_exc())
-        print(str(e))
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in morning reminder toggle. Triggered by: {uid}")
+        r.delete(telegram_id)
         # To be updated
 
 def toggle_night(bot,update):
     uid = update.message.from_user.id
+    config = Configuration()
     try:
         if db_interface.user_exist(uid):
             if db_interface.toggle_alert(uid,False):
@@ -64,11 +71,15 @@ def toggle_night(bot,update):
             message = "".join(message_array)
             update.message.reply_text(message,parse_mode='Markdown')
     except Exception as e:
-        print(traceback.format_exc())
-        print(str(e))
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in nightly reminder toggle. Triggered by: {uid}")
         # To be updated
 
 def morning_alert(bot,update):
+    config = Configuration()
     try:
         user_list = db_interface.get_all_users_alert("morning")
         for user in user_list:
@@ -78,11 +89,15 @@ def morning_alert(bot,update):
             msg = rm.get_message()
             bot.send_message(chat_id = user.telegram_id,text = msg,parse_mode='Markdown')
     except Exception as e:
-        print(traceback.format_exc())
-        print(str(e))
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in morning reminder.")
         # To be updated
 
 def nightly_alert(bot,update):
+    config = Configuration()
     try:
         user_list = db_interface.get_all_users_alert("nightly")
         for user in user_list:
@@ -91,5 +106,9 @@ def nightly_alert(bot,update):
             msg = rm.get_message()
             bot.send_message(chat_id = user.telegram_id,text = msg,parse_mode='Markdown')
     except Exception as e:
-        print(str(e))
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in nightly reminder.")
         # To be updated
