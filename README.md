@@ -18,6 +18,16 @@ And also to familarize myself with mongoDB
 
 <hr>
 
+### Supported
+* SIM-UoW Timetables.
+* SIM-UB Timetables.
+* IS Timetables **BETA**
+
+>  In theory, all other timetables should work as long as they are on SIMConnect.
+>  Without an account to test, I cannot officially support them.
+
+<hr>
+
 ### Commands
 
 * **/register**
@@ -118,6 +128,7 @@ Other than that, the bot should detect the current day of the week and pull the 
 > * User can self host the bot
 > * Donate to a bitcoin fund for me to raise enough money to buy over telegram and increase the API limits.
 
+<hr>
 
 ### Current Rewrite Progress
 
@@ -151,6 +162,8 @@ Other than that, the bot should detect the current day of the week and pull the 
 | Server Migration               | :heavy_check_mark: |
 | Integration of MQ feature      | :heavy_check_mark: | ( Initial testing )
 | Redesign of configuration file | :heavy_check_mark: |
+
+<hr>
 
 ### Special thanks
 Authors of all libraries / modules used in the development of this bot, in no particular order:
