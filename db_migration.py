@@ -63,7 +63,10 @@ def mutate_record(initial_record:Dict)->Dict:
             new_dict["alert"] = True
         else:
             new_dict["alert"] = initial_record["alert"]
+        new_dict["last_synced_date"] = initial_record["last_synced_date"]
         return new_dict
+
+            
     except KeyError as ke:
         print(ke)
         # skips any of those which does not have non-replaceable fields.
