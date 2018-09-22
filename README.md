@@ -1,5 +1,6 @@
 ## This is SIM-UoW Timetable Bot 2.0.0 beta 1: Hera 
 
+
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2)
 
 A telegram bot for ripping timetables from SIM Connect built in python3
@@ -9,6 +10,7 @@ This bot is **not** an official bot sanctioned by either the University of Wollo
 Please read the [Disclaimer](DISCLAIMER.md) before proceeding.
 
 <hr>
+
 
 ### Why?
 

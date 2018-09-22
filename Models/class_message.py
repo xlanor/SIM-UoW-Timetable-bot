@@ -22,7 +22,7 @@
 from Models.classes import IndividualClassStructure
 import calendar
 class MessageTimetable():
-    GITHUB_URL = "https://github.com/xlanor/SIM-UoW-Timetable-bot-v2/blob/master/DISCLAIMER.md"
+    GITHUB_URL = "https://github.com/xlanor/SIM-UoW-Timetable-bot/blob/master/DISCLAIMER.md"
     def __init__(self,cur_week:str,last_sync_date:str):
         self.__cur_week = cur_week
         self.__last_sync_date = last_sync_date

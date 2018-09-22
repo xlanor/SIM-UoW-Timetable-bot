@@ -38,6 +38,9 @@
 <hr>
 
 ### 2018-09-17
+* Renamed repos. Added counter for megaphones.
+
+### 2018-09-17
 * Added /timetable and the relevant callbacks for scrolling.
 
 <hr>

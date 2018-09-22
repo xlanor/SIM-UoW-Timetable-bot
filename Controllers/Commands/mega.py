@@ -36,6 +36,7 @@ def megaphone(bot,update):
         message = update.message.text[6:] 
         if str(uid) in config.ADMIN_LIST:
             list_of_ids = db_interface.get_all_telegram_ids()
+            count = 0
             for id in list_of_ids:
                 try:
                     bot.send_message(
@@ -43,8 +44,11 @@ def megaphone(bot,update):
                             text = message,
                             parse_mode='HTML'
                     )
+                    count += 1
                 except Unauthorized:
                     pass
+                
+                bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"{count} messages megaphoned")
         else:
             update.message.reply_text("You are not an administrator!")
     except Exception as e:
