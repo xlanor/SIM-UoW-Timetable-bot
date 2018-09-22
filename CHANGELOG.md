@@ -3,6 +3,9 @@
 ## This will currently keep a log of the refactoring as it goes along.
 
 ### 2018-09-17
+* Renamed repos. Added counter for megaphones.
+
+### 2018-09-17
 * Added /timetable and the relevant callbacks for scrolling.
 
 ### 2018-09-13 - 2018-09-16

@@ -45,6 +45,10 @@ class MongoDB(metaclass = Singleton):
         self.__db = self.__mongo.timetable
     
     @property
+    def client(self):
+        return self.__mongo
+    
+    @property
     def db(self):
         return self.__db
 

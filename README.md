@@ -12,7 +12,7 @@ Author - xlanor
 * This bot is an unofficial bot which is not being developed with any support from the SIMConnect team.
 * I have attempted to go through official channels to get some form of support to no avail.
 * As such, please understand that it may not work smoothly.
-* For current status of the rewrite, please look at the [changelog](https://github.com/xlanor/SIM-UoW-Timetable-bot-v2/blob/master/CHANGELOG.md)
+* For current status of the rewrite, please look at the [changelog](https://github.com/xlanor/SIM-UoW-Timetable-bot/blob/master/CHANGELOG.md)
 
 # Current Rewrite Progress
 
