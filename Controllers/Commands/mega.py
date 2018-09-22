@@ -48,7 +48,7 @@ def megaphone(bot,update):
                 except Unauthorized:
                     pass
                 
-                bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"{count} messages megaphoned")
+            bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"{count} messages megaphoned")
         else:
             update.message.reply_text("You are not an administrator!")
     except Exception as e:
