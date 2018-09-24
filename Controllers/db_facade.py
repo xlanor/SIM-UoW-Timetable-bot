@@ -21,11 +21,13 @@
 ##
 from typing import List
 from datetime import datetime
+from datetime import timedelta
 # Internal Model imports.
 import Models.db_models as db
 from Models.user_object import UserObject
 from Models.user_from_db import DbUser
 from Models.classes import IndividualClassStructure
+
 
 def user_exist(telegram_id:str)->bool:
     user_result = db.getUser(telegram_id)
@@ -49,6 +51,8 @@ def update_classes(list_of_new_classes:List,telegram_id:str):
     db.resetClasses(telegram_id)
     for new_class in list_of_new_classes:
         db.add_class(telegram_id,new_class)
+    cur_date = datetime.now()+ timedelta(hours=8)
+    db.update_last_sync(telegram_id,cur_date)
 
 def delete_user(telegram_id:str):
     return db.del_user(telegram_id)

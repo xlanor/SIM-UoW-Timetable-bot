@@ -24,6 +24,7 @@
 from typing import List
 from typing import Dict
 from datetime import datetime
+from datetime import timedelta
 
 class UserObject():
     def __init__(self, 
@@ -53,7 +54,7 @@ class UserObject():
             "name":self.__name,
             "encrypted_pass":self.__encrypted_pass,
             "class_list":class_list,
-            "last_synced_date": datetime.now(),
+            "last_synced_date": datetime.now()+ timedelta(hours=8),
             "alert":True,
             "nightly_alert":True
         }
