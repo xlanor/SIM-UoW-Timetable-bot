@@ -1,7 +1,10 @@
-## This is SIM-UoW Timetable Bot 2.0.0 beta 1: Hera 
+<h1 align="center">SIM-UoW Timetable Bot 2.0.0 beta 1: Hera </h1> 
 
+<div align="center">
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![pythonver](https://img.shields.io/badge/python-3.6%2B-ff69b4.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2)
+
+</div>
 
 A telegram bot for ripping timetables from SIM Connect built in python3
 
