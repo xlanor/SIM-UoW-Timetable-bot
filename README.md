@@ -1,4 +1,4 @@
-<h1 align="center">SIM-UoW Timetable Bot 2.0.0 beta 1: Hera </h1> 
+<h1 align="center">SIM-UoW Timetable Bot 2.0.1 beta 1: Hera </h1> 
 
 <div align="center">
 
