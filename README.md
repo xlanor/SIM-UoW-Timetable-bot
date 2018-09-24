@@ -28,6 +28,15 @@ And also to familarize myself with mongoDB
 >  In theory, all other timetables should work as long as they are on SIMConnect.
 >  Without an account to test, I cannot officially support them.
 
+When I say "Supported", unless explictly stated like IS timetables, this does not work with any timetables other than your regular module timetables.
+
+This **DOES NOT** support the following:
+* Exam Timetables
+* Any classes with TBA time.
+
+**I DO NOT STORE YOUR PASSWORDS IN PLAINTEXT. AS SUCH, I CANNOT MAGICALY UPDATE IT FOR YOU. YOU NEED TO DO A /update EVERYTIME YOUR TIMETABLE CHANGES!!!!!!!!!**
+
+
 <hr>
 
 ### Commands
@@ -54,6 +63,14 @@ And also to familarize myself with mongoDB
 * **/nightly**
 
 >  Toggle for the nightly alert
+<hr>
+
+### Running your own instance
+
+Read the [Wiki](https://github.com/xlanor/SIM-UoW-Timetable-bot/wiki/Running-your-own-instance.) article for more.
+
+You should have some experience in deploying applications in a linux environment before you attempt this.
+
 <hr>
 
 ### Encryption
@@ -96,7 +113,7 @@ The stipulated conditions above are due to the sensitive nature of the data that
 
 ### F.A.Q
 
-* **What is a "Key?"**
+* **What is a "Application Key?"**
 
 >  Like the name suggests, a key is used to unlock a lock. In this case, a key is used to unlock the encrypted password. It can be any alphanumeric string you want.
 
