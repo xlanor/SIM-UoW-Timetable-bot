@@ -1,4 +1,4 @@
-## Current Version: 2.0.0 beta 1 - Hera
+## Current Version: 2.0.1 beta 1 - Hera
 
 >  *Gone but not forgotten:*
 >  
@@ -30,6 +30,22 @@
   * The majority of the other changes are with the system design and should not ultimately affect the end users.
 
 <hr>
+
+## CHANGELOG
+
+### v2.0.1-b1
+* Minor bugfixes.
+* Fixed an issue whereby the last_synced_datetime was both timezone naive and did not update properly.
+
+### v2.0.0-b1 (2018-09-22)
+* Initial open beta.
+* Added a counter to the megaphone so that I can tell how many users received the message.
+
+<hr>
+
+## Rewrite Changelog
+
+This is the old changelog used during the rewrite process.
 
 ### 2018-09-18 - 2018-09-19
 * Various bug fixes and exception handlers added.
