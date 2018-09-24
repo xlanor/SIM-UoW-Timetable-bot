@@ -249,3 +249,17 @@ def update_nightly(telegram_id:str,type_to_change:bool):
                 }
             }
         )
+
+def update_last_sync(telegram_id:str, new_date:date):
+    mdb = MongoDB().db
+    mdb.tgbot_records.update(
+        {
+            "telegram_id":telegram_id
+        },
+        {
+            "$set":
+            {
+                "last_synced_date":new_date
+            }
+        }
+    )
