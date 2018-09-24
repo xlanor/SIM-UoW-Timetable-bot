@@ -10,9 +10,10 @@
 
 <p align="center">
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![pythonver](https://img.shields.io/badge/python-3.6%2B-ff69b4.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot) ![GitHub (pre-)release](https://img.shields.io/github/release/xlanor/SIM-UoW-Timetable-bot/all.svg) 
-![GitHub closed issues](https://img.shields.io/github/issues-closed/xlanor/SIM-UoW-Timetable-bot.svg) 
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/xlanor/SIM-UoW-Timetable-bot.svg) 
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![pythonver](https://img.shields.io/badge/python-3.6%2B-ff69b4.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot) 
+[![GitHub (pre-)release](https://img.shields.io/github/release/xlanor/SIM-UoW-Timetable-bot/all.svg)](https://github.com/xlanor/SIM-UoW-Timetable-bot/releases)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/xlanor/SIM-UoW-Timetable-bot.svg)](https://github.com/xlanor/SIM-UoW-Timetable-bot/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/xlanor/SIM-UoW-Timetable-bot.svg)](https://github.com/xlanor/SIM-UoW-Timetable-bot/pulls?q=is%3Aclosed])
 ![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)
 
 
