@@ -14,7 +14,7 @@
 [![GitHub (pre-)release](https://img.shields.io/github/release/xlanor/SIM-UoW-Timetable-bot/all.svg)](https://github.com/xlanor/SIM-UoW-Timetable-bot/releases)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/xlanor/SIM-UoW-Timetable-bot.svg)](https://github.com/xlanor/SIM-UoW-Timetable-bot/issues?q=is%3Aissue+is%3Aclosed)
 [![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/xlanor/SIM-UoW-Timetable-bot.svg)](https://github.com/xlanor/SIM-UoW-Timetable-bot/pulls?q=is%3Aclosed])
-![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/xlanor/SIM-UoW-Timetable-bot.svg)
 
 
 
