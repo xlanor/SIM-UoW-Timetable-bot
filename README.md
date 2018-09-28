@@ -1,10 +1,24 @@
+<p align="center">
+
+  <img alt="Mockup" title="Mockup" src="https://image.ibb.co/cuaLxU/ipad.png" width="1080"></img>
+ 
+</p>
+
 <h1 align="center">SIM-UoW Timetable Bot 2.0.1 beta 1: Hera </h1> 
 
-<div align="center">
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![pythonver](https://img.shields.io/badge/python-3.6%2B-ff69b4.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot-v2)
+<p align="center">
 
-</div>
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![pythonver](https://img.shields.io/badge/python-3.6%2B-ff69b4.svg)](https://www.python.org/) [![Build Status](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot.svg?branch=master)](https://travis-ci.com/xlanor/SIM-UoW-Timetable-bot) 
+[![GitHub (pre-)release](https://img.shields.io/github/release/xlanor/SIM-UoW-Timetable-bot/all.svg)](https://github.com/xlanor/SIM-UoW-Timetable-bot/releases)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/xlanor/SIM-UoW-Timetable-bot.svg)](https://github.com/xlanor/SIM-UoW-Timetable-bot/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/xlanor/SIM-UoW-Timetable-bot.svg)](https://github.com/xlanor/SIM-UoW-Timetable-bot/pulls?q=is%3Aclosed])
+![GitHub last commit](https://img.shields.io/github/last-commit/xlanor/SIM-UoW-Timetable-bot.svg)
+
+
+
+
+</p>
 
 A telegram bot for ripping timetables from SIM Connect built in python3
 
