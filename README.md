@@ -1,4 +1,3 @@
-
 <p align="center">
 
   <img alt="Mockup" title="Mockup" src="https://image.ibb.co/cuaLxU/ipad.png" width="1080"></img>
