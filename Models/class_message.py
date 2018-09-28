@@ -47,13 +47,12 @@ class MessageTimetable():
             message_array.append(f"󠁳📅 *{calendar.day_name[i]}*\n")
             if len(self.__class_list[i]) == 0:
                 message_array.append("📌-\n")
-                message_array.append("```")
-                message_array.append(" You have no classes for this day!")
+                message_array.append("```\n")
+                message_array.append("You have no classes for this day!")
                 message_array.append("```\n")
             else:
                 for class_object in self.__class_list[i]:
                     message_array.append(class_object.get_formatted_text())
                     message_array.append("\n")
-            message_array.append("```==============```\n")
             message_array.append("\n")
         return "".join(message_array)
