@@ -4,7 +4,7 @@
  
 </p>
 
-<h1 align="center">SIM-UoW Timetable Bot 2.0.1 beta 1: Hera </h1> 
+<h1 align="center">SIM-UoW Timetable Bot 2.0.2 beta 1: Hera </h1> 
 
 
 <p align="center">
