@@ -31,6 +31,7 @@ import calendar
 
 # Local imports
 from .exceptions import *
+from Models.markdown import Markdown
 
 
 class IndividualClassStructure():
@@ -84,16 +85,29 @@ class IndividualClassStructure():
         # DATE TIME OBJECT NOT STRING.
         # markdown syntax.
         class_text = []
-        class_text.append(f"📌 _{self.__name}_\n")
-        class_text.append("```\n")
-        class_text.append(f"Date: {datetime.strftime(self.__date,'%b %d %Y')}\n")
-        class_text.append(f"Type: {self.__class_type}\n")
-        class_text.append(f"Start Time: {datetime.strftime(self.__starttime,'%H:%M')}\n")
-        class_text.append(f"End Time: {datetime.strftime(self.__endtime,'%H:%M')}\n")
-        class_text.append(f"Location: {self.__location}\n")
-        class_text.append(f"```")
+        class_title = self.get_class_title()
+        class_details = self.get_details()
+        class_text.append(f"📌 {class_title}\n")
+        class_text.append(class_details)
         return "".join(class_text)
     
+    @Markdown.wrap_italics
+    @Markdown.strip_markdown
+    def get_class_title(self):
+        return self.__name
+
+    @Markdown.wrap_blockquotes
+    @Markdown.strip_markdown
+    def get_details(self):
+        class_details_text = []
+        class_details_text.append(f"Date: {datetime.strftime(self.__date,'%b %d %Y')}\n")
+        class_details_text.append(f"Type: {self.__class_type}\n")
+        class_details_text.append(f"Start Time: {datetime.strftime(self.__starttime,'%H:%M')}\n")
+        class_details_text.append(f"End Time: {datetime.strftime(self.__endtime,'%H:%M')}\n")
+        class_details_text.append(f"Location: {self.__location}\n")
+        return "".join(class_details_text)
+
+
     """
     A whole bunch of getter methods.
     """
