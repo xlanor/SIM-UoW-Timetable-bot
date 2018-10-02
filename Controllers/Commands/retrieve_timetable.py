@@ -94,7 +94,7 @@ def get_timetable(bot,update):
             update.message.reply_text(message,parse_mode ='Markdown')
 
     except Exception as e:
-        
+        print(str(e))
         local = arrow.utcnow().to('Asia/Singapore')
         local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
         bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
