@@ -33,7 +33,12 @@
 
 ## CHANGELOG
 
-### v2.0.1-b1
+### v2.0.1-b1 (2018-10-02)
+* Update not returning a proper message may leave users confused and assuming that the bot has hanged. This was fixed.
+* Chromedriver depreciated options were updated (selenium parameters)
+* Markdown sanitising was added to sanitise class text in the unlikely event that 
+
+### v2.0.1-b1 (2018-09-25)
 * Minor bugfixes.
 * Fixed an issue whereby the last_synced_datetime was both timezone naive and did not update properly.
 
