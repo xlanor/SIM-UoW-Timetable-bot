@@ -90,7 +90,7 @@ def decrypt(bot,update):
         application_key = update.message.text
         application_key = application_key.strip()
         if not application_key:
-            message = "Enter a proper key!"
+            message = "Enter a proper key!\nDo you want to try again? (Yes/No)"
             update.message.reply_text(message,parse_mode='Markdown')
             return ENTERKEY
         else:
@@ -101,7 +101,8 @@ def decrypt(bot,update):
             username = user_in_db.user_name
             decrypted_password =  Encrypt(user_in_db.encrypted_pass,application_key).decrypt()
             if not decrypted_password:
-                message = "A wrong application key has been entered\n"
+                message = "A wrong application key has been entered\nDo you want to try again? (Yes/No)"
+                update.message.reply_text(message,parse_mode='Markdown')
                 return ENTERKEY
             # passes into celery. No longer my problem.
             config = Configuration()
@@ -117,7 +118,7 @@ def decrypt(bot,update):
             r = config.REDIS_INSTANCE
             r.set(uid,1)
             update_class.delay(uid,username,decrypted_password,jsonpickle.encode(bot))
-            message = "Your details have been enqueued for scraping!\n This process might take up to 5 minutes, please wait for the results."
+            message = "Your details have been enqueued for scraping!\nThis process might take up to 5 minutes, please wait for the results."
             update.message.reply_text(message,parse_mode = 'Markdown')
             return ConversationHandler.END
     except Exception as e:
@@ -133,6 +134,6 @@ def cancel(bot,update):
     """
     Cancels the chatbot process.
     """
-    message = "Cancelling registeration! Goodbye"
+    message = "Cancelling update! Goodbye"
     update.message.reply_text(message, parse_mode='Markdown')
     return ConversationHandler.END
