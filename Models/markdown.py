@@ -25,9 +25,11 @@ class Markdown():
         def func_wrapper(self, *args, **kwargs)->str:
             string_to_format = func(self,*args,**kwargs)
             markdown_array = ['*','_','[',']','(',')','`']
+            
             for x in markdown_array:
                 string_to_format = string_to_format.replace(x, " ")
             return string_to_format
+          
         return func_wrapper
     
     @classmethod
