@@ -53,3 +53,22 @@ class Markdown():
             message_array.append("_")
             return "".join(message_array)
         return func_wrapper    
+
+    @classmethod
+    def wrap_bold(_,func):
+        def func_wrapper(self,*args,**kwargs)->str:
+            sanitized_string = func(self,*args,**kwargs)
+            message_array = []
+            message_array.append("*")
+            message_array.append(sanitized_string)
+            message_array.append("*")
+            return "".join(message_array)
+        return func_wrapper    
+    
+    @staticmethod
+    def get_url(url: str,text_to_show: str)->str:
+        return f"[{text_to_show}]({url})"
+    
+    @staticmethod
+    def get_inline_user(userid: int,name: str)->str:
+        return f"[{name}](tg://user?id={userid})"

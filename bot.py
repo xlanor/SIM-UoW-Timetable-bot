@@ -48,6 +48,7 @@ import Controllers.Commands.chatbot as Registeration
 import Controllers.Commands.update_chatbot as Update
 import Controllers.Commands.forget_chatbot as Forget
 import Controllers.Commands.retrieve_timetable as tt
+import Controllers.Commands.additional_methods as am
 import Controllers.Commands.mega as mega
 import Controllers.Jobs.reminders as rmd
 # Import states from controller
@@ -86,6 +87,7 @@ class Hera():
         self.__alert()
         self.__nightly()
         self.__toggles()
+        self.__help()
         self.__test_alert()
         self.start_webhooks() # must always come last.
         print("Bot online")
@@ -207,6 +209,10 @@ class Hera():
         self.__dp.add_handler(toggle_morning,2)
         toggle_night = CommandHandler('nightly',rmd.toggle_night)
         self.__dp.add_handler(toggle_night,2)
+
+    def __help(self):
+        help_handler = CommandHandler('help', am.help)
+        self.__dp.add_handler(help_handler)
 
     def __flush_redis_cache(self):
         r = self.__config.REDIS_INSTANCE
