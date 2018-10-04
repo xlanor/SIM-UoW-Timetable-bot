@@ -1,4 +1,4 @@
-## Current Version: 2.0.1 beta 1 - Hera
+## Current Version: 2.0.2 beta 1 - Hera
 
 >  *Gone but not forgotten:*
 >  
@@ -33,7 +33,7 @@
 
 ## CHANGELOG
 
-### v2.0.1-b1 (2018-10-02)
+### v2.0.2-b1 (2018-10-02)
 * Update not returning a proper message may leave users confused and assuming that the bot has hanged. This was fixed.
 * Chromedriver depreciated options were updated (selenium parameters)
 * Markdown sanitising was added to sanitise class text in the unlikely event that 
