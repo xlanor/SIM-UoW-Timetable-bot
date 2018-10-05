@@ -77,6 +77,7 @@ def get_timetable(bot,update):
                     text=formatted_message,
                     chat_id=update.callback_query.message.chat_id,
                     message_id=update.callback_query.message.message_id,
+                    disable_web_page_preview=True,
                     reply_markup=reply_markup,
                     parse_mode='Markdown'
                 )
@@ -84,7 +85,8 @@ def get_timetable(bot,update):
                 update.message.reply_text(
                                 formatted_message,
                                 reply_markup=reply_markup,
-                                disable_web_preview=True,
+                                disable_web_page_preview=True,
+                                quote = True,
                                 parse_mode='Markdown'
                             )
         else:
