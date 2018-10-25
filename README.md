@@ -80,6 +80,11 @@ This **DOES NOT** support the following:
 * **/nightly**
 
 >  Toggle for the nightly alert
+
+* **/fuck** *BETA*
+
+>  Returns fucked up timetables (Defined as starting before 9am) for the week
+
 <hr>
 
 ### Running your own instance

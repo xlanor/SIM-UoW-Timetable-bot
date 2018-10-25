@@ -82,6 +82,7 @@ class Hera():
         self.__update()
         self.__forget()
         self.__timetable()
+        self.__fuck()
         self.__cbq()
         self.__mega()
         self.__alert()
@@ -179,6 +180,9 @@ class Hera():
     def __timetable(self):
         timetable_handler = CommandHandler('timetable',tt.get_timetable)
         self.__dp.add_handler(timetable_handler,2)
+    def __fuck(self):
+        fuck_handler = CommandHandler('fuck',tt.fuck)
+        self.__dp.add_handler(fuck_handler,2)
 
     def __cbq(self):
         self.__updater.dispatcher.add_handler(CallbackQueryHandler(tt.get_timetable),3)

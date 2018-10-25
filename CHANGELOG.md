@@ -33,6 +33,9 @@
 
 ## CHANGELOG
 
+### v2.1.0 (2018-10-25)
+* Added /fuck 
+
 ### v2.0.2-b1 (2018-10-02)
 * Update not returning a proper message may leave users confused and assuming that the bot has hanged. This was fixed.
 * Chromedriver depreciated options were updated (selenium parameters)
