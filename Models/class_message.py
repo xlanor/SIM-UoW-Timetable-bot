@@ -20,6 +20,7 @@
 # Class message for retrival of timetable.
 ##
 from Models.classes import IndividualClassStructure
+import datetime
 import calendar
 class MessageTimetable():
     GITHUB_URL = "https://github.com/xlanor/SIM-UoW-Timetable-bot/blob/master/DISCLAIMER.md"
@@ -29,6 +30,7 @@ class MessageTimetable():
         # prepares a nested list of lists.
         self.__class_list = []
         for i in range(7):
+            # adds 7 empty arrays.
             self.__class_list.append([])
 
     
@@ -54,5 +56,31 @@ class MessageTimetable():
                 for class_object in self.__class_list[i]:
                     message_array.append(class_object.get_formatted_text())
                     message_array.append("\n")
+            message_array.append("\n")
+        return "".join(message_array)
+
+    def get_fucked(self):
+        message_array = [f"📈Fucked up classes for the week of *{self.__cur_week}*\n"]
+        message_array.append(f"🔃 This timetable was last synced on *{self.__last_sync_date}*\n")
+        message_array.append(f"By using this bot, you agree to the terms and conditions stated in the [DISCLAIMER.md]({MessageTimetable.GITHUB_URL}) on github\n\n")
+        # By defintion,
+        fucked_time = datetime.datetime.strptime("09:00", '%H:%M').time()
+        for i in range(7):
+            message_array.append(f"󠁳📅 *{calendar.day_name[i]}*\n")
+            fucked_counter = 0
+            
+            for class_object in self.__class_list[i]:
+                start_time = class_object.start_time
+                if start_time.time() < fucked_time:
+                    message_array.append(class_object.get_formatted_text())
+                    message_array.append("\n")
+
+            if fucked_counter == 0:
+                message_array.append("📌-\n")
+                message_array.append("```\n")
+                message_array.append("You have no fucked up classes for this day!")
+                message_array.append("```\n")
+                
+                    
             message_array.append("\n")
         return "".join(message_array)
