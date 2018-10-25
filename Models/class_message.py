@@ -65,22 +65,30 @@ class MessageTimetable():
         message_array.append(f"By using this bot, you agree to the terms and conditions stated in the [DISCLAIMER.md]({MessageTimetable.GITHUB_URL}) on github\n\n")
         # By defintion,
         fucked_time = datetime.datetime.strptime("09:00", '%H:%M').time()
+        total_fucked = 0
         for i in range(7):
-            message_array.append(f"󠁳📅 *{calendar.day_name[i]}*\n")
-            fucked_counter = 0
-            
             for class_object in self.__class_list[i]:
+                fucked_counter = 0
                 start_time = class_object.start_time
-                if start_time.time() < fucked_time:
+                if i < 5:
+                    if start_time.time() < fucked_time:
+                        if fucked_counter == 0:
+                            message_array.append(f"󠁳📅 *{calendar.day_name[i]}*\n")
+                        fucked_counter += 1
+                        total_fucked += 1
+                        message_array.append(class_object.get_formatted_text())
+                        message_array.append("\n")
+                else:
+                    if fucked_counter == 0:
+                        message_array.append(f"󠁳📅 *{calendar.day_name[i]}*\n")
+                    fucked_counter += 1
+                    total_fucked += 1
                     message_array.append(class_object.get_formatted_text())
                     message_array.append("\n")
 
-            if fucked_counter == 0:
-                message_array.append("📌-\n")
-                message_array.append("```\n")
-                message_array.append("You have no fucked up classes for this day!")
-                message_array.append("```\n")
-                
-                    
-            message_array.append("\n")
+                if fucked_counter != 0:
+                    message_array.append('\n')  
+        
+        if total_fucked == 0:
+            message_array.append("You have no fucked up classes this week!")
         return "".join(message_array)
