@@ -208,7 +208,10 @@ class RipTimeTable(SIMConnect):
         @str formatted_result, page source in string form
         @return list_of_results, returns a list of class objects.
         """
+        # this is the list of soup objects from timetable page.
+        soup_array = []
         soup = BeautifulSoup(formatted_result, "html.parser")
+        soup_array.append(soup)
         termdiv = soup.findAll('span',
                                 {
                                     'id': re.compile(r'(TERM_CAR\$)([0-9]{1})')  # noqa
@@ -217,19 +220,27 @@ class RipTimeTable(SIMConnect):
 
         # If there is more than 1 timetable avaliable,
         # we default to the latest term's timetable.
+        print(f"Found {len(termdiv)} timetables" )
         if len(termdiv) != 0:
-            latest_term = len(termdiv)-1
-            soup = self.navigate_to_latest_timetable(self.driver, latest_term)
-
-        # list of all the subjects.
-        subjectdiv = soup.findAll('div',
-                                    {
-                                        'id': re.compile(r'(win2divDERIVED_REGFRM1_DESCR20\$)([0-9]{1})')  # noqa
-                                    }
-                                )
-
+            #latest_term = len(termdiv)-1
+            #soup = self.navigate_to_latest_timetable(self.driver, latest_term)
+            for index,term in enumerate(termdiv):
+                # renavigate back to selection
+                print (f"Navigating {index}")
+                self.driver.get(RipTimeTable.static_timetable_page)
+                clock.sleep(5)
+                soup_array.append(self.navigate_to_latest_timetable(self.driver, index))
+        
         list_of_results = []
-        self.process_subject_divs(subjectdiv,list_of_results)
+
+        for retrieved_timetable_page in soup_array:
+            # list of all the subjects.
+            subjectdiv = retrieved_timetable_page.findAll('div',
+                                        {
+                                            'id': re.compile(r'(win2divDERIVED_REGFRM1_DESCR20\$)([0-9]{1})')  # noqa
+                                        }
+                                    )
+            self.process_subject_divs(subjectdiv,list_of_results)
 
         
         self.driver.quit()
