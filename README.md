@@ -4,7 +4,7 @@
  
 </p>
 
-<h1 align="center">SIM-UoW Timetable Bot 2.1.0 beta 1: Hera </h1> 
+<h1 align="center">SIM-UoW Timetable Bot 2.2.0 beta 1: Hera </h1> 
 
 
 <p align="center">
@@ -39,8 +39,15 @@ And also to familarize myself with mongoDB
 
 ### Supported
 * SIM-UoW Timetables.
-* SIM-UB Timetables.
+* SIM-UB Timetables. (Buffalo)
 * IS Timetables **BETA**
+
+### Not officially supported but somewhat confirmed working
+* SIM-UOL Timetables.
+* SIM-UOB Timetables (Birmingham)
+
+### Completely not supported
+* SUSS Timetables. This is for SIMConnect only. (Seriously, why do I get enquiries about this??)
 
 >  In theory, all other timetables should work as long as they are on SIMConnect.
 >  Without an account to test, I cannot officially support them.
@@ -51,7 +58,7 @@ This **DOES NOT** support the following:
 * Exam Timetables
 * Any classes with TBA time.
 
-**I DO NOT STORE YOUR PASSWORDS IN PLAINTEXT. AS SUCH, I CANNOT MAGICALY UPDATE IT FOR YOU. YOU NEED TO DO A /update EVERYTIME YOUR TIMETABLE CHANGES!!!!!!!!!**
+**I DO NOT STORE YOUR PASSWORDS IN PLAINTEXT. AS SUCH, I CANNOT MAGICALLY UPDATE IT FOR YOU. YOU NEED TO DO A /update EVERYTIME YOUR TIMETABLE CHANGES!!!!!!!!!**
 
 
 <hr>
@@ -63,7 +70,7 @@ This **DOES NOT** support the following:
 
 * **/timetable**
 
->  Retrieves your timetable from the stored database.
+>  Retrieves your timetable from the stored database. Scrollable version
 
 * **/forget**
 
@@ -87,7 +94,7 @@ This **DOES NOT** support the following:
 
 * **/today** *BETA*
 
->  Returns today's timetable. 
+>  Returns today's timetable from the ripped database. Single day version.
 
 <hr>
 
