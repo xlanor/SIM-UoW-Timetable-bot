@@ -4,7 +4,7 @@
  
 </p>
 
-<h1 align="center">SIM-UoW Timetable Bot 2.0.2 beta 1: Hera </h1> 
+<h1 align="center">SIM-UoW Timetable Bot 2.1.0 beta 1: Hera </h1> 
 
 
 <p align="center">
@@ -84,6 +84,10 @@ This **DOES NOT** support the following:
 * **/fuck** *BETA*
 
 >  Returns fucked up timetables (Defined as starting before 9am) for the week
+
+* **/today** *BETA*
+
+>  Returns today's timetable. 
 
 <hr>
 

@@ -22,6 +22,8 @@
 from Models.classes import IndividualClassStructure
 import datetime
 import calendar
+import arrow
+
 class MessageTimetable():
     GITHUB_URL = "https://github.com/xlanor/SIM-UoW-Timetable-bot/blob/master/DISCLAIMER.md"
     def __init__(self,cur_week:str,last_sync_date:str):
@@ -59,6 +61,27 @@ class MessageTimetable():
             message_array.append("\n")
         return "".join(message_array)
 
+    def get_today(self):
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_day = local.format('dddd')
+        local_date = local.format('DD/MM/YYYY')
+        message_array = [f"📈Timetable for {local_day}, *{local_date}*\n"]
+        message_array.append(f"🔃 This timetable was last synced on *{self.__last_sync_date}*\n")
+        message_array.append(f"By using this bot, you agree to the terms and conditions stated in the [DISCLAIMER.md]({MessageTimetable.GITHUB_URL}) on github\n\n")
+        # the class list should only have 1 day here.
+        numeric_day_to_get = datetime.datetime.today().weekday()
+        message_array.append(f"󠁳📅 *{local_day}*\n")
+        if len(self.__class_list[numeric_day_to_get]) == 0:
+                message_array.append("📌-\n")
+                message_array.append("```\n")
+                message_array.append("You have no classes for this day!")
+                message_array.append("```\n")
+        else:
+            for class_object in self.__class_list[numeric_day_to_get]:
+                message_array.append(class_object.get_formatted_text())
+                message_array.append("\n")
+        message_array.append("\n")
+        return "".join(message_array)
     def get_fucked(self):
         message_array = [f"📈Fucked up classes for the week of *{self.__cur_week}*\n"]
         message_array.append(f"🔃 This timetable was last synced on *{self.__last_sync_date}*\n")
