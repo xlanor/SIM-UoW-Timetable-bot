@@ -23,6 +23,7 @@ from datetime import datetime
 from datetime import timedelta
 from datetime import date
 from datetime import time
+import pytz
 import traceback
 from telegram import InlineKeyboardButton
 from telegram import InlineKeyboardMarkup
@@ -94,6 +95,7 @@ def get_timetable(bot,update):
             message_array.append("Kindly register using /register before attempting to retrieve a timetable.")
             message = "".join(message_array)
             update.message.reply_text(message,parse_mode ='Markdown')
+            
 
     except Exception as e:
         print(str(e))
@@ -103,6 +105,46 @@ def get_timetable(bot,update):
         bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
         bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in get timetable by {uid}.")
 
+def get_today(bot,update):
+    uid = update.message.from_user.id
+    config = Configuration()
+
+    try:
+        if db_interface.user_exist(uid):
+            current_date = datetime.now(pytz.timezone('Asia/Singapore')).date()
+            # sets time to midnight.
+            current_date = datetime.combine(current_date,time())
+            # gets a list of IndividualClassStructure objects.
+            classes_list = db_interface.get_current_class(uid,current_date,current_date)
+            # sorts by start time
+            classes_list.sort(key = lambda x: x.start_time)
+            lsd = db_interface.get_last_sync_date(uid)
+
+            mt = MessageTimetable(None,lsd)
+            for c in classes_list:
+                mt.add_class_list(c.class_numeric_day,c)
+            formatted_message = mt.get_today()
+
+            update.message.reply_text(
+                            formatted_message,
+                            disable_web_page_preview=True,
+                            quote = True,
+                            parse_mode='Markdown'
+                        )
+
+        else:
+            message_array = [f"Unable to find telegram ID {uid} in our database\n"]
+            message_array.append("Kindly register using /register before attempting to retrieve a timetable.")
+            message = "".join(message_array)
+            update.message.reply_text(message,parse_mode ='Markdown')
+
+    except Exception as e:
+        print(str(e))
+        local = arrow.utcnow().to('Asia/Singapore')
+        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
+        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
+        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in get today timetable by {uid}.")
 
 def get_keyboard(tg_id:str,current_date,start_date,end_date):
     keyboard = []

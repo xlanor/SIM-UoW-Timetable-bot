@@ -89,6 +89,7 @@ class Hera():
         self.__nightly()
         self.__toggles()
         self.__help()
+        self.__today()
         self.__test_alert()
         self.start_webhooks() # must always come last.
         print("Bot online")
@@ -180,6 +181,11 @@ class Hera():
     def __timetable(self):
         timetable_handler = CommandHandler('timetable',tt.get_timetable)
         self.__dp.add_handler(timetable_handler,2)
+
+    def __today(self):
+        today_handler = CommandHandler('today',tt.get_today)
+        self.__dp.add_handler(today_handler,2)
+
     def __fuck(self):
         fuck_handler = CommandHandler('fuck',tt.fuck)
         self.__dp.add_handler(fuck_handler,2)
