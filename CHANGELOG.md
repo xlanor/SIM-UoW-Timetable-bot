@@ -33,6 +33,10 @@
 
 ## CHANGELOG
 
+### v2.2.0 (2018-11-03)
+* Fixes UoB timetables
+* Added /today
+
 ### v2.1.0 (2018-10-25)
 * Added /fuck 
 
