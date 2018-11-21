@@ -27,7 +27,7 @@ jsonpickle = { version = "~0.9.6" }
 pymongo = { version = "~3.7.1" }
 python_telegram_bot = { version = "~11.1.0" }
 celery = { version = "4.1.1" }
-beautifulsoup = { version = "4.6.3" }
+beautifulsoup4 = { version = "4.6.3" }
 typing = { version = "3.6.6" }
 
 [tool.poetry.dev-dependencies]
