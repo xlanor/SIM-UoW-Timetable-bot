@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "SIMConnect Timetable Bot: Hera"
+name = "Hera"
 version = "2.2.0"
 description = "An unoffical telegram bot for SIMConnect timetables."
 
