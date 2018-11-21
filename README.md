@@ -100,6 +100,8 @@ This **DOES NOT** support the following:
 
 ### Running your own instance
 
+Dependency management is now done with [Poetry](https://github.com/sdispater/poetry).
+
 Read the [Wiki](https://github.com/xlanor/SIM-UoW-Timetable-bot/wiki/Running-your-own-instance.) article for more.
 
 You should have some experience in deploying applications in a linux environment before you attempt this.
@@ -230,6 +232,7 @@ Authors of all libraries / modules used in the development of this bot, in no pa
 * [jsonpickle](https://github.com/jsonpickle/jsonpickle) - jsonpickle is used to seralize the bot object that is then passed to celery, enabling communications to be maintained.
 * [PyMongo](https://github.com/mongodb/mongo-python-driver) - PyMongo is objectively the best raw mongo connector, coming with a default connection pool enabled by default.
 * [MongoDB](https://www.mongodb.com/) - mongoDB is used as the main database for this system, because I wanted to experiment with noSQL systems.
+* [Poetry](https://github.com/sdispater/poetry) - Poetry is used to handle package management using a pyproject.toml file.
 
 Last but not least,
 * [SIMConnect](https://simconnect.simge.edu.sg/) - For not providing native API methods

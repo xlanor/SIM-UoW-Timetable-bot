@@ -7,8 +7,9 @@ language: python
 python:
     - 3.6
 before_install:
+    - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
     - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+    - source $HOME/.poetry/env
 script:
-    - python setup.py build
-    - python setup.py install
+    - poetry install
     - pytest -v
