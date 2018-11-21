@@ -5,3 +5,4 @@ cfg.py
 *.png
 **/*.pyc
 **/__pycache__/
+.pytest_cache/
