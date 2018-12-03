@@ -1,5 +1,6 @@
 testing_accounts.json
 ghostdriver.log
+.coverage
 *.log
 cfg.py
 *.png
