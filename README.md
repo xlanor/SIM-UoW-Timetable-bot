@@ -60,6 +60,13 @@ This **DOES NOT** support the following:
 
 **I DO NOT STORE YOUR PASSWORDS IN PLAINTEXT. AS SUCH, I CANNOT MAGICALLY UPDATE IT FOR YOU. YOU NEED TO DO A /update EVERYTIME YOUR TIMETABLE CHANGES!!!!!!!!!**
 
+<hr>
+
+### Contribution
+
+Feel free to open a Pull Request.
+
+**ALL PRs MUST conform to black, all the travis build will fail.**
 
 <hr>
 
