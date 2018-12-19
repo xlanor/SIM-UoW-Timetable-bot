@@ -1,15 +1,37 @@
 dist: trusty
+
 addons:
     chrome: stable
 
 language: python
 
+stages:
+    - linting
+    - test
+
 python:
     - 3.6
+
 before_install:
     - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
     - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
     - source $HOME/.poetry/env
-script:
+
+install:
     - poetry install
+
+script:
     - pytest -v
+    - black --check --verbose .
+
+jobs:
+  include:
+    - python: "3.6"
+
+    - stage: linting
+      python: "3.6"
+      install:
+        - pip install pre-commit
+        - pre-commit install-hooks
+      script:
+        - pre-commit run --all-files

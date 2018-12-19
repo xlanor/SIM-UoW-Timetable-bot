@@ -28,7 +28,8 @@ import arrow
 from cfg import Configuration
 from Models.help_message import HelpMessage
 
-def help(bot,update):
+
+def help(bot, update):
     config = Configuration()
     try:
         cid = update.message.chat_id
@@ -37,15 +38,23 @@ def help(bot,update):
         msg = hm.get_help_message()
         print(f"hm:{msg}")
         bot.send_message(
-                            chat_id=cid,
-                            text=msg,
-                            disable_web_page_preview=True,
-                            reply_to_message_id = message_id,
-                            parse_mode='Markdown')
+            chat_id=cid,
+            text=msg,
+            disable_web_page_preview=True,
+            reply_to_message_id=message_id,
+            parse_mode="Markdown",
+        )
 
     except Exception as e:
-        local = arrow.utcnow().to('Asia/Singapore')
-        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
-        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
-        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
-        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in help.")
+        local = arrow.utcnow().to("Asia/Singapore")
+        local_time = local.format("YYYY-MM-DD HH:mm:ss ZZ")
+        bot.send_message(
+            chat_id=config.ERROR_CHANNEL, text=f"An error occured at {local_time}"
+        )
+        bot.send_message(
+            chat_id=config.ERROR_CHANNEL,
+            text=f"The error was: {traceback.format_exc()}",
+        )
+        bot.send_message(
+            chat_id=config.ERROR_CHANNEL, text=f"This message was triggered in help."
+        )

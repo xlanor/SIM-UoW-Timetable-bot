@@ -29,31 +29,38 @@ import Controllers.db_facade as db_interface
 # internal Model imports
 from cfg import Configuration
 
-def megaphone(bot,update):
+
+def megaphone(bot, update):
     uid = update.message.from_user.id
     config = Configuration()
     try:
-        message = update.message.text[6:] 
+        message = update.message.text[6:]
         if str(uid) in config.ADMIN_LIST:
             list_of_ids = db_interface.get_all_telegram_ids()
             count = 0
             for id in list_of_ids:
                 try:
-                    bot.send_message(
-                            chat_id = id,
-                            text = message,
-                            parse_mode='HTML'
-                    )
+                    bot.send_message(chat_id=id, text=message, parse_mode="HTML")
                     count += 1
                 except Unauthorized:
                     pass
-                
-            bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"{count} messages megaphoned")
+
+            bot.send_message(
+                chat_id=config.ERROR_CHANNEL, text=f"{count} messages megaphoned"
+            )
         else:
             update.message.reply_text("You are not an administrator!")
     except Exception as e:
-        local = arrow.utcnow().to('Asia/Singapore')
-        local_time = local.format('YYYY-MM-DD HH:mm:ss ZZ')
-        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"An error occured at {local_time}")
-        bot.send_message(chat_id = config.ERROR_CHANNEL,text=f"The error was: {traceback.format_exc()}")
-        bot.send_message(chat_id= config.ERROR_CHANNEL,text=f"This message was triggered in megaphone.")
+        local = arrow.utcnow().to("Asia/Singapore")
+        local_time = local.format("YYYY-MM-DD HH:mm:ss ZZ")
+        bot.send_message(
+            chat_id=config.ERROR_CHANNEL, text=f"An error occured at {local_time}"
+        )
+        bot.send_message(
+            chat_id=config.ERROR_CHANNEL,
+            text=f"The error was: {traceback.format_exc()}",
+        )
+        bot.send_message(
+            chat_id=config.ERROR_CHANNEL,
+            text=f"This message was triggered in megaphone.",
+        )

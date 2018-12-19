@@ -30,14 +30,15 @@ import Controllers.db_facade as db_interface
 
 # internal Model imports
 from cfg import Configuration
-#from celery_queue import register_user
+
+# from celery_queue import register_user
 from Models.encryption import Encrypt
 
 # declares state for subsequent import.
-NAME,USERNAME,PASSWORD,APP_KEY = range(4)
+NAME, USERNAME, PASSWORD, APP_KEY = range(4)
 
 
-def start_register(bot,update):
+def start_register(bot, update):
     """
     Kickstarts registeration process. Gets name and 
     subsequently passes it to the next handler in process.
@@ -51,34 +52,46 @@ def start_register(bot,update):
         if not db_interface.user_exist(tg_id):
             r = config.REDIS_INSTANCE
             if not r.get(tg_id):
-                message_array.append("Hi! Let's get started by registering with this bot\n")
-                message_array.append("❇️By using this bot, you hereby declare that you have read the documentation and disclaimer on github.\n")
-                message_array.append("❇️*As such, you release the author from any responsibilities of events incurred by the usage of this bot*\n")
-                message_array.append("❇️At any point of time during this process, you can stop the bot by typing /cancel\n")
+                message_array.append(
+                    "Hi! Let's get started by registering with this bot\n"
+                )
+                message_array.append(
+                    "❇️By using this bot, you hereby declare that you have read the documentation and disclaimer on github.\n"
+                )
+                message_array.append(
+                    "❇️*As such, you release the author from any responsibilities of events incurred by the usage of this bot*\n"
+                )
+                message_array.append(
+                    "❇️At any point of time during this process, you can stop the bot by typing /cancel\n"
+                )
                 message_array.append("Now, can I have your *name*?")
                 message = "".join(message_array)
-                update.message.reply_text(message,parse_mode='Markdown')
+                update.message.reply_text(message, parse_mode="Markdown")
                 # instructs the chatbox to move to the next method.
                 return NAME
             else:
                 message_array.append("You are already enqueued!\n")
-                message_array.append("If you are encountering issues, please pm @fatalityx directly.")
+                message_array.append(
+                    "If you are encountering issues, please pm @fatalityx directly."
+                )
                 message = "".join(message_array)
-                update.message.reply_text(message,parse_mode='Markdown')
+                update.message.reply_text(message, parse_mode="Markdown")
                 return ConversationHandler.END
         else:
             message_array.append("You are already registered!\n")
-            message_array.append("If you have forgotten your application key, please use /forget to clear your information and re-register.")
+            message_array.append(
+                "If you have forgotten your application key, please use /forget to clear your information and re-register."
+            )
             message = "".join(message_array)
-            update.message.reply_text(message,parse_mode='Markdown')
+            update.message.reply_text(message, parse_mode="Markdown")
             return ConversationHandler.END
 
     except Exception as e:
-        print(str(e)) #To be changed.
+        print(str(e))  # To be changed.
         return ConversationHandler.END
 
 
-def name(bot,update,user_data):
+def name(bot, update, user_data):
     """
     Receives name from registeration process. Gets
     username and passes it to the next handler in the process.
@@ -90,13 +103,14 @@ def name(bot,update,user_data):
         message_array = [f"Thank you, {user_input_name}.\n"]
         message_array.append("❇️Now, can I have your *SIMConnect User ID*?")
         message = "".join(message_array)
-        update.message.reply_text(message,parse_mode = 'Markdown')
+        update.message.reply_text(message, parse_mode="Markdown")
         return USERNAME
     except Exception as e:
-        print(str(e)) #to be changed
+        print(str(e))  # to be changed
         return ConversationHandler.END
 
-def username(bot,update,user_data):
+
+def username(bot, update, user_data):
     """
     Gets Password, passes it to next handler in the process.
     """
@@ -105,9 +119,11 @@ def username(bot,update,user_data):
         user_data["username"] = user_input_username
         message_array = ["Successfully received your username\n"]
         message_array.append("❇️Now, I need your *SIMConnect password*.\n")
-        message_array.append("❇️For more information about how your password will be stored, please read the github README.md page.")
+        message_array.append(
+            "❇️For more information about how your password will be stored, please read the github README.md page."
+        )
         message = "".join(message_array)
-        update.message.reply_text(message,parse_mode='Markdown')
+        update.message.reply_text(message, parse_mode="Markdown")
         return PASSWORD
 
     except Exception as e:
@@ -115,7 +131,8 @@ def username(bot,update,user_data):
         print(str(e))
         return ConversationHandler.END
 
-def password(bot,update,user_data):
+
+def password(bot, update, user_data):
     """
     Gets password, passes it to next handler in the process.
     """
@@ -124,17 +141,22 @@ def password(bot,update,user_data):
         user_data["password"] = user_input_password
         message_array = ["Successfully received your password\n"]
         message_array.append("❇️Now, I need you to enter an *Application Key*\n")
-        message_array.append("❇️This key will be case-sensetive and stripped of all spaces\n")
-        message_array.append("❇️This key will be *used to encrypt your password, DO NOT FORGET IT!*\n")
+        message_array.append(
+            "❇️This key will be case-sensetive and stripped of all spaces\n"
+        )
+        message_array.append(
+            "❇️This key will be *used to encrypt your password, DO NOT FORGET IT!*\n"
+        )
         message = "".join(message_array)
-        update.message.reply_text(message,parse_mode='Markdown')
+        update.message.reply_text(message, parse_mode="Markdown")
         return APP_KEY
 
     except Exception as e:
         print(str(e))
         return ConversationHandler.END
 
-def application_key(bot,update,user_data):
+
+def application_key(bot, update, user_data):
     try:
         user_input_application_key = update.message.text
         user_input_application_key = user_input_application_key.strip()
@@ -148,35 +170,43 @@ def application_key(bot,update,user_data):
                             backend='rpc://',
                             include=['Controllers.celery_queue']
                         )"""
-            cel_reg =config.CELERY_INSTANCE.signature('Controllers.celery_queue.register_user')
+            cel_reg = config.CELERY_INSTANCE.signature(
+                "Controllers.celery_queue.register_user"
+            )
             # marks the user as already using the queue in redis.
             r = config.REDIS_INSTANCE
-            r.set(user_data["user_id"],1)
+            r.set(user_data["user_id"], 1)
             # Starts a celery task
-            cel_reg.delay(user_data,jsonpickle.encode(bot))
+            cel_reg.delay(user_data, jsonpickle.encode(bot))
 
             message_array = ["Your details have been enqueued for scraping!\n"]
-            message_array.append(f"You are currently position {len(r.keys())} in the queue.\n")
-            message_array.append("This process might take up to 5 minutes, please wait for the results.")
+            message_array.append(
+                f"You are currently position {len(r.keys())} in the queue.\n"
+            )
+            message_array.append(
+                "This process might take up to 5 minutes, please wait for the results."
+            )
             message = "".join(message_array)
-            update.message.reply_text(message,parse_mode = 'Markdown')
+            update.message.reply_text(message, parse_mode="Markdown")
             return ConversationHandler.END
         else:
             if not user_input_application_key:
                 message = "Please enter an application key"
             else:
                 message = "Please enter an encryption key that is under 17 characters."
-            update.message.reply_text(message,parse_mode='Markdown')
+            update.message.reply_text(message, parse_mode="Markdown")
             return KEY
-    
+
     except Exception as e:
 
         print(str(e))
         return ConversationHandler.END
-def cancel(bot,update):
+
+
+def cancel(bot, update):
     """
     Cancels the chatbot process.
     """
     message = "Cancelling registeration! Goodbye"
-    update.message.reply_text(message, parse_mode='Markdown')
+    update.message.reply_text(message, parse_mode="Markdown")
     return ConversationHandler.END

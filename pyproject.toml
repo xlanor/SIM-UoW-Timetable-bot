@@ -29,7 +29,9 @@ python_telegram_bot = { version = "~11.1.0" }
 celery = { version = "4.1.1" }
 beautifulsoup4 = { version = "4.6.3" }
 typing = { version = "3.6.6" }
+arrow = "^0.12.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.8.0"
 pytest-cov = "^2.4"
+black = "=18.9b0"

@@ -6,13 +6,16 @@ import calendar
 
 mdb = db_model.MongoDB().db
 
-def insert_into_new_db(constructed_record:Dict):
+
+def insert_into_new_db(constructed_record: Dict):
     new_db = mdb.tgbot_records.insert(constructed_record)
 
-def get_old_records()->List:
+
+def get_old_records() -> List:
     return mdb.old_db.find({})
 
-def mutate_record(initial_record:Dict)->Dict:
+
+def mutate_record(initial_record: Dict) -> Dict:
     new_dict = {}
     try:
         new_dict["telegram_id"] = initial_record["telegram_id"]
@@ -42,21 +45,21 @@ def mutate_record(initial_record:Dict)->Dict:
             class_dict["day"] = calendar.day_name[class_dict["numeric_day"]]
             class_dict["class_name"] = class_dict["name"]
             del class_dict["name"]
-        
+
         try:
             initial_record["alert"]
         except KeyError:
             new_dict["alert"] = True
         else:
             new_dict["alert"] = initial_record["alert"]
-        
+
         try:
             initial_record["nightly_alert"]
         except KeyError:
             new_dict["nightly_alert"] = True
         else:
             new_dict["nightly_alert"] = initial_record["nightly_alert"]
-        
+
         try:
             initial_record["alert"]
         except KeyError:
@@ -66,12 +69,13 @@ def mutate_record(initial_record:Dict)->Dict:
         new_dict["last_synced_date"] = initial_record["last_synced_date"]
         return new_dict
 
-            
     except KeyError as ke:
         print(ke)
         # skips any of those which does not have non-replaceable fields.
         # they will not be compatible with the new db structure.
         pass
+
+
 if __name__ == "__main__":
     oldr = get_old_records()
     count = 0
@@ -85,5 +89,5 @@ if __name__ == "__main__":
         if new:
             insert_into_new_db(new)
             new_count += 1
-    print (f"{count} records processed")
-    print (f"{new_count} records processed")
+    print(f"{count} records processed")
+    print(f"{new_count} records processed")

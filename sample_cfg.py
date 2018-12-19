@@ -23,30 +23,30 @@ from Models.singleton_sp import Singleton
 from celery import Celery
 import redis
 
-class Configuration(metaclass = Singleton):
+
+class Configuration(metaclass=Singleton):
     def __init__(self):
-        self.BOT_API_KEY = "" # Your api token here
+        self.BOT_API_KEY = ""  # Your api token here
         self.IS_STAGING = True
-        self.ERROR_CHANNEL = "" # Your error channel token here
+        self.ERROR_CHANNEL = ""  # Your error channel token here
         self.ADMIN_LIST = ["YOUR_TELEGRAM_ID"]
-        self.STAGING_PORT = 0 # Your port number here
-        self.PRODUCTION_PORT = 1 # Your port number here
-        self.LOCATION_OF_CERTS = '/some/absolute/pathing/here' # path to certificates for nginx (pem and cert, generated via openssl.)
-        self.DOMAIN = "https://your.doma.in" # domain for webhook.
+        self.STAGING_PORT = 0  # Your port number here
+        self.PRODUCTION_PORT = 1  # Your port number here
+        self.LOCATION_OF_CERTS = (
+            "/some/absolute/pathing/here"
+        )  # path to certificates for nginx (pem and cert, generated via openssl.)
+        self.DOMAIN = "https://your.doma.in"  # domain for webhook.
         self.MONGOURI = "YOURMONGOURI"
-        self.CELERY_INSTANCE = Celery(
-                                        """POPULATE WITH YOUR CELERY INFO"""
-                                        include=['Controllers.celery_queue']
-                                    )
+        self.CELERY_INSTANCE = Celery(include=["Controllers.celery_queue"])
         self.REDIS_INSTANCE = redis.StrictRedis(
-                                       """POPULATE WITH YOUR REDIS INFORMATION"""
-                                    )
-        self.AUTHOR_TELEGRAM="YOURTELEID"
-        self.AUTHOR_EMAIL="YOUR@EMAIL.ADDRESS"
-        self.AUTHOR_TELEGRAM_ID=1234567 #YOURTGID
-        self.GITHUB_URL="https://github.com/xlanor/SIM-UoW-Timetable-bot"
-                                    
-    def is_admin(self, id_to_check:str )->bool:
+            """POPULATE WITH YOUR REDIS INFORMATION"""
+        )
+        self.AUTHOR_TELEGRAM = "YOURTELEID"
+        self.AUTHOR_EMAIL = "YOUR@EMAIL.ADDRESS"
+        self.AUTHOR_TELEGRAM_ID = 1234567  # YOURTGID
+        self.GITHUB_URL = "https://github.com/xlanor/SIM-UoW-Timetable-bot"
+
+    def is_admin(self, id_to_check: str) -> bool:
         if id_to_check in self.ADMIN_LIST:
             return True
 
@@ -54,4 +54,3 @@ class Configuration(metaclass = Singleton):
         if self.IS_STAGING:
             return self.STAGING_PORT
         return self.PRODUCTION_PORT
-    

@@ -6,3 +6,5 @@
 * Yi Ze See
 * Liew Ray Keeve
 * Vinny Valeria
+* Joey Yee
+* Vannessa

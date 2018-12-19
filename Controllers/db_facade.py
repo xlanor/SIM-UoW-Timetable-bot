@@ -22,6 +22,7 @@
 from typing import List
 from datetime import datetime
 from datetime import timedelta
+
 # Internal Model imports.
 import Models.db_models as db
 from Models.user_object import UserObject
@@ -29,7 +30,7 @@ from Models.user_from_db import DbUser
 from Models.classes import IndividualClassStructure
 
 
-def user_exist(telegram_id:str)->bool:
+def user_exist(telegram_id: str) -> bool:
     user_result = db.getUser(telegram_id)
     if user_result:
         print("found")
@@ -37,27 +38,31 @@ def user_exist(telegram_id:str)->bool:
     return False
 
 
-def insert_new_user(uo:UserObject):
+def insert_new_user(uo: UserObject):
     db.insert_new_user(uo)
 
-def get_user(telegram_id:str)->UserObject:
+
+def get_user(telegram_id: str) -> UserObject:
     telegram_database_user = db.getUser(telegram_id)
-    if not telegram_database_user: 
+    if not telegram_database_user:
         return None
     else:
         return DbUser(telegram_database_user)
 
-def update_classes(list_of_new_classes:List,telegram_id:str):
+
+def update_classes(list_of_new_classes: List, telegram_id: str):
     db.resetClasses(telegram_id)
     for new_class in list_of_new_classes:
-        db.add_class(telegram_id,new_class)
-    cur_date = datetime.now()+ timedelta(hours=8)
-    db.update_last_sync(telegram_id,cur_date)
+        db.add_class(telegram_id, new_class)
+    cur_date = datetime.now() + timedelta(hours=8)
+    db.update_last_sync(telegram_id, cur_date)
 
-def delete_user(telegram_id:str):
+
+def delete_user(telegram_id: str):
     return db.del_user(telegram_id)
 
-def get_current_class(telegram_id:str,start_date,end_date):
+
+def get_current_class(telegram_id: str, start_date, end_date):
     """
     {
         "_id" : null,
@@ -75,7 +80,7 @@ def get_current_class(telegram_id:str,start_date,end_date):
         ]
     }
     """
-    aggregation_result = db.get_classes_as_object(telegram_id,start_date,end_date)
+    aggregation_result = db.get_classes_as_object(telegram_id, start_date, end_date)
     result_list = []
     if aggregation_result:
         for class_list in aggregation_result:
@@ -87,29 +92,32 @@ def get_current_class(telegram_id:str,start_date,end_date):
             except KeyError:
                 print("NO classes, pass")
                 pass
-       
+
     return result_list
 
 
-def get_last_sync_date(telegram_id:str):
+def get_last_sync_date(telegram_id: str):
     user_result = db.getUser(telegram_id)
     lsd = user_result["last_synced_date"]
-    return datetime.strftime(lsd, '%b %d %Y %H:%M')
+    return datetime.strftime(lsd, "%b %d %Y %H:%M")
 
-def check_if_exist(type:str,telegram_id:str,current_date):
+
+def check_if_exist(type: str, telegram_id: str, current_date):
     if type == "previous":
-        result = db.get_earlier_date(telegram_id,current_date)
+        result = db.get_earlier_date(telegram_id, current_date)
     else:
-        result = db.get_later_date(telegram_id,current_date)
-    
+        result = db.get_later_date(telegram_id, current_date)
+
     return list(result)
 
+
 def get_all_telegram_ids():
-    document =  db.get_telegram_users()
+    document = db.get_telegram_users()
     int_doc = [int(x) for x in document]
     return int_doc
 
-def get_all_users_alert(user_type:str)->List:
+
+def get_all_users_alert(user_type: str) -> List:
     users = db.find_all_users_by_alert(user_type)
     user_list = []
     if users:
@@ -117,25 +125,25 @@ def get_all_users_alert(user_type:str)->List:
             user_list.append(DbUser(user))
     return user_list
 
-def toggle_alert(telegram_id:str,type_of_toggle:bool)->bool:
+
+def toggle_alert(telegram_id: str, type_of_toggle: bool) -> bool:
     obj = db.getUser(telegram_id)
     if not obj:
         return None
     else:
-        if type_of_toggle: # morning
+        if type_of_toggle:  # morning
             if obj["alert"]:
                 toggle = False
             else:
                 toggle = True
-            
-            db.update_alert(telegram_id,toggle)
+
+            db.update_alert(telegram_id, toggle)
             return toggle
-        else: # night
+        else:  # night
             if obj["nightly_alert"]:
                 toggle = False
             else:
                 toggle = True
-            
-            db.update_nightly(telegram_id,toggle)
-            return toggle
 
+            db.update_nightly(telegram_id, toggle)
+            return toggle
