@@ -22,7 +22,7 @@ install:
 
 script:
     - pytest -v
-    - black --check --verbose src/
+    - black --check --verbose .
 
 jobs:
   include:
