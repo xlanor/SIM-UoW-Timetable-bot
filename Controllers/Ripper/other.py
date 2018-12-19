@@ -1,4 +1,3 @@
-
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 ##
@@ -28,6 +27,7 @@ from Models.classes import IndividualClassStructure
 from typing import List
 import re
 
+
 class OtherClass(SIMConnect):
 
     static_other_class_page = "https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SM_LIST_OTHER_CLAS.GBL"
@@ -39,7 +39,6 @@ class OtherClass(SIMConnect):
         @str password, the decrypted password of the client
         """
         super(OtherClass, self).__init__(username, password)
-
 
     def get_timetable_page(self) -> str:
         """
@@ -60,7 +59,6 @@ class OtherClass(SIMConnect):
             self.driver.quit()
             raise UnableToLogin("Unable to login using given credentials")
 
-
     def execute(self) -> List:
         """
         An override method for the super class.
@@ -70,22 +68,33 @@ class OtherClass(SIMConnect):
         self.driver.quit()
         return self.parse_timetable_source(formatted_result)
 
-
-    def parse_timetable_source(self,formatted_result: str) -> List:
+    def parse_timetable_source(self, formatted_result: str) -> List:
         """
         Executes regex queries to pull out the relevant data
         @str formatted_result, the page source
         @return list, a list of IndividualClassStructure objects.
         """
-        soup = BeautifulSoup(formatted_result,'html.parser')
-        rows = soup.findAll('tr',{'id' :re.compile(r'(trSM_EVT_PRS_VW\$0_row)(\d{1,2}$)')})
+        soup = BeautifulSoup(formatted_result, "html.parser")
+        rows = soup.findAll(
+            "tr", {"id": re.compile(r"(trSM_EVT_PRS_VW\$0_row)(\d{1,2}$)")}
+        )
         holding_list = []
         for row in rows:
-            class_name_soup = row.find('span',{'id':re.compile(r'(^SM_EVT_PRS_VW_DESCR60\$)(\d{1,2}$)')})
-            class_type_soup = row.find('span',{'id':re.compile(r'(^TYPE\$)(\d{1,2}$)')})
-            class_start_time_soup = row.find('span',{'id':re.compile(r'(^START_TIME\$)(\d{1,2}$)')})
-            class_end_time_soup = row.find('span',{'id':re.compile(r'(^END_TIME\$)(\d{1,2}$)')})
-            class_loc_soup = row.find('span',{'id':re.compile(r'(^LOCATION\$)(\d{1,2}$)')})
+            class_name_soup = row.find(
+                "span", {"id": re.compile(r"(^SM_EVT_PRS_VW_DESCR60\$)(\d{1,2}$)")}
+            )
+            class_type_soup = row.find(
+                "span", {"id": re.compile(r"(^TYPE\$)(\d{1,2}$)")}
+            )
+            class_start_time_soup = row.find(
+                "span", {"id": re.compile(r"(^START_TIME\$)(\d{1,2}$)")}
+            )
+            class_end_time_soup = row.find(
+                "span", {"id": re.compile(r"(^END_TIME\$)(\d{1,2}$)")}
+            )
+            class_loc_soup = row.find(
+                "span", {"id": re.compile(r"(^LOCATION\$)(\d{1,2}$)")}
+            )
             ic = IndividualClassStructure(class_name_soup.text)
             ic.class_type = class_type_soup.text
             ic.date = self.__get_date(class_start_time_soup.text)
@@ -95,14 +104,14 @@ class OtherClass(SIMConnect):
             holding_list.append(ic)
         return holding_list
 
-    def __get_date(self,class_time_soup_text):
+    def __get_date(self, class_time_soup_text):
         return class_time_soup_text.split(" ")[0]
-    
+
     @RipperDecorators.format_time
-    def __get_time(self,class_time_soup_text):
+    def __get_time(self, class_time_soup_text):
         return class_time_soup_text.split(" ")[1]
 
-    def __dump_page_source(self,name):
+    def __dump_page_source(self, name):
         n = "{}.txt".format(name)
-        with open(n,'w') as l:
+        with open(n, "w") as l:
             l.write(self.driver.page_source)

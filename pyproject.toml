@@ -33,3 +33,4 @@ typing = { version = "3.6.6" }
 [tool.poetry.dev-dependencies]
 pytest = "^3.8.0"
 pytest-cov = "^2.4"
+black = "=18.9b0"

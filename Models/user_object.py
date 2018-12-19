@@ -17,7 +17,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##
-# User Object. This Object will prepare the data retrieved from the 
+# User Object. This Object will prepare the data retrieved from the
 # signup process for insertiopn into mongodb.
 ##
 # Native or 3rd party lib imports
@@ -26,36 +26,32 @@ from typing import Dict
 from datetime import datetime
 from datetime import timedelta
 
-class UserObject():
-    def __init__(self, 
-                telegram_id: int,
-                username :str,
-                name : str,
-                encrypted_pass,
-            ):
+
+class UserObject:
+    def __init__(self, telegram_id: int, username: str, name: str, encrypted_pass):
         self.__telegram_id = telegram_id
         self.__username = username
         self.__name = name
         self.__encrypted_pass = encrypted_pass
         self.__classes = []
-    
-    def add_classes(self,list_of_classes: List):
+
+    def add_classes(self, list_of_classes: List):
         self.__classes.extend(list_of_classes)
 
-    def get_class_leng(self)->int:
+    def get_class_leng(self) -> int:
         return len(self.__classes)
 
-    def get_mongo_dict(self)->Dict:
+    def get_mongo_dict(self) -> Dict:
         class_list = [x.get_dict_mongo() for x in self.__classes]
         # we will now enable both by default.
         generated_dict = {
-            "telegram_id":self.__telegram_id,
-            "username":self.__username,
-            "name":self.__name,
-            "encrypted_pass":self.__encrypted_pass,
-            "class_list":class_list,
-            "last_synced_date": datetime.now()+ timedelta(hours=8),
-            "alert":True,
-            "nightly_alert":True
+            "telegram_id": self.__telegram_id,
+            "username": self.__username,
+            "name": self.__name,
+            "encrypted_pass": self.__encrypted_pass,
+            "class_list": class_list,
+            "last_synced_date": datetime.now() + timedelta(hours=8),
+            "alert": True,
+            "nightly_alert": True,
         }
         return generated_dict

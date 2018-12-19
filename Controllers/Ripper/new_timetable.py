@@ -1,4 +1,3 @@
-
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 ##
@@ -25,7 +24,7 @@
 from contextlib import closing
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet
-from typing import Union,List
+from typing import Union, List
 import re
 import time as clock
 
@@ -41,7 +40,6 @@ class RipTimeTable(SIMConnect):
 
     static_timetable_page = "https://simconnect1.simge.edu.sg:444/psc/csprd_2/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL"  # noqa
 
-    
     def __init__(self, username: str, password: str):
         """
         Constructor, calls superclass
@@ -49,7 +47,7 @@ class RipTimeTable(SIMConnect):
         @str password, the decrypted password of the client
         """
         super(RipTimeTable, self).__init__(username, password)
-   
+
     def navigate_to_latest_timetable(self, driver, latest_term: int) -> BeautifulSoup:
         """
         Navigates to the latest timetable in the event
@@ -59,17 +57,14 @@ class RipTimeTable(SIMConnect):
         @return soup, a formated beautiful soup object.
         """
         # constructing the latest term's id
-        newid = f'SSR_DUMMY_RECV1$sels${latest_term}$$0'
-
+        newid = f"SSR_DUMMY_RECV1$sels${latest_term}$$0"
 
         # using selenium to hunt for the element and click
         term_button = driver.find_element_by_id(newid)
         term_button.click()
 
         # more hunting for buttons.
-        continue_button = driver.find_element_by_id(
-                                                    'DERIVED_SSS_SCT_SSR_PB_GO'
-                                                    )
+        continue_button = driver.find_element_by_id("DERIVED_SSS_SCT_SSR_PB_GO")
         continue_button.click()
 
         # loading the new timetablepage...
@@ -81,7 +76,7 @@ class RipTimeTable(SIMConnect):
 
         return soup
 
-    def process_subject_divs(self,subjectdiv: ResultSet, holding_list: List):
+    def process_subject_divs(self, subjectdiv: ResultSet, holding_list: List):
         """
         Processes subject div, performs regex queries to extract data, initalize a class structure, and 
         place the values into the structure
@@ -93,30 +88,36 @@ class RipTimeTable(SIMConnect):
 
         class_name = None
         for div in subjectdiv:
-            subject_title_soup = div.find("td",
-                                   {
-                                      'class': 'PAGROUPDIVIDER'
-                                   }
-                                   )
+            subject_title_soup = div.find("td", {"class": "PAGROUPDIVIDER"})
             class_name = subject_title_soup.text
-            subject_rows = div.findAll('tr',{'id':re.compile(r'(^trCLASS_MTG_VW\$)(\d{1,3})(_row)(\d{1,3}$)')})
+            subject_rows = div.findAll(
+                "tr",
+                {"id": re.compile(r"(^trCLASS_MTG_VW\$)(\d{1,3})(_row)(\d{1,3}$)")},
+            )
             class_type = None
             for row in subject_rows:
                 try:
                     ic = IndividualClassStructure(class_name)
-                    class_type_soup = row.find('span',{'id':re.compile(r'(^MTG_COMP\$)(\d{1,3}$)')})
+                    class_type_soup = row.find(
+                        "span", {"id": re.compile(r"(^MTG_COMP\$)(\d{1,3}$)")}
+                    )
 
-                    class_date_soup = row.find('span',{'id':re.compile(r'(^MTG_DATES\$)(\d{1,3}$)')})
-                    class_time_soup = row.find('span',{'id':re.compile(r'(^MTG_SCHED\$)(\d{1,3}$)')})
-                    class_loc_soup = row.find('span',{'id':re.compile(r'(^MTG_LOC\$)(\d{1,3}$)')})
+                    class_date_soup = row.find(
+                        "span", {"id": re.compile(r"(^MTG_DATES\$)(\d{1,3}$)")}
+                    )
+                    class_time_soup = row.find(
+                        "span", {"id": re.compile(r"(^MTG_SCHED\$)(\d{1,3}$)")}
+                    )
+                    class_loc_soup = row.find(
+                        "span", {"id": re.compile(r"(^MTG_LOC\$)(\d{1,3}$)")}
+                    )
                     cn = self.__get_class_name(class_type_soup.text)
                     class_type = cn if cn else class_type
 
-
                     ic.class_type = class_type
                     ic.date = self.__get_class_date(class_date_soup.text)
-                    ic.start_time = self.__get_time(class_time_soup.text,True)
-                    ic.end_time = self.__get_time(class_time_soup.text,False)
+                    ic.start_time = self.__get_time(class_time_soup.text, True)
+                    ic.end_time = self.__get_time(class_time_soup.text, False)
                     ic.location = class_loc_soup.text
 
                     # adds the class to the list.
@@ -125,8 +126,7 @@ class RipTimeTable(SIMConnect):
                     # Normally for those that have TBA classes.
                     pass
 
-
-    def helper_methods(self,*args):
+    def helper_methods(self, *args):
         """
         Helper method to test private methods.
         NOT.INTENDED.FOR.USE.IN.PRODUCTION!!!!!!!!!!!!!!!!
@@ -138,7 +138,7 @@ class RipTimeTable(SIMConnect):
         elif method_to_call == "time":
             return self.__get_time(*args)
 
-    def __get_class_name(self,class_name_soup_text: str) -> Union[str, None]:
+    def __get_class_name(self, class_name_soup_text: str) -> Union[str, None]:
         """
         Formats the class name.
         This ensures that the first row with the class name will return the class name
@@ -151,10 +151,10 @@ class RipTimeTable(SIMConnect):
         """
         if class_name_soup_text.strip():
             return class_name_soup_text
-        else: return None
+        else:
+            return None
 
-
-    def __get_class_date(self,class_date_soup_text: str) -> str:
+    def __get_class_date(self, class_date_soup_text: str) -> str:
         """
         Splits the date and returns the first half of the split
         Since both halves are identical.
@@ -165,7 +165,7 @@ class RipTimeTable(SIMConnect):
         return class_date_soup_text.split("-")[0].rstrip()
 
     @RipperDecorators.format_time
-    def __get_time(self,class_time_soup_text: str,time_type: bool) -> str:
+    def __get_time(self, class_time_soup_text: str, time_type: bool) -> str:
         """
         Splits the date and returns the first or the second half.
 
@@ -198,7 +198,7 @@ class RipTimeTable(SIMConnect):
             self.driver.quit()
             raise UnableToLogin("Unable to login using given credentials")
 
-    def parse_timetable_source(self,formatted_result: str) -> List:
+    def parse_timetable_source(self, formatted_result: str) -> List:
         """
         Parses the page source code.
         First, it loads into a bs4 object, so that we can
@@ -212,42 +212,42 @@ class RipTimeTable(SIMConnect):
         soup_array = []
         soup = BeautifulSoup(formatted_result, "html.parser")
         soup_array.append(soup)
-        termdiv = soup.findAll('span',
-                                {
-                                    'id': re.compile(r'(TERM_CAR\$)([0-9]{1})')  # noqa
-                                }
-                                )
+        termdiv = soup.findAll(
+            "span", {"id": re.compile(r"(TERM_CAR\$)([0-9]{1})")}  # noqa
+        )
 
         # If there is more than 1 timetable avaliable,
         # we default to the latest term's timetable.
-        print(f"Found {len(termdiv)} timetables" )
+        print(f"Found {len(termdiv)} timetables")
         if len(termdiv) != 0:
-            #latest_term = len(termdiv)-1
-            #soup = self.navigate_to_latest_timetable(self.driver, latest_term)
-            for index,term in enumerate(termdiv):
+            # latest_term = len(termdiv)-1
+            # soup = self.navigate_to_latest_timetable(self.driver, latest_term)
+            for index, term in enumerate(termdiv):
                 # renavigate back to selection
-                print (f"Navigating {index}")
+                print(f"Navigating {index}")
                 self.driver.get(RipTimeTable.static_timetable_page)
                 clock.sleep(5)
                 soup_array.append(self.navigate_to_latest_timetable(self.driver, index))
-        
+
         list_of_results = []
 
         for retrieved_timetable_page in soup_array:
             # list of all the subjects.
-            subjectdiv = retrieved_timetable_page.findAll('div',
-                                        {
-                                            'id': re.compile(r'(win2divDERIVED_REGFRM1_DESCR20\$)([0-9]{1})')  # noqa
-                                        }
-                                    )
-            self.process_subject_divs(subjectdiv,list_of_results)
+            subjectdiv = retrieved_timetable_page.findAll(
+                "div",
+                {
+                    "id": re.compile(
+                        r"(win2divDERIVED_REGFRM1_DESCR20\$)([0-9]{1})"
+                    )  # noqa
+                },
+            )
+            self.process_subject_divs(subjectdiv, list_of_results)
 
-        
         self.driver.quit()
         return list_of_results
 
-    def output_for_debug(self,timetable_source:str):
-        with open("debug.log","w") as f:
+    def output_for_debug(self, timetable_source: str):
+        with open("debug.log", "w") as f:
             f.write(timetable_source)
 
     def execute(self) -> List:
@@ -256,6 +256,6 @@ class RipTimeTable(SIMConnect):
         @return a list of class objects
         """
         formatted_result = self.get_timetable_page()
-        #self.output_for_debug(formatted_result)
-        #print("Logged")
+        # self.output_for_debug(formatted_result)
+        # print("Logged")
         return self.parse_timetable_source(formatted_result)

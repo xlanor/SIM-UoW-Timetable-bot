@@ -19,56 +19,59 @@
 ##
 #   Model to hold data from a Class retrieved via scraping
 ##
-class Markdown():
+class Markdown:
     @classmethod
-    def strip_markdown(_,func):
-        def func_wrapper(self, *args, **kwargs)->str:
-            string_to_format = func(self,*args,**kwargs)
-            markdown_array = ['*','_','[',']','(',')','`']
-            
+    def strip_markdown(_, func):
+        def func_wrapper(self, *args, **kwargs) -> str:
+            string_to_format = func(self, *args, **kwargs)
+            markdown_array = ["*", "_", "[", "]", "(", ")", "`"]
+
             for x in markdown_array:
                 string_to_format = string_to_format.replace(x, " ")
             return string_to_format
-          
+
         return func_wrapper
-    
+
     @classmethod
-    def wrap_blockquotes(_,func):
-        def func_wrapper(self,*args,**kwargs)->str:
-            sanitized_string = func(self,*args,**kwargs)
+    def wrap_blockquotes(_, func):
+        def func_wrapper(self, *args, **kwargs) -> str:
+            sanitized_string = func(self, *args, **kwargs)
             message_array = []
             message_array.append("```\n")
             message_array.append(sanitized_string)
             message_array.append("```")
             return "".join(message_array)
-        return func_wrapper    
-    
-    @classmethod
-    def wrap_italics(_,func):
-        def func_wrapper(self,*args,**kwargs)->str:
-            sanitized_string = func(self,*args,**kwargs)
-            message_array = []
-            message_array.append("_")
-            message_array.append(sanitized_string)
-            message_array.append("_")
-            return "".join(message_array)
-        return func_wrapper    
+
+        return func_wrapper
 
     @classmethod
-    def wrap_bold(_,func):
-        def func_wrapper(self,*args,**kwargs)->str:
-            sanitized_string = func(self,*args,**kwargs)
+    def wrap_italics(_, func):
+        def func_wrapper(self, *args, **kwargs) -> str:
+            sanitized_string = func(self, *args, **kwargs)
+            message_array = []
+            message_array.append("_")
+            message_array.append(sanitized_string)
+            message_array.append("_")
+            return "".join(message_array)
+
+        return func_wrapper
+
+    @classmethod
+    def wrap_bold(_, func):
+        def func_wrapper(self, *args, **kwargs) -> str:
+            sanitized_string = func(self, *args, **kwargs)
             message_array = []
             message_array.append("*")
             message_array.append(sanitized_string)
             message_array.append("*")
             return "".join(message_array)
-        return func_wrapper    
-    
+
+        return func_wrapper
+
     @staticmethod
-    def get_url(url: str,text_to_show: str)->str:
+    def get_url(url: str, text_to_show: str) -> str:
         return f"[{text_to_show}]({url})"
-    
+
     @staticmethod
-    def get_inline_user(userid: int,name: str)->str:
+    def get_inline_user(userid: int, name: str) -> str:
         return f"[{name}](tg://user?id={userid})"

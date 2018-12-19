@@ -20,7 +20,7 @@
 #   Help message.
 ##
 # Native/3rd party imports.
-# 
+#
 # Local imports
 from .exceptions import *
 from Models.markdown import Markdown
@@ -28,42 +28,45 @@ from cfg import Configuration
 from Models.singleton_sp import Singleton
 
 
-class HelpMessage(metaclass = Singleton):
+class HelpMessage(metaclass=Singleton):
     def __init__(self):
         self.__cfg = Configuration()
 
-    def get_help_message(self)->str:
+    def get_help_message(self) -> str:
         email = self.__get_type("email")
         author = self.__inline_author()
-        git_uri = self.__inline_url(self.__cfg.GITHUB_URL,"Github")
-        inline_uri = self.__inline_url(f"{self.__cfg.GITHUB_URL}/issues","Open an Issue")
+        git_uri = self.__inline_url(self.__cfg.GITHUB_URL, "Github")
+        inline_uri = self.__inline_url(
+            f"{self.__cfg.GITHUB_URL}/issues", "Open an Issue"
+        )
         message_array = []
         message_array.append(f"{self.__title()}\n\n")
-        message_array.append(f"Before contacting the owner, check the README in {git_uri} to make sure that your issue is not addressed in the FAQs\n")
+        message_array.append(
+            f"Before contacting the owner, check the README in {git_uri} to make sure that your issue is not addressed in the FAQs\n"
+        )
         message_array.append("\n")
-        message_array.append(f"If you are confident that your issue is not already addressed, kindly refer to the following links:\n\n")
+        message_array.append(
+            f"If you are confident that your issue is not already addressed, kindly refer to the following links:\n\n"
+        )
         message_array.append(f"📧 Email: {email}\n")
         message_array.append(f"📱 Telegram: {author}\n")
         message_array.append(f"📊 Github Issues:{inline_uri}\n")
         message_array.append("\n")
         return "".join(message_array)
-    
+
     @Markdown.wrap_bold
-    def __title(self)->str:
+    def __title(self) -> str:
         return "Need Help? Read the following:"
 
-    def __inline_author(self)->str:
-        return Markdown.get_inline_user(self.__cfg.AUTHOR_TELEGRAM_ID,"Jingkai")
-    
-    def __inline_url(self,url_to_display:str, text_to_show: str)->str:
-        return Markdown.get_url(url_to_display,text_to_show)
-    
+    def __inline_author(self) -> str:
+        return Markdown.get_inline_user(self.__cfg.AUTHOR_TELEGRAM_ID, "Jingkai")
+
+    def __inline_url(self, url_to_display: str, text_to_show: str) -> str:
+        return Markdown.get_url(url_to_display, text_to_show)
+
     @Markdown.wrap_italics
-    def __get_type(self,type:str)->str:
+    def __get_type(self, type: str) -> str:
         if type == "email":
             return self.__cfg.AUTHOR_EMAIL
         elif type == "tg":
             return self.__cfg.AUTHOR_TELEGRAM
-            
-
-        

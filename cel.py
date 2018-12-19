@@ -24,12 +24,12 @@
 ##
 from celery import Celery
 from celery import current_app
-app = Celery('queue',
-             broker='amqp://',
-             backend='rpc://',
-             include=['Controllers.celery_queue'])
 
-if __name__ == '__main__':
+app = Celery(
+    "queue", broker="amqp://", backend="rpc://", include=["Controllers.celery_queue"]
+)
+
+if __name__ == "__main__":
     app.start()
     all_task_names = current_app.tasks.keys()
     all_tasks = current_app.tasks.values()

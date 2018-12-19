@@ -23,9 +23,11 @@ from Models.exceptions import *
 from Controllers.Ripper.login import SIMConnect
 from Controllers.Ripper.new_timetable import RipTimeTable as NewRip
 from Controllers.Ripper.other import OtherClass
-class RipperFactory():
+
+
+class RipperFactory:
     @staticmethod
-    def get_ripper(method: str,username: str,password: str) -> SIMConnect :
+    def get_ripper(method: str, username: str, password: str) -> SIMConnect:
         """
         Gets and initalizes an object for further operation
         @str method, type of method to use
@@ -35,11 +37,11 @@ class RipperFactory():
         @return SIMConnect, inherited classes of SIMConnect to utilize polymorphism
         """
         if method == "Login":
-            return SIMConnect(username,password)
+            return SIMConnect(username, password)
         elif method == "Other":
             # Other class in this context refers to IS class.
-            return OtherClass(username,password)
+            return OtherClass(username, password)
         elif method == "NewRip":
-            return NewRip(username,password)
+            return NewRip(username, password)
         else:
             raise InvalidRipException("Invalid rip method was selcted")

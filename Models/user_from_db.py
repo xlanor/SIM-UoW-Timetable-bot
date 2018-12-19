@@ -23,10 +23,12 @@
 from typing import Dict
 from datetime import date
 
-#local imports
+# local imports
 from Models.classes import IndividualClassStructure
-class DbUser():
-    def __init__(self, retrieved_user:Dict):
+
+
+class DbUser:
+    def __init__(self, retrieved_user: Dict):
         self.telegram_id = retrieved_user["telegram_id"]
         self.name = retrieved_user["name"]
         self.user_name = retrieved_user["username"]
@@ -45,14 +47,14 @@ class DbUser():
         except KeyError:
             self.nightly = False
         self.__process_class()
-    
+
     def __process_class(self):
         for classes in self.raw_class_list:
             ic = IndividualClassStructure("")
             ic.set_from_dict(classes)
             self.class_list.append(ic)
-    
-    def get_list_of_class_by_date(self,date_object):
+
+    def get_list_of_class_by_date(self, date_object):
         return_list = []
         for class_obj in self.class_list:
             if class_obj.date.date() == date_object:

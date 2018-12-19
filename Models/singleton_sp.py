@@ -7,6 +7,7 @@ class Singleton(type):
     """
     An metaclass for singleton purpose. Every singleton class should inherit from this class by 'metaclass=Singleton'.
     """
+
     _instances = {}
 
     def __call__(cls, *args, **kwargs):

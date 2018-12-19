@@ -22,28 +22,27 @@
 from datetime import datetime
 from datetime import timedelta
 from typing import List
-class ReminderMessage():
-    def __init__(self,
-            list_of_classes:str,
-            type_of_reminder:str,
-            name:str,
-            date_to_show
-        ):
+
+
+class ReminderMessage:
+    def __init__(
+        self, list_of_classes: str, type_of_reminder: str, name: str, date_to_show
+    ):
         self.__name = name
         self.__list_of_classes = list_of_classes
 
-        self.__list_of_classes.sort(key = lambda x: x.start_time)
+        self.__list_of_classes.sort(key=lambda x: x.start_time)
         self.__reminder_type = type_of_reminder
         self.__date = date_to_show
-    
-    def get_message(self)->str:
+
+    def get_message(self) -> str:
         message_array = []
         if self.__reminder_type == "Morning":
             message_array.append(f"Good Morning {self.__name}\n")
         else:
             message_array.append(f"Good Evening {self.__name}\n")
         message_array.append("These are your classes for ")
-        
+
         if self.__reminder_type == "Morning":
             message_array.append("*Today*, ")
         else:
@@ -53,7 +52,7 @@ class ReminderMessage():
         if self.__reminder_type == "Morning":
             day_name = datetime.today().strftime("%A")
         else:
-            day_name = ((datetime.today())+timedelta(1)).strftime("%A")
+            day_name = ((datetime.today()) + timedelta(1)).strftime("%A")
         message_array.append(f"📅 *{day_name}*\n")
 
         if len(self.__list_of_classes) == 0:
@@ -63,7 +62,7 @@ class ReminderMessage():
                 message_array.append(class_object.get_formatted_text())
                 message_array.append("\n")
         message_array.append("\n")
-        
+
         if self.__reminder_type == "Morning":
             toggle = "/alert"
         else:

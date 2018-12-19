@@ -22,8 +22,7 @@
 
 from typing import List
 
-class TimetableMessage():
-    def __init__(self,
-                list_of_classes:List,
-                ):
+
+class TimetableMessage:
+    def __init__(self, list_of_classes: List):
         pass

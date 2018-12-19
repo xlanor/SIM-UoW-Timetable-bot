@@ -30,53 +30,61 @@ from Models.exceptions import *
 
 
 pre_login_template = ""
-with open('./Tests/page_sources/pre_login.log') as pre:
+with open("./Tests/page_sources/pre_login.log") as pre:
     s = pre.read()
     pre_login_template += s
 
 post_login_template = ""
-with open('./Tests/page_sources/post_login.log') as post:
+with open("./Tests/page_sources/post_login.log") as post:
     ps = post.read()
     post_login_template += ps
 
 timetable_template = ""
-with open('./Tests/page_sources/timetable_page_source.log') as tt:
+with open("./Tests/page_sources/timetable_page_source.log") as tt:
     t = tt.read()
     timetable_template += t
 
 
 # no proper way to test a login.
-# we test for 
+# we test for
 # a) by instantiating a SIMConnect object, whether chromedriver is
 #    properly installed and will launch properly.
 # b) we pass in a mocked page source to determine if the logged in
 #    detection works.
 # Testing of SuperClass
 def test_failed_logged_in():
-    assert SIMConnect("testing","testing").is_logged_in(pre_login_template) is False, 'Failed Login Template test at SIMConnect Object failed!'
+    assert (
+        SIMConnect("testing", "testing").is_logged_in(pre_login_template) is False
+    ), "Failed Login Template test at SIMConnect Object failed!"
+
 
 def test_logged_in():
 
-    assert SIMConnect("testing","testing").is_logged_in(post_login_template) is True, 'Login Template test at SIMConnect Object failed!'
+    assert (
+        SIMConnect("testing", "testing").is_logged_in(post_login_template) is True
+    ), "Login Template test at SIMConnect Object failed!"
 
 
 def test_fail_factory_method():
     try:
-        # We DONT want to check subclass here, so we 
+        # We DONT want to check subclass here, so we
         # opt for == over isinstance.
-        rf = RipperFactory.get_ripper("garbage","test","test")
+        rf = RipperFactory.get_ripper("garbage", "test", "test")
         pytest.fail("Garbage did not raise a InvalidRipException as expected")
     except InvalidRipException:
         assert True
 
+
 def test_rip_factory_method():
-    rf = RipperFactory.get_ripper("NewRip","test","test")
-    assert type(rf) == RipTimeTable,"NewRip did not return an instance of RipTimeTable"
+    rf = RipperFactory.get_ripper("NewRip", "test", "test")
+    assert type(rf) == RipTimeTable, "NewRip did not return an instance of RipTimeTable"
+
 
 def test_other_factory_method():
-    rf = RipperFactory.get_ripper("Other","test","test")
+    rf = RipperFactory.get_ripper("Other", "test", "test")
     assert type(rf) == OtherClass, "Other did not return an instance of OtherClass"
 
+
 def test_login_factory_method():
-    rf = RipperFactory.get_ripper("Login","test","test")
+    rf = RipperFactory.get_ripper("Login", "test", "test")
     assert type(rf) == SIMConnect, "Login did not return an instance of SIMConnect"
