@@ -12,4 +12,4 @@ def test_message_timetable_init():
             self.__class_list.append([])
     """
     msg = MessageTimetable("27/01/2018", "27/02/2017")
-    #assert msg.__MessageTimetable__.last_sync_date == "27/01/2018"
+    # assert msg.__MessageTimetable__.last_sync_date == "27/01/2018"
