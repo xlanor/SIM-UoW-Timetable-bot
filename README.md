@@ -4,7 +4,7 @@
  
 </p>
 
-<h1 align="center">SIM-UoW Timetable Bot 2.2.0 beta 1: Hera </h1> 
+<h1 align="center">SIM-UoW Timetable Bot 2.3.0 beta 1: Hera </h1> 
 
 
 <p align="center">
@@ -240,6 +240,7 @@ Authors of all libraries / modules used in the development of this bot, in no pa
 * [PyMongo](https://github.com/mongodb/mongo-python-driver) - PyMongo is objectively the best raw mongo connector, coming with a default connection pool enabled by default.
 * [MongoDB](https://www.mongodb.com/) - mongoDB is used as the main database for this system, because I wanted to experiment with noSQL systems.
 * [Poetry](https://github.com/sdispater/poetry) - Poetry is used to handle package management using a pyproject.toml file.
+* [black](https://github.com/ambv/black) - Black acts as a linter to ensure that coding styles are conformed to an easy to read standard.
 
 Last but not least,
 * [SIMConnect](https://simconnect.simge.edu.sg/) - For not providing native API methods
