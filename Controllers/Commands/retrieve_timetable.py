@@ -198,7 +198,13 @@ def get_keyboard(tg_id: str, current_date, start_date, end_date):
         nested_keyboard.append(
             InlineKeyboardButton("Next Week ➡", callback_data=next_date_trigger)
         )
+
+    today_date_trigger = f"td{datetime.strftime(current_date,'%b%d%Y')}"
+    today_date_keyboard = [
+        InlineKeyboardButton("This Week ⬆ ️", callback_data=today_date_trigger)
+    ]
     keyboard.append(nested_keyboard)
+    keyboard.append(today_date_keyboard)
     return keyboard
 
 
