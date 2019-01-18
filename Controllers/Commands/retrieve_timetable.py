@@ -199,7 +199,10 @@ def get_keyboard(tg_id: str, current_date, start_date, end_date):
             InlineKeyboardButton("Next Week ➡", callback_data=next_date_trigger)
         )
 
-    today_date_trigger = f"td{datetime.strftime(current_date,'%b%d%Y')}"
+    cd = date.today()
+    # sets time to midnight.
+    cd = datetime.combine(cd, time())
+    today_date_trigger = f"td{datetime.strftime(cd,'%b%d%Y')}"
     today_date_keyboard = [
         InlineKeyboardButton("This Week ⬆ ️", callback_data=today_date_trigger)
     ]
