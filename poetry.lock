@@ -307,7 +307,7 @@ description = "Python bindings for Selenium"
 name = "selenium"
 optional = false
 python-versions = "*"
-version = "3.10.0"
+version = "3.8.0"
 
 [[package]]
 category = "main"
