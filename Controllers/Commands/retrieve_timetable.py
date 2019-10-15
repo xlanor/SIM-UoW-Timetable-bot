@@ -27,7 +27,7 @@ from datetime import date
 from datetime import time
 import traceback
 
-#Third party library imports
+# Third party library imports
 from telegram import InlineKeyboardButton
 from telegram import InlineKeyboardMarkup
 import pytz
@@ -295,11 +295,11 @@ def get_ics(bot, update):
             print(classes_list)
             ics_model = ICSParser(classes_list)
             ics_model.convert_to_event()
-            with open(filepath, 'w') as f:
+            with open(filepath, "w") as f:
                 f.writelines(ics_model.calendar)
-            
+
             # sends the message
-            bot.send_document(chat_id=uid, document=open(filepath, 'rb'))
+            bot.send_document(chat_id=uid, document=open(filepath, "rb"))
         else:
             message_array = [f"Unable to find telegram ID {uid} in our database\n"]
             message_array.append(
@@ -323,4 +323,3 @@ def get_ics(bot, update):
             chat_id=config.ERROR_CHANNEL,
             text=f"This message was triggered in get timetable by {uid}.",
         )
-

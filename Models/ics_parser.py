@@ -33,7 +33,7 @@ class ICSParser:
         self.__calendar = Calendar()
 
     @property
-    def calendar(self)->Calendar:
+    def calendar(self) -> Calendar:
         return self.__calendar
 
     def convert_to_event(self):
@@ -45,4 +45,3 @@ class ICSParser:
             e.location = period.location
             e.description = period.class_type
             self.__calendar.events.add(e)
-

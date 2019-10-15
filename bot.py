@@ -181,7 +181,7 @@ class Hera:
     def __today(self):
         today_handler = CommandHandler("today", tt.get_today)
         self.__dp.add_handler(today_handler, 2)
-    
+
     def __ics(self):
         ics_handler = CommandHandler("ics", tt.get_ics)
         self.__dp.add_handler(ics_handler, 2)

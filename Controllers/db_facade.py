@@ -95,6 +95,7 @@ def get_current_class(telegram_id: str, start_date, end_date):
 
     return result_list
 
+
 def get_all_classes(telegram_id: str):
     aggregation_result = db.get_all_class_as_object(telegram_id)
     result_list = []
@@ -110,7 +111,6 @@ def get_all_classes(telegram_id: str):
                 pass
     print(result_list)
     return result_list
-
 
 
 def get_last_sync_date(telegram_id: str):
