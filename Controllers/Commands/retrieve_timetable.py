@@ -294,7 +294,7 @@ def get_ics(bot, update):
             classes_list = db_interface.get_all_classes(uid)
             ics_model = ICSParser(classes_list)
             with open(filepath, 'w') as f:
-                f.writelines(ics_model)
+                f.writelines(ics_model.calendar)
             
             # sends the message
             bot.send_document(chat_id=uid, document=open(filepath, 'rb'))
