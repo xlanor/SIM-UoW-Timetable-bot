@@ -107,6 +107,17 @@ def get_classes_as_object(telegram_id: str, start_date, end_date):
     )
 
 
+def get_all_class_as_object(telegram_id: str):
+    mdb = MongoDB().db
+    return mdb.tgbot_records.aggregate(
+        [
+            {"$unwind": "$class_list"},
+            {"$match": {"telegram_id": telegram_id}},
+            {"$group": {"_id": "null", "classes": {"$push": "$class_list"}}},
+        ]
+    )
+
+
 def get_later_date(telegram_id: str, current_date):
     mdb = MongoDB().db
     return mdb.tgbot_records.aggregate(
