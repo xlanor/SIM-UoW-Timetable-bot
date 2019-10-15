@@ -19,19 +19,25 @@
 ##
 # Methods for retrival of timetable
 ##
+
+# Internal library imports
 from datetime import datetime
 from datetime import timedelta
 from datetime import date
 from datetime import time
-import pytz
 import traceback
+
+# Third party library imports
 from telegram import InlineKeyboardButton
 from telegram import InlineKeyboardMarkup
+import pytz
 import arrow
 
-import Controllers.db_facade as db_interface
-from Models.class_message import MessageTimetable
+# Internal Imports
 from cfg import Configuration
+from Models.class_message import MessageTimetable
+from Models.ics_parser import ICSParser
+import Controllers.db_facade as db_interface
 
 
 def get_timetable(bot, update):
@@ -268,4 +274,52 @@ def fuck(bot, update):
         bot.send_message(
             chat_id=config.ERROR_CHANNEL,
             text=f"This message was triggered in get fucked timetable by {uid}.",
+        )
+
+
+def get_ics(bot, update):
+    print("Get ICS method called")
+    config = Configuration()
+    is_callback = False
+    if not update.message:
+        uid = update.callback_query.from_user.id
+        is_callback = True
+    else:
+        uid = update.message.from_user.id
+    try:
+        if db_interface.user_exist(uid):
+            print("DB Interface exists")
+            filepath = f"./ics/{uid}.ics"
+            # Gets a list of classes
+            classes_list = db_interface.get_all_classes(uid)
+            print(classes_list)
+            ics_model = ICSParser(classes_list)
+            ics_model.convert_to_event()
+            with open(filepath, "w") as f:
+                f.writelines(ics_model.calendar)
+
+            # sends the message
+            bot.send_document(chat_id=uid, document=open(filepath, "rb"))
+        else:
+            message_array = [f"Unable to find telegram ID {uid} in our database\n"]
+            message_array.append(
+                "Kindly register using /register before attempting to retrieve a timetable."
+            )
+            message = "".join(message_array)
+            update.message.reply_text(message, parse_mode="Markdown")
+
+    except Exception as e:
+        print(str(e))
+        local = arrow.utcnow().to("Asia/Singapore")
+        local_time = local.format("YYYY-MM-DD HH:mm:ss ZZ")
+        bot.send_message(
+            chat_id=config.ERROR_CHANNEL, text=f"An error occured at {local_time}"
+        )
+        bot.send_message(
+            chat_id=config.ERROR_CHANNEL,
+            text=f"The error was: {traceback.format_exc()}",
+        )
+        bot.send_message(
+            chat_id=config.ERROR_CHANNEL,
+            text=f"This message was triggered in get timetable by {uid}.",
         )

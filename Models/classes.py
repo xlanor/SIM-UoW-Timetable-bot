@@ -21,13 +21,14 @@
 ##
 
 # Native/3rd party imports.
-import time as clock
-import re
 from bs4 import BeautifulSoup
 from datetime import datetime
 from typing import Dict, Union
+import arrow
 import calendar
-
+import dateutil
+import time as clock
+import re
 
 # Local imports
 from .exceptions import *
@@ -148,6 +149,27 @@ class IndividualClassStructure:
     @property
     def class_numeric_day(self):
         return self.__class_numeric_day
+
+    @property
+    def ics_formatted_plus_eight_date(self):
+        date_str = datetime.strftime(self.__date, "%d-%m-%Y %H:%M")
+        return arrow.get(date_str, "DD-MM-YYYY HH:mm").replace(
+            tzinfo=dateutil.tz.gettz("Asia/Singapore")
+        )
+
+    @property
+    def ics_formatted_plus_eight_start(self):
+        date_str = datetime.strftime(self.__starttime, "%d-%m-%Y %H:%M")
+        return arrow.get(date_str, "DD-MM-YYYY HH:mm").replace(
+            tzinfo=dateutil.tz.gettz("Asia/Singapore")
+        )
+
+    @property
+    def ics_formatted_plus_eight_end(self):
+        date_str = datetime.strftime(self.__endtime, "%d-%m-%Y %H:%M")
+        return arrow.get(date_str, "DD-MM-YYYY HH:mm").replace(
+            tzinfo=dateutil.tz.gettz("Asia/Singapore")
+        )
 
     """
     A whole bunch of setter methods.

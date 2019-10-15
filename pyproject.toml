@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Hera"
-version = "2.2.0"
+version = "2.4.0"
 description = "An unoffical telegram bot for SIMConnect timetables."
 
 license = "AGPL-3.0-only"
@@ -29,7 +29,8 @@ python_telegram_bot = { version = "~11.1.0" }
 celery = { version = "4.1.1" }
 beautifulsoup4 = { version = "4.6.3" }
 typing = { version = "3.6.6" }
-arrow = "^0.12.1"
+arrow = "^0.11"
+ics = "^0.5.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.8.0"

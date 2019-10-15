@@ -96,6 +96,23 @@ def get_current_class(telegram_id: str, start_date, end_date):
     return result_list
 
 
+def get_all_classes(telegram_id: str):
+    aggregation_result = db.get_all_class_as_object(telegram_id)
+    result_list = []
+    if aggregation_result:
+        for class_list in aggregation_result:
+            try:
+                for found_class in class_list["classes"]:
+                    ic = IndividualClassStructure("")
+                    ic.set_from_dict(found_class)
+                    result_list.append(ic)
+            except KeyError:
+                print("NO classes, pass")
+                pass
+    print(result_list)
+    return result_list
+
+
 def get_last_sync_date(telegram_id: str):
     user_result = db.getUser(telegram_id)
     lsd = user_result["last_synced_date"]

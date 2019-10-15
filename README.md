@@ -4,7 +4,7 @@
  
 </p>
 
-<h1 align="center">SIM-UoW Timetable Bot 2.3.0 beta 1: Hera </h1> 
+<h1 align="center">SIM-UoW Timetable Bot 2.4.0 beta 1: Hera </h1> 
 
 
 <p align="center">
@@ -99,9 +99,14 @@ Feel free to open a Pull Request.
 
 >  Returns fucked up timetables (Defined as starting before 9am) for the week
 
-* **/today** *BETA*
+* **/today**
 
 >  Returns today's timetable from the ripped database. Single day version.
+
+* **/ics** *BETA*
+
+>  Generates an RFC5545 compliant ICS file for import by other calendar apps
+
 
 <hr>
 
