@@ -278,6 +278,7 @@ def fuck(bot, update):
 
 
 def get_ics(bot, update):
+    print("Get ICS method called")
     config = Configuration()
     is_callback = False
     if not update.message:
@@ -287,6 +288,7 @@ def get_ics(bot, update):
         uid = update.message.from_user.id
     try:
         if db_interface.user_exist(uid):
+            print("DB Interface exists")
             filepath = f"./ics/{uid}.ics"
             # Gets a list of classes
             classes_list = db_interface.get_all_classes(uid)
