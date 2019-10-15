@@ -84,6 +84,7 @@ class Hera:
         self.__update()
         self.__forget()
         self.__timetable()
+        self.__ics()
         self.__fuck()
         self.__cbq()
         self.__mega()
