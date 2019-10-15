@@ -292,6 +292,7 @@ def get_ics(bot, update):
             filepath = f"./ics/{uid}.ics"
             # Gets a list of classes
             classes_list = db_interface.get_all_classes(uid)
+            print(classes_list)
             ics_model = ICSParser(classes_list)
             with open(filepath, 'w') as f:
                 f.writelines(ics_model.calendar)

@@ -108,6 +108,7 @@ def get_all_classes(telegram_id: str):
             except KeyError:
                 print("NO classes, pass")
                 pass
+    print(result_list)
     return result_list
 
 
