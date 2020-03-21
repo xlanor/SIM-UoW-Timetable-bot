@@ -1,14 +1,3 @@
-.vscode/
-testing_accounts.json
-ghostdriver.log
-.coverage
-*.log
-cfg.py
-*.png
-**/*.pyc
-**/__pycache__/
-.pytest_cache/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
