@@ -24,5 +24,4 @@ def test_post_data(client, redis_server):
     post_usn_pw = client.post('/scrape_data')
     resp = json.loads(post_usn_pw.data)
     response = {}
-    assert resp.status_code == 200
-    assert resp
+    assert post_usn_pw.status_code == 400

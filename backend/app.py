@@ -1,7 +1,8 @@
 #!/usr/bin/env python
+
+import routes
 from flask import Flask
 from flask_restful import Resource, Api
-
 
 class HelloWorld(Resource):
     def get(self):
@@ -12,6 +13,7 @@ def create_app():
     api = Api(app)
 
     api.add_resource(HelloWorld, '/')
+    api.add_resource(routes.Scraper, '/scrape_data')
     return app
 
 
