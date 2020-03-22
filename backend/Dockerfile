@@ -1,5 +1,11 @@
 FROM python:3.8
 
+# Create app directory
+WORKDIR /app
+
+COPY ./poetry.lock /app/poetry.lock
+COPY ./pyproject.toml /app/pyproject.toml
+
 # install google chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -19,3 +25,13 @@ RUN pip install --upgrade pip
 
 # install selenium
 RUN pip install selenium
+RUN pip install poetry
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-interaction
+RUN poetry install
+
+EXPOSE 5000
+
+ENTRYPOINT [ "python" ]
+
+CMD [ "app.py" ]
