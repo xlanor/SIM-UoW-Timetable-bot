@@ -22,7 +22,7 @@ toml = "^0.9"
 # Dependencies with extras
 selenium = { version = "3.8.0" }
 pip = { version = "~9.0.1" }
-redis = { version = "~2.10.6" }
+redis = { version = "~4.3.6" }
 jsonpickle = { version = "~0.9.6" }
 pymongo = { version = "~3.7.1" }
 python_telegram_bot = { version = "~11.1.0" }
